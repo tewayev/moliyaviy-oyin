@@ -316,13 +316,12 @@ button { cursor: pointer; }
 .avatar__head {
   transform-origin: 50.54% 67.03%;   /* bo'yin asosi */
   animation: head-sway 5s ease-in-out infinite;
-  will-change: transform;
 }
 @keyframes head-sway {
   0%, 100% { transform: rotate(0deg); }
-  25%      { transform: rotate(2.5deg); }
+  25%      { transform: rotate(6deg); }
   50%      { transform: rotate(0deg); }
-  75%      { transform: rotate(-2.5deg); }
+  75%      { transform: rotate(-6deg); }
 }
 @media (prefers-reduced-motion: reduce) {
   .avatar__head { animation: none; }
@@ -2514,7 +2513,7 @@ MS.registry.registerTopic({
     return `
       <header class="bar">
         <div class="brand">
-          <span class="brand__mark"><span class="avatar" aria-hidden="true"><img src="assets/avatar-body.png" alt="" width="277" height="367"><img class="avatar__head" src="assets/avatar-head.png" alt="" width="277" height="367"></span></span>
+          <span class="brand__mark"><span class="avatar" aria-hidden="true"><img src="assets/avatar-body.webp" alt="" width="1108" height="1468"><img class="avatar__head" src="assets/avatar-head.webp" alt="" width="1108" height="1468"></span></span>
           <span class="brand__text"><b>Moliyaviy savodxonlik</b><small>Intellektual o‘yin</small></span>
         </div>
         <div class="bar__progress" title="Qolgan savollar">
