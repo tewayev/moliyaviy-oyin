@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Moliyaviy savodxonlik o‘yini</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/avatar-180.png">
   <style>
 /* css/tokens.css */
 /* Dizayn tokenlari. Ranglar faqat shu yerda belgilanadi.
@@ -300,11 +302,25 @@ button { cursor: pointer; }
 .brand { display: flex; align-items: center; gap: .8rem; min-width: 0; }
 .brand__mark {
   width: 2.75rem; height: 2.75rem; flex: none;
-  display: grid; place-items: center;
+  overflow: hidden;
   border-radius: var(--r-md);
-  background: var(--navy); color: #fff;
+  background: #1f6fd1;
 }
-.brand__mark .ic { width: 1.4rem; height: 1.4rem; }
+/* Imzo-avatar: boshi sekin o'ngdan chapga qimirlab turadi */
+.brand__avatar {
+  display: block; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 30%;
+  transform-origin: 50% 90%;
+  animation: avatar-sway 4s ease-in-out infinite;
+}
+@keyframes avatar-sway {
+  0%, 100% { transform: scale(1.16) rotate(0deg); }
+  25%      { transform: scale(1.16) translateX(1.5%) rotate(2deg); }
+  75%      { transform: scale(1.16) translateX(-1.5%) rotate(-2deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand__avatar { animation: none; transform: scale(1.16); }
+}
 .brand__text { display: grid; line-height: 1.2; }
 .brand__text b { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: -.01em; }
 .brand__text small { font-size: .8rem; color: var(--ink-3); }
@@ -2492,7 +2508,7 @@ MS.registry.registerTopic({
     return `
       <header class="bar">
         <div class="brand">
-          <span class="brand__mark">${MS.icon('chart')}</span>
+          <span class="brand__mark"><img class="brand__avatar" src="assets/avatar.png" alt="" width="299" height="367"></span>
           <span class="brand__text"><b>Moliyaviy savodxonlik</b><small>Intellektual o‘yin</small></span>
         </div>
         <div class="bar__progress" title="Qolgan savollar">
