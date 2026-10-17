@@ -304,7 +304,7 @@ button { cursor: pointer; }
   width: 2.75rem; height: 2.75rem; flex: none;
   overflow: hidden;
   border-radius: var(--r-md);
-  background: #1f6fd1;
+  background: var(--orange);
 }
 /* Imzo-avatar: tana qimirlamaydi, faqat bosh bo'yin atrofida o'ngdan chapga to'xtovsiz tebranadi
    va har ~4.5 soniyada bir marta ko'zini yumib ochadi */
@@ -314,17 +314,9 @@ button { cursor: pointer; }
   margin-top: -9.75%;
 }
 .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-/* Tana rasmi shaffof emas, shuning uchun yorug'lik tana va bosh orasidagi alohida qatlam:
-   boshning orqasida oq radial gradient, qora soch va quloqchin ko'k fonda yo'qolmasin */
-.avatar::after {
-  content: ""; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 46% 30% at 50% 40%,
-    rgba(255,255,255,.85) 0, rgba(255,255,255,.55) 45%, rgba(255,255,255,0) 100%);
-}
 .avatar__head {
   position: absolute; inset: 0; z-index: 1;
   transform-origin: 50.54% 67.03%;   /* bo'yin asosi */
-  filter: drop-shadow(0 0 .6px rgba(255,255,255,.9));
   /* faqat chetlarda sekinlashadi, o'rtadan to'xtamay o'tadi (mayatnik) */
   animation: head-sway 2.5s ease-in-out infinite alternate;
 }
@@ -2101,11 +2093,6 @@ MS.registry.registerTopic({
       commit({ phase: 'question', active: { qid, selected: null, outcome: null, delta: 0 } });
     },
 
-    closeQuestion() {
-      if (state.phase !== 'question' || !state.active || state.active.outcome) return;
-      commit({ phase: 'board', active: null });
-    },
-
     select(letter) {
       const a = state.active;
       if (!a || a.outcome || !C.letters.includes(letter)) return;
@@ -2233,7 +2220,6 @@ MS.registry.registerTopic({
     pause: '<path d="M9 5.5v13M15 5.5v13"/>',
     reset: '<path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3"/><path d="M4.5 4.5v4h4"/>',
     arrowRight: '<path d="M5 12h14M13 6l6 6-6 6"/>',
-    arrowLeft: '<path d="M19 12H5M11 6l-6 6 6 6"/>',
     chevronDown: '<path d="M6 9l6 6 6-6"/>',
     check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
     x: '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>',
@@ -2258,7 +2244,8 @@ MS.registry.registerTopic({
 /* js/ui/timer.js */
 /* Taymer: moderator boshqaradi. Holat DOM dan alohida saqlanadi,
    shuning uchun ekran qayta chizilsa ham vaqt yo'qolmaydi.
-   0 ga yetganda to'xtaydi va "Vaqt tugadi" ko'rsatadi; ball avtomatik ayrilmaydi. */
+   0 ga yetganda to'xtaydi va "Vaqt tugadi" ko'rsatadi; ball avtomatik ayrilmaydi.
+   Holat brauzerda saqlanadi: sahifa yangilansa vaqt boshidan boshlanmaydi. */
 (function (MS) {
   'use strict';
 
@@ -2311,6 +2298,34 @@ MS.registry.registerTopic({
 
   const durationFor = (value) => (value >= T.longFrom ? T.long : T.short);
 
+  /* ---------- saqlash ---------- */
+  const KEY = MS.config.storageKey + ':timer';
+
+  function persist() {
+    try { localStorage.setItem(KEY, JSON.stringify({ duration, remaining, status, endAt })); } catch (e) { /* saqlash mumkin emas */ }
+  }
+
+  // Saqlangan taymerni tiklaydi; yurib turgan bo'lsa, sahifa yopiq turgan vaqt ham hisobga olinadi.
+  function restore() {
+    let t = null;
+    try { t = JSON.parse(localStorage.getItem(KEY)); } catch (e) { /* e'tiborsiz */ }
+    if (!t || !(t.duration > 0) || !MAIN[t.status]) return false;
+    stopTicking();
+    duration = t.duration;
+    remaining = Math.min(Math.max(0, Number(t.remaining) || 0), duration);
+    status = t.status;
+    endAt = Number(t.endAt) || 0;
+    lastBeep = 0;
+    if (status === 'running') {
+      // ovoz faqat foydalanuvchi bosgandan keyin yoqiladi
+      document.addEventListener('pointerdown', unlockAudio, { once: true });
+      tid = setInterval(tick, 200);
+      tick();
+    }
+    paint();
+    return true;
+  }
+
   function stopTicking() { clearInterval(tid); tid = 0; }
 
   function prepare(seconds) {
@@ -2319,12 +2334,13 @@ MS.registry.registerTopic({
     remaining = seconds;
     status = 'idle';
     lastBeep = 0;
+    persist();
     paint();
   }
 
   function tick() {
     remaining = Math.max(0, (endAt - Date.now()) / 1000);
-    if (remaining <= 0) { stopTicking(); status = 'done'; }
+    if (remaining <= 0) { stopTicking(); status = 'done'; persist(); }
     else countdownBeep();
     paint();
   }
@@ -2337,6 +2353,7 @@ MS.registry.registerTopic({
     status = 'running';
     stopTicking();
     tid = setInterval(tick, 200);
+    persist();
     paint();
   }
 
@@ -2345,6 +2362,7 @@ MS.registry.registerTopic({
     remaining = Math.max(0, (endAt - Date.now()) / 1000);
     stopTicking();
     status = 'paused';
+    persist();
     paint();
   }
 
@@ -2413,7 +2431,7 @@ MS.registry.registerTopic({
     });
   }
 
-  MS.timer = { durationFor, prepare, start, pause, toggle, reset, setDuration, freeze, markup, mount };
+  MS.timer = { durationFor, prepare, restore, start, pause, toggle, reset, setDuration, freeze, markup, mount };
 })(window.MS);
 
 /* js/screens/setup.js */
@@ -2518,12 +2536,10 @@ MS.registry.registerTopic({
   function header(s) {
     const total = MS.registry.allQids().length;
     const left = MS.store.remaining(s);
-    const canBack = s.phase === 'question' && s.active && !s.active.outcome;
 
+    // Ochiq savoldan faqat javob berib yoki "Javobsiz yakunlash" orqali chiqiladi.
     let actions = '';
-    if (canBack) {
-      actions += `<button class="btn btn--ghost" data-action="close-question">${MS.icon('arrowLeft')}<span>Taxtaga qaytish</span></button>`;
-    } else if (s.phase === 'board') {
+    if (s.phase === 'board') {
       actions += `<button class="btn btn--ghost" data-action="show-results">${MS.icon('bars')}<span>Natijalar</span></button>`;
     } else if (s.phase === 'results' && !s.finished) {
       actions += `<button class="btn btn--ghost" data-action="back-board">${MS.icon('grid')}<span>Taxtaga qaytish</span></button>`;
@@ -2907,7 +2923,6 @@ MS.registry.registerTopic({
   const handlers = {
     'team-count': (el) => { S.setup.setCount(Number(el.dataset.n)); render(); },
     open: (el) => { A.openQuestion(el.dataset.qid); prepareTimer(); },
-    'close-question': () => { MS.timer.freeze(); A.closeQuestion(); },
     select: (el) => A.select(el.dataset.letter),
     confirm: () => { MS.timer.freeze(); A.confirm(); },
     skip: () => { MS.timer.freeze(); A.skip(); },
@@ -2941,7 +2956,7 @@ MS.registry.registerTopic({
 
   /* ---------- klaviatura (moderator uchun) ----------
      1/2/3 yoki A/B/C — variant, Enter — tasdiqlash / keyingi,
-     Probel — taymer, Esc — taxtaga qaytish */
+     Probel — taymer */
   const KEY_LETTER = { 1: 'A', 2: 'B', 3: 'C', a: 'A', b: 'B', c: 'C' };
 
   document.addEventListener('keydown', (e) => {
@@ -2957,14 +2972,13 @@ MS.registry.registerTopic({
       else if (a.selected) handlers.confirm();
       return;
     }
-    if (k === ' ' && !a.outcome) { e.preventDefault(); MS.timer.toggle(); return; }
-    if (k === 'escape' && !a.outcome) handlers['close-question']();
+    if (k === ' ' && !a.outcome) { e.preventDefault(); MS.timer.toggle(); }
   });
 
   /* ---------- ishga tushirish ---------- */
   store.subscribe(render);
   A.init();
-  if (store.get().phase === 'question') prepareTimer();
+  if (store.get().phase === 'question' && !MS.timer.restore()) prepareTimer();
   render();
 })(window.MS);
 
