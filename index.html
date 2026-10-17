@@ -304,10 +304,7 @@ button { cursor: pointer; }
   width: 2.75rem; height: 2.75rem; flex: none;
   overflow: hidden;
   border-radius: var(--r-md);
-  /* boshning orqasida yumshoq oq yorug'lik, yuz fondan ajralib tursin */
-  background:
-    radial-gradient(circle at 50% 42%, rgba(255,255,255,.55) 0, rgba(255,255,255,.2) 34%, rgba(255,255,255,0) 60%),
-    #1f6fd1;
+  background: #1f6fd1;
 }
 /* Imzo-avatar: tana qimirlamaydi, faqat bosh bo'yin atrofida o'ngdan chapga to'xtovsiz tebranadi */
 .avatar {
@@ -316,8 +313,17 @@ button { cursor: pointer; }
   margin-top: -9.75%;
 }
 .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+/* Tana rasmi shaffof emas, shuning uchun yorug'lik tana va bosh orasidagi alohida qatlam:
+   boshning orqasida oq radial gradient, qora soch va quloqchin ko'k fonda yo'qolmasin */
+.avatar::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 46% 30% at 50% 40%,
+    rgba(255,255,255,.85) 0, rgba(255,255,255,.55) 45%, rgba(255,255,255,0) 100%);
+}
 .avatar__head {
+  z-index: 1;
   transform-origin: 50.54% 67.03%;   /* bo'yin asosi */
+  filter: drop-shadow(0 0 .6px rgba(255,255,255,.9));
   /* faqat chetlarda sekinlashadi, o'rtadan to'xtamay o'tadi (mayatnik) */
   animation: head-sway 2.5s ease-in-out infinite alternate;
 }
