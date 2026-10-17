@@ -304,9 +304,12 @@ button { cursor: pointer; }
   width: 2.75rem; height: 2.75rem; flex: none;
   overflow: hidden;
   border-radius: var(--r-md);
-  background: #1f6fd1;
+  /* boshning orqasida yumshoq oq yorug'lik, yuz fondan ajralib tursin */
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255,255,255,.55) 0, rgba(255,255,255,.2) 34%, rgba(255,255,255,0) 60%),
+    #1f6fd1;
 }
-/* Imzo-avatar: tana qimirlamaydi, faqat bosh bo'yin atrofida o'ngdan chapga sekin buriladi */
+/* Imzo-avatar: tana qimirlamaydi, faqat bosh bo'yin atrofida o'ngdan chapga to'xtovsiz tebranadi */
 .avatar {
   position: relative; display: block;
   width: 100%; aspect-ratio: 277 / 367;
@@ -315,13 +318,12 @@ button { cursor: pointer; }
 .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .avatar__head {
   transform-origin: 50.54% 67.03%;   /* bo'yin asosi */
-  animation: head-sway 5s ease-in-out infinite;
+  /* faqat chetlarda sekinlashadi, o'rtadan to'xtamay o'tadi (mayatnik) */
+  animation: head-sway 2.5s ease-in-out infinite alternate;
 }
 @keyframes head-sway {
-  0%, 100% { transform: rotate(0deg); }
-  25%      { transform: rotate(6deg); }
-  50%      { transform: rotate(0deg); }
-  75%      { transform: rotate(-6deg); }
+  from { transform: rotate(6deg); }
+  to   { transform: rotate(-6deg); }
 }
 @media (prefers-reduced-motion: reduce) {
   .avatar__head { animation: none; }
