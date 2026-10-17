@@ -306,25 +306,45 @@ button { cursor: pointer; }
   border-radius: var(--r-md);
   background: #1f6fd1;
 }
-/* Imzo-avatar: tana qimirlamaydi, faqat bosh bo'yin atrofida o'ngdan chapga sekin buriladi */
+/* Imzo-avatar: tana qimirlamaydi, faqat bosh bo'yin atrofida o'ngdan chapga to'xtovsiz tebranadi
+   va har ~4.5 soniyada bir marta ko'zini yumib ochadi */
 .avatar {
   position: relative; display: block;
   width: 100%; aspect-ratio: 277 / 367;
   margin-top: -9.75%;
 }
 .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+/* Tana rasmi shaffof emas, shuning uchun yorug'lik tana va bosh orasidagi alohida qatlam:
+   boshning orqasida oq radial gradient, qora soch va quloqchin ko'k fonda yo'qolmasin */
+.avatar::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 46% 30% at 50% 40%,
+    rgba(255,255,255,.85) 0, rgba(255,255,255,.55) 45%, rgba(255,255,255,0) 100%);
+}
 .avatar__head {
+  position: absolute; inset: 0; z-index: 1;
   transform-origin: 50.54% 67.03%;   /* bo'yin asosi */
-  animation: head-sway 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 .6px rgba(255,255,255,.9));
+  /* faqat chetlarda sekinlashadi, o'rtadan to'xtamay o'tadi (mayatnik) */
+  animation: head-sway 2.5s ease-in-out infinite alternate;
 }
 @keyframes head-sway {
-  0%, 100% { transform: rotate(0deg); }
-  25%      { transform: rotate(6deg); }
-  50%      { transform: rotate(0deg); }
-  75%      { transform: rotate(-6deg); }
+  from { transform: rotate(6deg); }
+  to   { transform: rotate(-6deg); }
+}
+/* yopiq ko'z qatlami bosh bilan birga buriladi; qovoq yuqoridan tushib, tez ko'tariladi */
+.avatar__lids {
+  opacity: 0;
+  transform-origin: 50% 47.6%;       /* ko'zlarning yuqori cheti */
+  animation: blink 4.5s infinite;
+}
+@keyframes blink {
+  0%, 92%, 100% { opacity: 0; transform: scaleY(.2); }
+  94%, 95.5%    { opacity: 1; transform: scaleY(1); }
+  97.5%         { opacity: 0; transform: scaleY(.2); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .avatar__head { animation: none; }
+  .avatar__head, .avatar__lids { animation: none; }
 }
 .brand__text { display: grid; line-height: 1.2; }
 .brand__text b { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: -.01em; }
@@ -2513,7 +2533,7 @@ MS.registry.registerTopic({
     return `
       <header class="bar">
         <div class="brand">
-          <span class="brand__mark"><span class="avatar" aria-hidden="true"><img src="assets/avatar-body.webp" alt="" width="1108" height="1468"><img class="avatar__head" src="assets/avatar-head.webp" alt="" width="1108" height="1468"></span></span>
+          <span class="brand__mark"><span class="avatar" aria-hidden="true"><img src="assets/avatar-body.webp" alt="" width="1108" height="1468"><span class="avatar__head"><img src="assets/avatar-head.webp" alt="" width="1108" height="1468"><img class="avatar__lids" src="assets/avatar-blink.webp" alt="" width="1108" height="1468"></span></span></span>
           <span class="brand__text"><b>Moliyaviy savodxonlik</b><small>Intellektual o‘yin</small></span>
         </div>
         <div class="bar__progress" title="Qolgan savollar">
