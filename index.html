@@ -306,20 +306,26 @@ button { cursor: pointer; }
   border-radius: var(--r-md);
   background: #1f6fd1;
 }
-/* Imzo-avatar: boshi sekin o'ngdan chapga qimirlab turadi */
-.brand__avatar {
-  display: block; width: 100%; height: 100%;
-  object-fit: cover; object-position: 50% 30%;
-  transform-origin: 50% 90%;
-  animation: avatar-sway 4s ease-in-out infinite;
+/* Imzo-avatar: tana qimirlamaydi, faqat bosh bo'yin atrofida o'ngdan chapga sekin buriladi */
+.avatar {
+  position: relative; display: block;
+  width: 100%; aspect-ratio: 277 / 367;
+  margin-top: -9.75%;
 }
-@keyframes avatar-sway {
-  0%, 100% { transform: scale(1.16) rotate(0deg); }
-  25%      { transform: scale(1.16) translateX(1.5%) rotate(2deg); }
-  75%      { transform: scale(1.16) translateX(-1.5%) rotate(-2deg); }
+.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.avatar__head {
+  transform-origin: 50.54% 67.03%;   /* bo'yin asosi */
+  animation: head-sway 5s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes head-sway {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(2.5deg); }
+  50%      { transform: rotate(0deg); }
+  75%      { transform: rotate(-2.5deg); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .brand__avatar { animation: none; transform: scale(1.16); }
+  .avatar__head { animation: none; }
 }
 .brand__text { display: grid; line-height: 1.2; }
 .brand__text b { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: -.01em; }
@@ -2508,7 +2514,7 @@ MS.registry.registerTopic({
     return `
       <header class="bar">
         <div class="brand">
-          <span class="brand__mark"><img class="brand__avatar" src="assets/avatar.png" alt="" width="299" height="367"></span>
+          <span class="brand__mark"><span class="avatar" aria-hidden="true"><img src="assets/avatar-body.png" alt="" width="277" height="367"><img class="avatar__head" src="assets/avatar-head.png" alt="" width="277" height="367"></span></span>
           <span class="brand__text"><b>Moliyaviy savodxonlik</b><small>Intellektual o‘yin</small></span>
         </div>
         <div class="bar__progress" title="Qolgan savollar">
