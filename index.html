@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Moliyaviy savodxonlik o‘yini</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/avatar-180.png">
   <style>
 /* css/tokens.css */
 /* Dizayn tokenlari. Ranglar faqat shu yerda belgilanadi.
@@ -300,11 +302,31 @@ button { cursor: pointer; }
 .brand { display: flex; align-items: center; gap: .8rem; min-width: 0; }
 .brand__mark {
   width: 2.75rem; height: 2.75rem; flex: none;
-  display: grid; place-items: center;
+  overflow: hidden;
   border-radius: var(--r-md);
-  background: var(--navy); color: #fff;
+  background: #1f6fd1;
 }
-.brand__mark .ic { width: 1.4rem; height: 1.4rem; }
+/* Imzo-avatar: tana qimirlamaydi, faqat bosh bo'yin atrofida o'ngdan chapga sekin buriladi */
+.avatar {
+  position: relative; display: block;
+  width: 100%; aspect-ratio: 277 / 367;
+  margin-top: -9.75%;
+}
+.avatar img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.avatar__head {
+  transform-origin: 50.54% 67.03%;   /* bo'yin asosi */
+  animation: head-sway 5s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes head-sway {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(2.5deg); }
+  50%      { transform: rotate(0deg); }
+  75%      { transform: rotate(-2.5deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .avatar__head { animation: none; }
+}
 .brand__text { display: grid; line-height: 1.2; }
 .brand__text b { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: -.01em; }
 .brand__text small { font-size: .8rem; color: var(--ink-3); }
@@ -2232,6 +2254,41 @@ MS.registry.registerTopic({
   let endAt = 0;
   let tid = 0;
   let root = null;
+  let lastBeep = 0;        // oxirgi signal berilgan soniya (takrorlanmasin)
+
+  /* ---------- ovoz: oxirgi 5 soniyada har soniyada "tiyt" ---------- */
+  const BEEP_FROM = 5;
+  let audio = null;
+
+  function unlockAudio() {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return;
+    if (!audio) audio = new Ctx();
+    if (audio.state === 'suspended') audio.resume();
+  }
+
+  function beep() {
+    if (!audio) return;
+    const t = audio.currentTime;
+    const osc = audio.createOscillator();
+    const gain = audio.createGain();
+    osc.type = 'square';
+    osc.frequency.value = 1000;
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(0.25, t + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.15);
+    osc.connect(gain).connect(audio.destination);
+    osc.start(t);
+    osc.stop(t + 0.16);
+  }
+
+  function countdownBeep() {
+    const sec = Math.ceil(remaining);
+    if (sec >= 1 && sec <= BEEP_FROM && sec !== lastBeep) {
+      lastBeep = sec;
+      beep();
+    }
+  }
 
   const durationFor = (value) => (value >= T.longFrom ? T.long : T.short);
 
@@ -2242,18 +2299,21 @@ MS.registry.registerTopic({
     duration = seconds;
     remaining = seconds;
     status = 'idle';
+    lastBeep = 0;
     paint();
   }
 
   function tick() {
     remaining = Math.max(0, (endAt - Date.now()) / 1000);
     if (remaining <= 0) { stopTicking(); status = 'done'; }
+    else countdownBeep();
     paint();
   }
 
   function start() {
     if (status === 'running') return;
-    if (status === 'done') remaining = duration;
+    if (status === 'done') { remaining = duration; lastBeep = 0; }
+    unlockAudio();
     endAt = Date.now() + remaining * 1000;
     status = 'running';
     stopTicking();
@@ -2454,7 +2514,7 @@ MS.registry.registerTopic({
     return `
       <header class="bar">
         <div class="brand">
-          <span class="brand__mark">${MS.icon('chart')}</span>
+          <span class="brand__mark"><span class="avatar" aria-hidden="true"><img src="assets/avatar-body.png" alt="" width="277" height="367"><img class="avatar__head" src="assets/avatar-head.png" alt="" width="277" height="367"></span></span>
           <span class="brand__text"><b>Moliyaviy savodxonlik</b><small>Intellektual o‘yin</small></span>
         </div>
         <div class="bar__progress" title="Qolgan savollar">
