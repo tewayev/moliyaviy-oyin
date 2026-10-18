@@ -2785,11 +2785,20 @@ MS.registry.registerTopic({
     const timerRoot = root.querySelector('[data-timer-root]');
     if (timerRoot) MS.timer.mount(timerRoot);
 
-    root.querySelectorAll('[data-clamp-box]').forEach((box) => {
+    const boxes = root.querySelectorAll('[data-clamp-box]');
+    if (!boxes.length) return;
+    const check = () => boxes.forEach((box) => {
+      if (box.classList.contains('is-open')) return;
       const body = box.querySelector('[data-clamp]');
-      const more = box.querySelector('.more');
-      more.hidden = body.scrollHeight <= body.clientHeight + 2;
+      box.querySelector('.more').hidden = body.scrollHeight <= body.clientHeight + 2;
     });
+    check();
+    // Shrift yuklanishi yoki kenglik o'zgarishi matn balandligini o'zgartiradi — qayta o'lchaymiz.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(check);
+    if (window.ResizeObserver) {
+      const ro = new ResizeObserver(check);
+      boxes.forEach((box) => ro.observe(box.querySelector('[data-clamp]')));
+    }
   }
 
   function toggleClamp(btn) {
