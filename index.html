@@ -1243,33 +1243,37 @@ MS.registry.registerTopic({
     },
     {
       value: 500,
-      title: 'Qaytarilmaydigan avans',
+      title: '600 ming so‘mlik qaror',
       body: [
-        'Javohir to‘y fotografi bilan 3 million so‘mga kelishdi va 600 ming so‘m qaytarilmaydigan avans to‘ladi.',
-        'Keyin yana ikkita fotograf xuddi shu sifat va shartlardagi xizmatni taklif qildi:',
+        'Javohir to‘y fotografi bilan 3 million so‘mga kelishdi. U 600 ming so‘m qaytarilmaydigan avans to‘lab qo‘ygan.',
+        'To‘yga bir hafta qolganda boshqa fotograf xuddi shu sifatdagi xizmatni 2 600 000 so‘mga taklif qildi.',
         { cards: [
-          { title: 'Eski fotograf', items: ['Qolgan to‘lov — 2,4 mln'] },
-          { title: 'Yangi fotograf', items: ['Xizmat narxi — 2,2 mln'] },
-          { title: 'Boshqa fotograf', items: ['Xizmat narxi — 2,3 mln'] }
+          { title: 'Eski fotograf', items: ['Yana 2 400 000 so‘m to‘lash kerak', '600 ming avans allaqachon to‘langan'] },
+          { title: 'Yangi fotograf', items: ['Xizmat narxi — 2 600 000 so‘m'] }
         ] },
-        'Avvalgi 600 ming so‘m hech qanday holatda qaytarilmaydi. Javohir bugundan keyingi xarajatni kamaytirmoqchi.'
+        'Avvalgi 600 ming so‘mni qaytarib olishning imkoni yo‘q. Xizmat sifati, sanasi va boshqa shartlar bir xil. Javohir hozirdan boshlab xarajatini kamaytirmoqchi.'
       ],
-      ask: 'Qaysi qaror to‘g‘ri?',
+      ask: 'Qaysi qaror moliyaviy jihatdan eng tejamkor?',
       options: [
-        'Yangi fotografni tanlash, chunki kelajakdagi xarajat 2,2 million so‘m bo‘ladi',
-        'Eski fotografni tanlash, chunki avansni yo‘qotmaslik xarajatni kamaytiradi',
-        'Boshqa fotografni tanlash, chunki u dastlabki kelishuvdan 700 ming so‘m arzon'
+        'Yangi fotografni tanlash, chunki 2,6 mln so‘m 3 mln so‘mdan arzon',
+        'Eski fotografda qolish, chunki yana 2,4 mln to‘laydi',
+        'Fotografni almashtirish, chunki 600 ming avans baribir qaytmaydi'
       ],
-      answer: 'A',
-      short: 'Bugundan keyin: yangi 2,2 < boshqa 2,3 < eski 2,4 mln.',
+      answer: 'B',
+      short: 'Bugundan keyin: eski 2,4 mln < yangi 2,6 mln. Eski fotografda qolish 200 ming tejaydi.',
       explain: [
-        '600 ming so‘m allaqachon to‘langan va qaytarilmaydi, shuning uchun u qarorga ta’sir qilmasligi kerak.',
-        'Tuzoq: qaytarilmaydigan avansni «qutqarish» uchun qimmatroq qarorni davom ettirish.'
+        '600 ming so‘m allaqachon sarflangan va qaytarilmaydi.',
+        { calc: [
+          'Eski fotograf: 2 400 000',
+          'Yangi fotograf: 2 600 000',
+          'Farq: 200 000 so‘m eski fotograf foydasiga'
+        ] },
+        'Mantiqiy tuzoq: dastlabki kelishuv 3 mln, yangi taklif 2,6 mln. Ammo bugungi qarorda qaytarilmaydigan avansni qayta xarajat deb hisoblash noto‘g‘ri.'
       ],
       terms: [
-        { name: 'Qaytarib bo‘lmaydigan xarajat', en: 'Sunk Cost', def: 'Allaqachon sarflangan va qaytarib olinmaydigan mablag‘.' }
+        { name: 'Qaytarib bo‘lmaydigan xarajat', en: 'Sunk Cost', def: 'Sarflangan va qaytarib olinmaydigan mablag‘.' }
       ],
-      note: 'Qaror qabul qilishda avvalgi yo‘qotishni emas, keyingi xarajat va foydani solishtiring.'
+      note: 'Bunday xarajat kelajakdagi qarorni baholashda qayta hisobga olinmasligi kerak.'
     }
   ]
 });
@@ -1332,31 +1336,32 @@ MS.registry.registerTopic({
     },
     {
       value: 300,
-      title: 'Muddatni qisqartirishmi?',
+      title: 'Muddatmi yoki oylik to‘lov?',
       body: [
-        'Sardorning 12 million so‘m asosiy qarzi qolgan. Foizlar qolgan qarzga hisoblanadi. U 3 millionni muddatidan oldin to‘lamoqchi.',
+        'Sardorning kreditidan 12 million so‘m asosiy qarz qolgan. U qo‘shimcha 3 million so‘m to‘lamoqchi. Bank ikki imkoniyat berdi:',
         { cards: [
-          { title: '1-yo‘l', items: ['Oylik to‘lovni kamaytirish', 'Yakuniy muddat saqlanadi'] },
+          { title: '1-yo‘l', items: ['Oylik to‘lovni kamaytirish', 'Kreditning yakuniy muddati saqlanadi'] },
           { title: '2-yo‘l', items: ['Oylik to‘lov avvalgidek', 'Kredit muddati qisqaradi'] }
         ] },
-        'Ikkala yo‘lda ham 3 million darhol asosiy qarzdan ayiriladi. Stavka o‘zgarmaydi, jarima yo‘q. Sardorning daromadi barqaror.'
+        'Har ikkala holatda 3 million asosiy qarzdan darhol ayriladi. Foizlar qolgan qarzga hisoblanadi.',
+        'Sardorning daromadi barqaror, hozirgi oylik to‘lov unga moliyaviy qiyinchilik tug‘dirmaydi. Uning asosiy maqsadi — jami foiz xarajatini kamaytirish.'
       ],
-      ask: 'Sardor kelajakdagi jami foizni kamaytirmoqchi. Qaysi variant yaxshiroq?',
+      ask: 'Qaysi strategiyani tanlashi kerak?',
       options: [
-        'Oylik to‘lovni kamaytirish, chunki muddat o‘zgarmaydi',
-        'Ikkala usulning foiz xarajati har doim teng',
-        'Muddatni qisqartirish, chunki qarz tezroq kamayadi va foiz kamroq davr hisoblanadi'
+        'Oylik to‘lovni kamaytirish, chunki har oy bo‘sh mablag‘i ko‘proq qoladi',
+        'Ikkala usulda ham bir xil asosiy qarz so‘ndirilgani uchun jami foiz teng bo‘ladi',
+        'Muddatni qisqartirish, chunki qarz tezroq yopiladi'
       ],
       answer: 'C',
-      short: 'Muddat qisqarsa, qarz tezroq yopiladi va foiz kamroq oy hisoblanadi.',
+      short: 'Oylik to‘lov saqlansa, qarz tezroq kamayadi va foiz kamroq davr hisoblanadi.',
       explain: [
-        'Ikkala usulda ham asosiy qarz darhol 3 millionga kamayadi.',
-        'Oylik to‘lov avvalgidek saqlansa, qolgan qarz tezroq yopiladi. Bu kelajakdagi foizni kamaytiradi.'
+        'Ikkala usulda ham asosiy qarz dastlab 3 millionga kamayadi.',
+        'Ammo oylik to‘lov saqlansa, keyingi davrlarda asosiy qarz tezroq qisqaradi. Natijada foiz hisoblanadigan muddat va qarz qoldig‘i kamayadi.'
       ],
       terms: [
-        { name: 'Muddatidan oldin so‘ndirish', en: 'Early Repayment', def: 'Kreditni belgilangan muddatdan avval qisman yoki to‘liq qaytarish.' }
+        { name: 'Muddatidan oldin so‘ndirish', en: 'Early Repayment', def: 'Kreditni belgilangan muddatdan oldin qisman yoki to‘liq yopish.' }
       ],
-      note: 'Muddatni qisqartirish odatda jami foizni kamaytiradi; oylik to‘lovni kamaytirish esa oylik yukni yengillashtiradi.'
+      note: 'Muddatni qisqartirish ko‘pincha jami foizni kamaytiradi, oylik to‘lovni pasaytirish esa moliyaviy yukni yengillashtiradi.'
     },
     {
       value: 400,
@@ -1512,34 +1517,34 @@ MS.registry.registerTopic({
     },
     {
       value: 400,
-      title: 'Qarzni qarz bilan yopish',
+      title: '30 kunlik qaror',
       body: [
-        'Javlon 4 million so‘m qarzini 10 kundan keyin qaytarishi kerak. Hozir unda 2 million so‘m bor.',
+        'Javlon tanishidan olgan 4 million so‘m qarzini bugun qaytarishi kerak. Hozir qo‘lida 2 million bor.',
         { cards: [
-          { title: 'Qarz beruvchi', items: ['Hozir 2 mln olishga rozi', 'Qolgan 2 mln ga 30 kun muddat', 'Buning uchun +100 ming so‘m'] },
-          { title: 'Mikroqarz', items: ['2 mln so‘m 30 kunga', '30 kundan keyin 2,3 mln qaytariladi'] }
+          { title: 'Qarz beruvchi', items: ['Qolgan 2 mln muddatini 30 kunga uzaytirishga tayyor', 'Buning uchun +100 ming so‘m'] },
+          { title: 'Mikroqarz', items: ['2 mln so‘m oladi', '30 kundan keyin 2,3 mln qaytaradi'] }
         ] },
-        'Javlon 30 kundan keyin 2,1 million so‘m daromad olishi aniq. Boshqa xarajat yo‘q.'
+        'Javlon 30 kundan keyin 2,1 million so‘m daromad olishini aniq biladi. Boshqa pul yoki xarajat yo‘q.'
       ],
-      ask: 'Qaysi variant to‘lovni bajarish imkonini beradi va eng kam qo‘shimcha xarajat talab qiladi?',
+      ask: 'Qaysi qaror bilan Javlon qarzini belgilangan muddatlarda to‘liq yopishi mumkin?',
       options: [
-        'Mikroqarz orqali asl qarzni yopish',
-        'Mikroqarz olib, qarz beruvchi bilan ham muddatni uzaytirish',
-        'Mavjud 2 millionni hozir qaytarib, qolgan qismiga 30 kunlik uzaytirish bo‘yicha kelishish'
+        '2 millionni hozir qaytarib, qolgan qism muddatini kelishuv asosida uzaytirish',
+        'Mikroqarz olib, bugun 4 millionni to‘liq yopish',
+        'Qo‘lidagi 2 millionni saqlab, qarzning hammasini 30 kunga kechiktirish'
       ],
-      answer: 'C',
-      short: '30 kundan keyin 2 100 000 so‘m kerak — bu daromadga teng.',
+      answer: 'A',
+      short: '2 000 000 + 100 000 = 2 100 000 — 30 kundan keyingi daromadga aynan teng.',
       explain: [
         { calc: [
           'Uzaytirish: 2 000 000 + 100 000 = 2 100 000 — daromadga yetadi',
-          'Mikroqarz: 2 300 000 — daromaddan 200 000 ko‘p, qaytarib bo‘lmaydi'
+          'Mikroqarz: 2 300 000 kerak — 200 000 yetishmaydi'
         ] },
-        'Mikroqarz nafaqat qimmatroq, balki Javlon uni o‘z vaqtida qaytara olmaydi ham.'
+        'Barcha qarzni kechiktirishga qarz beruvchining roziligi mavjud emas.'
       ],
       terms: [
-        { name: 'Qarzni qayta tuzish', en: 'Debt Restructuring', def: 'Qarz muddati yoki to‘lov shartlarini tomonlar kelishuvi asosida o‘zgartirish.' }
+        { name: 'Qarzni qayta tuzish', en: 'Debt Restructuring', def: 'Qarz shartlari yoki muddatlarini tomonlar kelishuvi asosida o‘zgartirish.' }
       ],
-      note: 'Eski qarzni yangi qarz bilan yopishdan oldin uni qaytara olishingizni hisoblang.'
+      note: 'Qarzning narxi bilan birga uni belgilangan sanada qaytarish imkoniyati ham baholanishi kerak.'
     },
     {
       value: 500,
@@ -1685,29 +1690,40 @@ MS.registry.registerTopic({
     },
     {
       value: 500,
-      title: 'Investitsiyani qanday tekshirasan?',
+      title: 'Foyda bormi yoki zarar?',
       body: [
-        'Talaba Sarvar 5 million so‘m investitsiya qilmoqchi va uchta platformani ko‘rib chiqdi:',
-        { cards: [
-          { title: 'Platforma-1', items: ['O‘zini xorijiy broker deb tanishtiradi', 'Saytdagi litsenziya raqami regulator reyestrida boshqa kompaniyaga tegishli'] },
-          { title: 'Platforma-2', items: ['Regulator reyestrida faol litsenziyasi tasdiqlangan', 'Pul shartnomadagi rasmiy hisobga o‘tkaziladi', 'Daromad kafolatlanmaydi'] },
-          { title: 'Platforma-3', items: ['Kompaniya sifatida ro‘yxatdan o‘tgan', 'Pulni direktorning shaxsiy kartasiga yuborishni so‘raydi', 'Daromad kafolatlanmaydi'] }
+        'Diyor 10 million so‘mga bir kompaniya aksiyalarini sotib oldi. Bir yil davomida quyidagi hodisalar yuz berdi:',
+        { list: [
+          'Aksiya narxi 15% oshdi',
+          'Kompaniya Diyorga 500 ming so‘m dividend to‘ladi',
+          'Aksiyalarni sotishda 100 ming so‘m komissiya to‘landi',
+          'Shu davrda iste’mol narxlari 20% oshdi'
         ] },
-        'Sarvarning maqsadi — firibgarlik xavfini kamaytirish.'
+        'Soliqlar yo‘q. Dividend qayta investitsiya qilinmagan. Diyor yil oxirida aksiyalarini sotdi.'
       ],
-      ask: 'Berilgan ma’lumotlar bo‘yicha qaysi platforma eng asosli tanlov?',
-      options: ['Platforma-2', 'Platforma-1', 'Platforma-3'],
+      ask: 'Qaysi xulosa to‘g‘ri?',
+      options: [
+        'Nominal daromad 19%, real daromad taxminan −0,8%',
+        'Nominal daromad 20%, real daromad 0%',
+        'Nominal daromad 19%, real daromad −1%'
+      ],
       answer: 'A',
-      short: 'Litsenziya mustaqil tekshirilgan, pul rasmiy hisobga boradi.',
+      short: 'Nominal: 1,9 mln / 10 mln = 19%. Real: 1,19 / 1,20 − 1 ≈ −0,83%',
       explain: [
-        'Platforma-1 dagi litsenziya raqami boshqa tashkilotga tegishli — bu jiddiy nomuvofiqlik.',
-        'Platforma-3 ro‘yxatdan o‘tgan bo‘lsa ham, shaxsiy kartaga pul so‘rayapti.',
-        'Platforma-2 tanlansa ham, bu daromadni yoki risk yo‘qligini kafolatlamaydi.'
+        { calc: [
+          'Narx o‘sishi: +1 500 000',
+          'Dividend: +500 000',
+          'Komissiya: −100 000',
+          'Sof nominal foyda: 1 900 000 → 19%',
+          'Real: 1,19 / 1,20 − 1 = −0,00833 ≈ −0,83%'
+        ] },
+        'Mantiqiy tuzoq: nominal daromad musbat bo‘lsa ham, inflyatsiyadan keyingi real daromad manfiy bo‘lishi mumkin. 19 − 20 = −1% — taxminiy, aniq emas.'
       ],
       terms: [
-        { name: 'Kompleks tekshiruv', en: 'Due Diligence', def: 'Investitsiyadan oldin kompaniya, litsenziya, shartnoma va risklarni tekshirish.' }
+        { name: 'Nominal daromadlilik', en: 'Nominal Return', def: 'Pul miqdoridagi daromad.' },
+        { name: 'Real daromadlilik', en: 'Real Return', def: 'Inflyatsiya hisobga olingandan keyingi daromadlilik.' }
       ],
-      note: 'Kompaniya ro‘yxatdan o‘tgani uning investitsiya xizmatiga ruxsati borligini anglatmaydi.'
+      note: 'Real daromadlilikni aniqroq hisoblashda Fisher formulasi qo‘llanadi.'
     }
   ]
 });
@@ -1722,133 +1738,138 @@ MS.registry.registerTopic({
       value: 100,
       title: 'Bankomatdagi to‘rt raqam',
       body: [
-        'Nodir bankomatdan naqd pul yechmoqchi. Kartasiga to‘rt xonali PIN-kod o‘rnatilgan.',
-        'Navbatdagi odam unga juda yaqin turibdi. Bankomatning ustki qismida kuzatuv kamerasi ham bor.'
+        'Nodir bankomatdan pul yechmoqchi. Navbatdagi odam uning orqasida yaqin turibdi. Bankomat tepasida ham kuzatuv kamerasi bor.',
+        'Nodir PIN-kodini himoyalamoqchi.'
       ],
-      ask: 'Qaysi harakat PIN-kodni himoyalashga yaxshiroq yordam beradi?',
+      ask: 'Qaysi harakat ko‘proq himoya beradi?',
       options: [
-        'PIN-kodni juda tez terish, shunda kuzatayotgan odam eslab qolishga ulgurmaydi',
-        'Faqat orqadagi odamdan uzoqroq turishni so‘rash, klaviaturani esa ochiq qoldirish',
-        'PIN kiritayotganda klaviaturani boshqa qo‘l bilan to‘sish va boshqalardan masofa saqlash'
+        'PIN-kodni tez terish, orqadagi odamga qaramaslik',
+        'Klaviaturani qo‘li bilan to‘sish va masofa saqlash',
+        'Bankomat kamerasi ko‘rmasligi uchun ekranni to‘sish'
       ],
-      answer: 'C',
+      answer: 'B',
       short: 'Klaviaturani qo‘l bilan to‘sish + masofa saqlash.',
       explain: [
-        'Tez kiritish ko‘rib qolish xavfini yo‘qotmaydi.',
-        'Orqadagi odam uzoqlashsa ham, kamera kabi boshqa kuzatish vositalari bo‘lishi mumkin.'
+        'PIN-kodni tez kiritish uning kuzatilish xavfini yo‘qotmaydi. Ekranni to‘sish ham klaviaturani himoyalamaydi.',
+        'Klaviaturani to‘sish va oraliq masofani saqlash bir nechta kuzatuv xavfini kamaytiradi.'
       ],
       terms: [
-        { name: 'PIN', en: 'Personal Identification Number', def: 'Karta yoki hisobdan foydalanishda shaxsni tasdiqlovchi maxfiy raqamli kod.' }
+        { name: 'PIN', en: 'Personal Identification Number', def: 'Shaxsni tasdiqlovchi maxfiy raqamli kod.' }
       ],
-      note: 'PIN-kod hech kimga oshkor qilinmasligi kerak.'
+      note: 'PIN-kod kiritishda klaviaturani himoyalash muhim xavfsizlik odatidir.'
     },
     {
       value: 200,
-      title: 'Bankdan OTP-kod keldi!',
+      title: 'Ikkita SMS-kod',
       body: [
-        'Talaba uyida o‘tirganida HUMO kartasiga bog‘liq SMS orqali bir martalik tasdiqlash kodini oldi. SMSda «Kodni hech kimga aytmang» deb yozilgan.',
-        'Biroz o‘tib noma’lum raqamdan qo‘ng‘iroq qilishdi: «Men bank xavfsizlik xodimiman. Kartangizdan shubhali to‘lov amalga oshmoqda. Uni bekor qilish uchun SMS-kodni ayting».',
-        'Talaba hech qanday operatsiya boshlamagan.'
+        'Talabaning telefoniga ketma-ket ikkita SMS keldi:',
+        { cards: [
+          { title: 'Birinchi xabar', items: ['«Bank ilovasiga kirish uchun tasdiqlash kodi»'] },
+          { title: 'Ikkinchi xabar', items: ['«450 000 so‘mlik onlayn operatsiyani tasdiqlash kodi»'] }
+        ] },
+        'Talaba na ilovaga kirgan, na to‘lov boshlagan. Oradan biroz o‘tib, o‘zini bank xodimi deb tanishtirgan kishi qo‘ng‘iroq qildi va ikkinchi kodni so‘radi.'
       ],
-      ask: 'Qaysi qaror eng xavfsiz?',
+      ask: 'Qaysi xulosa eng asosli?',
       options: [
-        'Qo‘ng‘iroqni tugatib, kodni aytmasdan, bankning rasmiy ilovasi yoki rasmiy aloqa kanali orqali tekshirish',
-        'Kodni aytmasdan, faqat SMS skrinshotini bank xodimiga yuborish',
-        'Kodni aytishdan oldin qo‘ng‘iroq qiluvchidan karta egasining ismini aytib berishini so‘rash'
+        'Faqat ikkinchi kod xavfli, birinchi kodni aytish mumkin',
+        'Birinchi kod faqat kirish uchun ishlatiladi, shuning uchun xavfsiz',
+        'Ikkala kod ham maxfiy; biri kirishni, ikkinchisi operatsiyani tasdiqlashi mumkin'
       ],
-      answer: 'A',
-      short: 'Qo‘ng‘iroqni tugatish va bankka o‘zingiz rasmiy kanal orqali murojaat qilish.',
+      answer: 'C',
+      short: 'Har qanday tasdiqlash kodi maxfiy — kirish kodi ham, to‘lov kodi ham.',
       explain: [
-        'Kodni aytish ham, skrinshotini yuborish ham uni oshkor qiladi.',
-        'Qo‘ng‘iroq qiluvchining ismingizni bilishi uning haqiqiy bank xodimi ekanini isbotlamaydi.'
+        'Tasdiqlash kodlarining vazifasi turlicha bo‘lishi mumkin: bir kod akkauntga kirishni, boshqasi to‘lovni tasdiqlaydi.',
+        'Har ikkisi ham maxfiy.'
       ],
       terms: [
-        { name: 'Bir martalik parol', en: 'One-Time Password, OTP', def: 'Kirish yoki operatsiyani tasdiqlash uchun ishlatiladigan vaqtinchalik kod.' }
+        { name: 'Bir martalik parol', en: 'One-Time Password, OTP', def: 'Bir marta foydalaniladigan tasdiqlash kodi.' }
       ],
       note: 'OTP-kodni hech kimga bermang, hatto o‘zini bank xodimi deb tanishtirsa ham.'
     },
     {
       value: 300,
-      title: 'Tanish do‘kondan notanish to‘lov',
+      title: 'Bankomat pul bermadi',
       body: [
-        'Diyor bank ilovasida 280 ming so‘mlik operatsiyani ko‘rdi. Operatsiya nomida oldin xarid qilgan internet-do‘koni yozilgan.',
-        'Diyor bu to‘lovni amalga oshirmaganini biladi. U oldin do‘konga kartasini bog‘lagan, ammo faol obunasi borligini eslamaydi.'
+        'Malika bankomatdan 1 000 000 so‘m yechmoqchi. Bankomat operatsiyani yakunlamadi va pul bermadi. Ammo bank ilovasida 1 million so‘m hisobdan yechilgani ko‘rindi.',
+        'Bankomat yonida «Muammo bo‘lsa qo‘ng‘iroq qiling» degan telefon raqami yozilgan stiker bor. Bankomat ekranida rasmiy aloqa ma’lumotlari ko‘rsatilmagan.'
       ],
-      ask: 'Diyor qanday yo‘l tutishi kerak?',
+      ask: 'Malika nima qilishi kerak?',
       options: [
-        'To‘lovni avtomatik obuna deb qabul qilish, chunki do‘kon nomi tanish',
-        'Operatsiya tafsilotlarini tekshirib, zarurat bo‘lsa kartani vaqtincha bloklash va bankka rasmiy murojaat qilish',
-        'Kartani do‘kon akkauntidan o‘chirib, bankka murojaat qilmasdan keyingi to‘lovlarni kuzatish'
+        'Bankomat raqami, vaqt va tranzaksiyani qayd qilib, bankning rasmiy kanaliga murojaat ochish',
+        'Stikerdagi raqamga qo‘ng‘iroq qilib, operatorga karta ma’lumotlarini aytish',
+        'Xuddi shu summani qayta yechishga urinish, chunki birinchi operatsiya tugamagan'
       ],
-      answer: 'B',
-      short: 'Tekshirish → kartani bloklash → bankka rasmiy murojaat.',
+      answer: 'A',
+      short: 'Dalillarni qayd qilish → bankning rasmiy kanaliga murojaat.',
       explain: [
-        'Do‘kon nomining tanishligi operatsiya ruxsat bilan bajarilganini isbotlamaydi.',
-        'Kartani do‘kondan o‘chirish foydali, lekin ruxsatsiz to‘lov ehtimoli bo‘lsa, bankka ham xabar berish kerak.'
+        'Bankomat pul bermagan bo‘lsa ham, hisobda operatsiya aks etgan bo‘lishi mumkin. Malika bankdan tekshiruv va zarur bo‘lsa mablag‘ni qaytarishni so‘rashi kerak.',
+        'Bankomat yonidagi noma’lum telefon raqami firibgar tomonidan yopishtirilgan bo‘lishi mumkin. Qayta yechish esa yangi tranzaksiyani boshlaydi.'
       ],
       terms: [
-        { name: 'Ruxsatsiz tranzaksiya', en: 'Unauthorized Transaction', def: 'Karta egasining roziligisiz amalga oshirilgan operatsiya.' }
+        { name: 'Tranzaksiya nizosi', en: 'Transaction Dispute', def: 'Bank operatsiyasi yuzasidan rasmiy tekshiruv so‘rash.' }
       ],
-      note: 'Bank ilovasidagi operatsiyalar tarixini muntazam tekshiring.'
+      note: 'Bunday holatda vaqt, bankomat identifikatori va tranzaksiya ma’lumotlari muhim dalil bo‘lishi mumkin.'
     },
     {
       value: 400,
-      title: 'Murakkab foizning kuchi',
+      title: 'Bankomatning konvertatsiya taklifi',
       body: [
-        'Talaba 10 million so‘m omonat qo‘ymoqchi. Ikki bankning shartli taklifi:',
+        'O‘zbekistonlik talaba Turkiyaga sayohat qildi va mahalliy bankomatdan 1 000 turk lirasi yechmoqchi. Bankomat ikkita variant berdi:',
         { cards: [
-          { title: '1-bank', items: ['Yillik 20% oddiy foiz', 'Foiz har doim dastlabki 10 mln ga hisoblanadi'] },
-          { title: '2-bank', items: ['Yillik 20%', 'Foiz har yil oxirida omonatga qo‘shiladi', 'Keyingi yil yangi qoldiqqa hisoblanadi'] }
+          { title: 'Konvertatsiyani qabul qilish', items: ['Bankomat 1 000 lirani 420 000 so‘mga hisoblaydi'] },
+          { title: 'Konvertatsiyani rad etish', items: ['Tranzaksiya lirada ketadi', 'Karta banki kursi: 1 000 lira = 395 000 so‘m', 'Karta banki 1% konvertatsiya komissiyasi oladi'] }
         ] },
-        'Pul ikki yil saqlanadi. Soliq va komissiya yo‘q.'
+        'Bankomatning alohida naqd yechish komissiyasi ikkala variantda ham bir xil va hisobga olinmaydi.'
       ],
-      ask: 'Ikki yil oxiridagi qoldiqlar qaysi variantda to‘g‘ri?',
+      ask: 'Qaysi variant arzonroq?',
       options: [
-        '1-bank: 14,4 mln, 2-bank: 14 mln',
-        '1-bank: 14 mln, 2-bank: 14 mln',
-        '1-bank: 14 mln, 2-bank: 14,4 mln'
+        'Bankomat taklifini qabul qilish: 420 000 so‘m',
+        'Konvertatsiyani rad etish: 398 950 so‘m',
+        'Har ikkala variant: 420 000 so‘m'
       ],
-      answer: 'C',
-      short: 'Oddiy: 14 mln. Murakkab: 12 → 14,4 mln.',
+      answer: 'B',
+      short: '395 000 × 1,01 = 398 950 so‘m — 21 050 so‘m arzon.',
       explain: [
         { calc: [
-          '1-bank: 10 + 2 + 2 = 14 mln',
-          '2-bank, 1-yil: 10 × 1,20 = 12 mln',
-          '2-bank, 2-yil: 12 × 1,20 = 14,4 mln'
+          'Bankomat taklifi: 420 000',
+          'Karta banki orqali: 395 000 × 1,01 = 398 950',
+          'Farq: 420 000 − 398 950 = 21 050'
         ] },
-        'Farq — 400 ming so‘m: ikkinchi yilda foizning o‘zi ham foiz keltirdi.'
+        'Talaba konvertatsiyani rad etsa, shu shartlarda 21 050 so‘m tejaydi.'
       ],
       terms: [
-        { name: 'Murakkab foiz', en: 'Compound Interest', def: 'Oldingi davr foizi asosiy summaga qo‘shilib, keyingi davrda o‘zi ham daromad keltiradigan mexanizm.' }
+        { name: 'Dinamik valyuta konvertatsiyasi', en: 'Dynamic Currency Conversion, DCC', def: 'Xorijdagi terminal yoki bankomat tomonidan to‘lovni karta hisobining valyutasiga o‘z kursida aylantirish taklifi.' }
       ],
-      note: 'Muddat qancha uzun bo‘lsa, kapitallashtirishning ta’siri shuncha katta.'
+      note: 'DCC har doim ham foydali emas. To‘lovni tasdiqlashdan oldin kurs va komissiyalarni solishtiring.'
     },
     {
       value: 500,
-      title: 'OLX’dagi soxta xaridor',
+      title: 'Kartangni ijaraga ber!',
       body: [
-        'Talaba OLX orqali ishlatilgan telefonini 2 million so‘mga sotmoqchi. Bir xaridor yozdi: «Telefonni olaman. Pulni hozir yuboraman. Mana, pulni qabul qilish uchun havola».',
-        'Havola OLX dizayniga o‘xshash saytni ochdi, lekin sayt manzili OLX rasmiy manzilidan farq qiladi. Sayt so‘raydi:',
-        { list: ['HUMO karta raqami', 'Karta amal qilish muddati', 'SMS orqali keladigan tasdiqlash kodi'] },
-        'Xaridor: «Pul tushishi uchun SMS-kodni ham kiritish kerak».'
+        'Toshkentlik talaba Telegramda ish e’lonini ko‘rdi. Ish beruvchi: «Kuniga 300 ming so‘m ishlab topasiz», dedi. Vazifa quyidagicha:',
+        { list: [
+          'Talabaning kartasiga turli odamlardan pul tushadi',
+          'Talaba bu pulni ish beruvchi ko‘rsatgan boshqa kartalarga yuboradi',
+          'Har bir o‘tkazmadan 2% mukofot oladi'
+        ] },
+        'Ish beruvchi PIN yoki SMS-kodni so‘ramaydi. Barcha o‘tkazmalarni talabaning o‘zi bajaradi. Ish beruvchi mablag‘larning qayerdan kelganini tasdiqlovchi hujjat bermaydi.'
       ],
-      ask: 'Talaba qanday qaror qabul qilishi kerak?',
+      ask: 'Qaysi xulosa eng asosli?',
       options: [
-        'Havolani yopib, SMS-kodni bermasdan, to‘lovni mustaqil tekshiriladigan rasmiy usulda qabul qilish',
-        'Faqat karta raqami va amal qilish muddatini kiritib, SMS-kodni keyinroq yuborish',
-        'Havola HTTPS bilan ochilgan bo‘lsa, SMS-kod bilan tasdiqlash'
+        'PIN va OTP so‘ralmagani sababli karta xavfsiz, asosiy risk komissiyada',
+        'O‘tkazmalarni talabaning o‘zi bajargani sababli kelayotgan pullarning manbai muhim emas',
+        'Talaba shubhali mablag‘lar harakatida vositachi sifatida ishlatilayotgan bo‘lishi mumkin'
       ],
-      answer: 'A',
-      short: 'Pul qabul qilish uchun hech qachon SMS-kod kerak emas.',
+      answer: 'C',
+      short: 'Begona pulni o‘z kartasi orqali o‘tkazish — talabani «dropper»ga aylantiradi.',
       explain: [
-        'Pul qabul qilish bahonasida tasdiqlash kodi so‘ralishi — firibgarlik belgisi.',
-        'Soxta sayt haqiqiy marketpleys dizaynini ko‘chirishi mumkin. HTTPS saytning haqiqiyligini kafolatlamaydi.',
-        'Muhim detal: havola manzili rasmiy saytga mos emas.'
+        'Bu vaziyatda xavf faqat PIN yoki OTP bilan bog‘liq emas.',
+        'Begona mablag‘larni o‘z hisobidan o‘tkazib berish firibgarlikdan kelgan pullarning izini yashirishga xizmat qilishi mumkin. Talaba bunday operatsiyalar sababli huquqiy va moliyaviy muammolarga duch kelishi mumkin.'
       ],
       terms: [
-        { name: 'Fishing', en: 'Phishing', def: 'Soxta sayt yoki xabar orqali maxfiy ma’lumotlarni qo‘lga kiritishga qaratilgan firibgarlik.' }
+        { name: 'Pul tashuvchi vositachi', en: 'Money Mule, Dropper', def: 'Boshqalar uchun mablag‘larni qabul qiladigan va boshqa hisoblarga o‘tkazadigan shaxs.' }
       ],
-      note: 'HUMO va UZCARD kartalarida SMS-kod asosiy himoya. Karta ma’lumotlari va kod faqat o‘zingiz boshlagan, tekshirilgan to‘lovda ishlatiladi.'
+      note: 'Shaxsiy bank hisobidan noma’lum odamlarning pulini o‘tkazish katta xavf tug‘diradi.'
     }
   ]
 });
@@ -1919,29 +1940,28 @@ MS.registry.registerTopic({
     },
     {
       value: 300,
-      title: 'Karta raqami yoki hisob raqami?',
+      title: 'SMS kelmay qoldi',
       body: [
-        'Toshkentdagi universitet talabaga grant mablag‘ini o‘tkazmoqchi. Buxgalteriya so‘radi:',
-        { list: ['20 xonali bank hisob raqami', 'Bank MFO kodi', 'Hisob egasi ma’lumotlari'] },
-        'Talabada HUMO kartasi va shu kartaga bog‘langan bank hisobi bor.'
+        'Shahzod telefonida birdaniga mobil aloqa yo‘qolganini ko‘rdi. Boshqa odamlarning telefonlari shu joyda odatdagidek ishlayapti. Telefonini qayta ishga tushirdi, lekin aloqa tiklanmadi.',
+        'Wi-Fi orqali bank ilovasiga kirganida notanish qurilmadan kirishga urinish haqida bildirishnoma ko‘rdi.',
+        'Shahzod yaqinda SIM-kartasini almashtirmagan.'
       ],
-      ask: 'Talaba qaysi ma’lumotlarni yuborishi kerak?',
+      ask: 'Qaysi xavfni birinchi navbatda tekshirishi kerak?',
       options: [
-        'HUMO kartasining 16 xonali raqami va amal qilish muddati',
-        'Bankdan olingan 20 xonali hisob raqami, MFO va hisob egasi rekvizitlari',
-        'Kartaning 16 xonali raqami, SMS-kod va bank nomi'
+        'SIM-karta boshqa shaxs nazoratiga o‘tkazilgan bo‘lishi va SMS-kodlar o‘sha shaxsga ketishi xavfini',
+        'Bank ilovasining internet tezligi pasaygani sababli xabarlar kechikishini',
+        'Faqat telefon xotirasi to‘lgani sababli SMS-xabarlar kelmay qolgan bo‘lishini'
       ],
-      answer: 'B',
-      short: '20 xonali hisob raqami + MFO + hisob egasi.',
+      answer: 'A',
+      short: 'Aloqa yo‘qolishi + notanish qurilmadan kirish = SIM-almashtirish belgisi.',
       explain: [
-        'Kartaning 16 xonali raqami bilan bankdagi 20 xonali hisob raqami bir xil narsa emas.',
-        'SMS-kod pul qabul qilish rekviziti emas va hech kimga berilmaydi.'
+        'Aloqaning to‘satdan yo‘qolishi har doim firibgarlik degani emas. Ammo boshqa qurilmadan kirish urinishlari ham bo‘lsa, hisob va mobil raqam xavfsizligini tezkor tekshirish kerak.',
+        'Mobil operator orqali SIM holatini aniqlash va bank bilan bog‘lanish muhim.'
       ],
       terms: [
-        { name: 'Bank hisob raqami', en: 'Bank Account Number', def: 'Bankdagi hisobni aniqlovchi rekvizit.' },
-        { name: 'MFO', en: 'Bank Code', def: 'Bank yoki uning bo‘linmasini aniqlaydigan kod.' }
+        { name: 'SIM-kartani almashtirish firibgarligi', en: 'SIM Swapping', def: 'Telefon raqami ustidan nazoratni qo‘lga kiritib, SMS orqali tasdiqlash mexanizmlaridan foydalanishga urinish.' }
       ],
-      note: 'Qaysi rekvizit kerakligi to‘lov turiga bog‘liq.'
+      note: 'Telefon raqami bank xavfsizligining muhim elementlaridan biridir.'
     },
     {
       value: 400,
