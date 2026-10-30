@@ -34,7 +34,6 @@
         <section class="login__card card enter">
           <span class="brand__mark login__mark">${A.avatar}</span>
           <div class="login__head">
-            <p class="eyebrow">Admin Panel</p>
             <h1 class="h2">Kirish</h1>
           </div>
           <div class="lockout" data-t="lockout" role="timer" aria-label="Kirish vaqtincha bloklandi" hidden>
