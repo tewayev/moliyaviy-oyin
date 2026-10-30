@@ -31,7 +31,7 @@ scripts/dev-server.js   mahalliy server
 - Butun baza faqat admin sessiyasi bilan beriladi. O‘yin har safar faqat o‘ziga tanlangan savollarni oladi.
 - Login/parol faqat Vercel muhit o‘zgaruvchilarida. Sessiya — imzolangan, `HttpOnly`, `Secure`,
   `SameSite=Strict` cookie (12 soat). Parol o‘zgartirilsa, eski sessiyalar bekor bo‘ladi.
-- Noto‘g‘ri parol: har urinish sekinlashtiriladi, 5 xatodan keyin 10 daqiqa blok.
+- Noto‘g‘ri parol: har urinish sekinlashtiriladi, 3 xatodan keyin 3 daqiqa blok (sahifada orqaga sanoq ko‘rinadi).
 - Boshqa saytdan so‘rov (CSRF) rad etiladi; CSP va boshqa xavfsizlik sarlavhalari `vercel.json`da.
 
 ## Muhit o‘zgaruvchilari (Vercel → Settings → Environment Variables)
