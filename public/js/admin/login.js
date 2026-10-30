@@ -37,14 +37,8 @@
             <p class="eyebrow">Admin Panel</p>
             <h1 class="h2">Kirish</h1>
           </div>
-          <div class="lockout" data-t="lockout" role="status" aria-live="polite" hidden>
-            <span class="lockout__icon">${MS.icon('lock')}</span>
-            <span class="lockout__text">
-              <b>Kirish vaqtincha bloklandi</b>
-              <small>${MAX_FAILS} marta noto‘g‘ri urinish. Vaqt tugagach qayta urinib ko‘ring.</small>
-            </span>
-            <span class="lockout__time" data-t="lock-time">3:00</span>
-            <span class="lockout__bar" aria-hidden="true"><span data-t="lock-bar"></span></span>
+          <div class="lockout" data-t="lockout" role="timer" aria-label="Kirish vaqtincha bloklandi" hidden>
+            ${MS.icon('lock')}<span data-t="lock-time">3:00</span>
           </div>
           ${A.flash()}
           <form class="login__form" data-form="login" novalidate>
@@ -84,7 +78,6 @@
     const fields = form.querySelector('[data-t="fields"]');
     const box = root.querySelector('[data-t="lockout"]');
     const time = root.querySelector('[data-t="lock-time"]');
-    const bar = root.querySelector('[data-t="lock-bar"]');
     const idle = () => { btn.innerHTML = `<span>Kirish</span>${MS.icon('arrowRight')}`; };
 
     function showError(text) {
@@ -102,7 +95,6 @@
       btn.disabled = on;
       if (on) {
         time.textContent = MS.dom.clock(left);
-        bar.style.width = `${Math.min(100, (left / LOCK_SEC) * 100)}%`;
         showError('');
         return;
       }
