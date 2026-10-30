@@ -1,0 +1,142 @@
+/* css/base.css */
+/* Asos: reset, tipografiya, umumiy komponentlar (tugma, segment, kartochka). */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  height: 100%;
+  /* smart doska (1920px) ≈ 18.5px, noutbuk ≈ 15.5px */
+  font-size: clamp(14px, 0.55vw + 8px, 20px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3, h4, p, ul, ol, dl, dd { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+[hidden] { display: none !important; }
+
+.ic { width: 1.25em; height: 1.25em; flex: none; }
+
+.app { height: 100%; }
+
+.eyebrow {
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.h2 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; letter-spacing: -.02em; }
+.muted { color: var(--ink-2); }
+.hint { font-size: .85rem; color: var(--ink-3); }
+.hint.is-ok { color: var(--ok); }
+.hint.is-bad { color: var(--bad); font-weight: 600; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Tugmalar ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  min-height: 2.9rem;
+  padding: .65rem 1.15rem;
+  border: 1.5px solid transparent;
+  border-radius: var(--r-md);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background-color .15s, border-color .15s, color .15s, transform .1s;
+  user-select: none;
+}
+.btn:active:not(:disabled) { transform: scale(.98); }
+.btn:focus-visible { outline: none; box-shadow: var(--ring); }
+.btn:disabled { cursor: not-allowed; background: var(--alice); color: var(--ink-3); border-color: transparent; box-shadow: none; }
+
+.btn--primary { background: var(--navy); color: #fff; }
+.btn--primary:hover:not(:disabled) { background: var(--steel); }
+.btn--accent { background: var(--orange); color: #fff; }
+.btn--accent:hover:not(:disabled) { background: #D96700; }
+.btn--ghost { background: var(--surface); border-color: var(--line); color: var(--ink); }
+.btn--ghost:hover:not(:disabled) { border-color: var(--orange); color: var(--navy); }
+.btn--danger { background: var(--bad); color: #fff; }
+.btn--lg { min-height: 3.5rem; padding: .85rem 1.4rem; font-size: 1.1rem; border-radius: var(--r-md); }
+.btn--xl { min-height: 4rem; font-size: 1.15rem; border-radius: var(--r-lg); }
+.btn--block { width: 100%; }
+.btn--icon { width: 2.9rem; padding: 0; }
+.btn.grow { flex: 1; min-width: 0; }
+.btn b { font-weight: 700; overflow: hidden; text-overflow: ellipsis; }
+
+/* ---------- Segment tanlagich ---------- */
+.seg {
+  display: inline-flex;
+  padding: .25rem;
+  gap: .25rem;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+}
+.seg__btn {
+  min-width: 3.5rem;
+  min-height: 2.75rem;
+  padding: .4rem .9rem;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: transparent;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.seg__btn:hover:not(:disabled):not(.is-on) { color: var(--navy); background: var(--surface); }
+.seg__btn.is-on { background: var(--navy); color: #fff; }
+.seg__btn:disabled { cursor: not-allowed; opacity: .55; }
+.seg__btn:focus-visible { outline: none; box-shadow: var(--ring); }
+.seg--sm .seg__btn { min-width: 3rem; min-height: 2.4rem; font-size: .95rem; }
+
+/* ---------- Belgilar ---------- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .35rem .8rem .35rem .6rem;
+  border-radius: 999px;
+  background: var(--alice);
+  color: var(--navy);
+  font-weight: 600;
+  font-size: .9rem;
+}
+.ok { color: var(--ok); }
+.bad { color: var(--bad); }
+.skip { color: var(--ink-3); }
+
+/* ---------- Animatsiya ---------- */
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes pulse { 50% { opacity: .55; } }
+.spin { width: 1.1em; height: 1.1em; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.enter > * { animation: rise .32s cubic-bezier(.2, .7, .2, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

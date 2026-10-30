@@ -1,0 +1,661 @@
+{
+  "v": 1,
+  "topics": {
+    "shaxsiy-budjet": [
+      {
+        "id": "shaxsiy-budjet-100",
+        "value": 100,
+        "title": "50/30/20 qoidasi",
+        "body": "Jasur ishga kirdi. Shartnomadagi oyligi 5 000 000 so‘m, soliq va majburiy ushlanmalardan keyin kartasiga 4 000 000 so‘m tushadi.",
+        "ask": "U 50/30/20 qoidasidan foydalanmoqchi. Jamg‘arma va moliyaviy maqsadlarga qancha ajratishi kerak?",
+        "options": [
+          "1 000 000 so‘m",
+          "1 500 000 so‘m",
+          "800 000 so‘m"
+        ],
+        "answer": "C",
+        "short": "4 000 000 × 20% = 800 000 so‘m",
+        "explain": "Qoida qo‘lga tegadigan sof daromadga qo‘llanadi: shartnomadagi 5 million emas, kartaga tushadigan 4 million hisobga olinadi.\n1 000 000 so‘m — shartnomadagi summaning 20 foizi, 1 500 000 so‘m — 30 foizi.",
+        "summary": "50/30/20 qoidasi (50/30/20 Rule) — Sof daromadning 50% — zaruriy ehtiyojlarga, 30% — istaklarga, 20% — jamg‘arma va moliyaviy maqsadlarga.\nBu qat’iy me’yor emas, shaxsiy sharoitga moslashtiriladi."
+      },
+      {
+        "id": "shaxsiy-budjet-200",
+        "value": 200,
+        "title": "Hisobdagi pulning hammasi senikimi?",
+        "body": "Kamolaning kartasida 3 200 000 so‘m bor. Shundan 1 200 000 so‘m keyingi haftadagi ijaraga, 600 000 so‘m esa uch haftadan keyingi kurs to‘loviga ajratilgan.\nU yangi planshet sotib olmoqchi.",
+        "ask": "Boshqa xarajat bo‘lmasa, Kamola planshetga qarzsiz sarflashi mumkin bo‘lgan eng katta summa qancha?",
+        "options": [
+          "2 000 000 so‘m",
+          "1 400 000 so‘m",
+          "2 600 000 so‘m"
+        ],
+        "answer": "B",
+        "short": "3 200 000 − 1 200 000 − 600 000 = 1 400 000 so‘m",
+        "explain": "2 000 000 so‘m deganlar kurs to‘lovini, 2 600 000 so‘m deganlar ijarani hisobga olmagan.\nTo‘lov muddatining uzoqroq bo‘lishi bu pulni erkin sarflash mumkinligini anglatmaydi.",
+        "summary": "Erkin sarflanadigan mablag‘ (Available to Spend) — Rejalashtirilgan majburiyatlar ajratilgandan keyin qoladigan, erkin sarflash mumkin bo‘lgan pul.\nKartadagi umumiy qoldiq har doim ham erkin budjetga teng emas."
+      },
+      {
+        "id": "shaxsiy-budjet-300",
+        "value": 300,
+        "title": "Bir martalik daromad",
+        "body": "Azizaning oylik muntazam daromadi 4 200 000 so‘m, zaruriy xarajatlari 3 700 000 so‘m.\nU qo‘shimcha 1 500 000 so‘m mukofot oldi. Keyingi uch oy ichida 3 000 000 so‘mlik kontrakt uchun pul yig‘ishi kerak.",
+        "ask": "Boshqa xarajat va jamg‘arma yo‘q. Kontraktni qarzsiz to‘lash uchun qaysi reja ishlaydi?",
+        "options": [
+          "Mukofotni saqlash va keyingi uch oyda har oy 500 000 so‘mdan yig‘ish",
+          "Mukofotning yarmini ishlatish va keyingi uch oyda har oy 500 000 so‘mdan yig‘ish",
+          "Mukofotni saqlash va keyingi uch oyda har oy 400 000 so‘mdan yig‘ish"
+        ],
+        "answer": "A",
+        "short": "1 500 000 + 500 000 × 3 = 3 000 000 so‘m",
+        "explain": "= Oylik erkin pul: 4 200 000 − 3 700 000 = 500 000\n= Yarmini ishlatsa: 750 000 + 1 500 000 = 2 250 000 (750 000 yetmaydi)\n= 400 000 dan yig‘sa: 1 500 000 + 1 200 000 = 2 700 000 (300 000 yetmaydi)\nTo‘g‘ri reja aynan 3 000 000 so‘m yig‘adi, zaxira qolmaydi. Kutilmagan xarajat chiqsa, reja buziladi.",
+        "summary": "Bir martalik daromad (Windfall Income) — Odatiy daromaddan tashqari kutilmagan yoki qo‘shimcha pul.\nMaqsadli jamg‘arma (Sinking Fund) — Oldindan ma’lum yirik xarajat uchun muntazam yig‘iladigan pul."
+      },
+      {
+        "id": "shaxsiy-budjet-400",
+        "value": 400,
+        "title": "Uch oylik pul oqimi",
+        "body": "Shohruhning boshlang‘ich jamg‘armasi 500 000 so‘m.\nKeyingi uch oyda har oy 4 000 000 so‘m daromad va 3 500 000 so‘m oddiy xarajat kutilmoqda. Ikkinchi oyda qo‘shimcha 1 200 000 so‘mlik majburiy to‘lov bor.\nBarcha tushum va xarajatlar oy oxirida hisoblanadi.",
+        "ask": "Qaysi xulosa to‘g‘ri?",
+        "options": [
+          "Uch oy oxirida 800 000 so‘m qoladi va hech bir oyda tanqislik bo‘lmaydi",
+          "Uch oy oxirida 800 000 so‘m qoladi, lekin ikkinchi oyda vaqtinchalik tanqislik bo‘ladi",
+          "Uch oy oxirida 300 000 so‘m qoladi va hech bir oyda tanqislik bo‘lmaydi"
+        ],
+        "answer": "A",
+        "short": "1-oy: 1 000 000 → 2-oy: 300 000 → 3-oy: 800 000 so‘m",
+        "explain": "= 1-oy: 500 000 + 4 000 000 − 3 500 000 = 1 000 000\n= 2-oy: 1 000 000 + 4 000 000 − 3 500 000 − 1 200 000 = 300 000\n= 3-oy: 300 000 + 4 000 000 − 3 500 000 = 800 000\nQoldiq hech qachon manfiy bo‘lmaydi. 300 000 so‘m — boshlang‘ich jamg‘arma unutilgan javob.\nAgar 1 200 000 so‘mlik to‘lov oy boshida, daromaddan oldin bo‘lganida, 200 000 so‘m vaqtinchalik tanqislik yuzaga kelardi. Pulning miqdori bilan birga vaqti ham muhim.",
+        "summary": "Pul oqimini prognozlash (Cash Flow Projection) — Kelajakdagi tushum va chiqimlarni davrlar bo‘yicha oldindan hisoblash.\nFaqat yakuniy qoldiqni emas, har bir davrdagi holatni ham tekshiring."
+      },
+      {
+        "id": "shaxsiy-budjet-500",
+        "value": 500,
+        "title": "Obunalarni taqqoslash",
+        "body": "Talaba o‘qish uchun kerakli dasturga 12 oyga obuna bo‘lmoqchi. Dasturning uchta tarifi bor:\n* Oylik: Oyiga 80 000 so‘m | Istalgan vaqtda bekor qilish mumkin | Qo‘shimcha to‘lov yo‘q\n* Yillik: Yiliga 900 000 so‘m | To‘lov bir yilga oldindan | To‘langan pul qaytarilmaydi\n* Start: Oyiga 75 000 so‘m | Ro‘yxatdan o‘tishda 30 000 so‘m bir martalik xizmat haqi\nTalaba 12 oy foydalanishi aniq, tariflar bir xil xizmat beradi, yillik to‘lovga puli yetadi, chegirma yo‘q.",
+        "ask": "Tariflarni 12 oylik umumiy xarajat bo‘yicha arzonidan qimmatiga joylashtiring.",
+        "options": [
+          "Start → Yillik → Oylik",
+          "Yillik → Oylik → Start",
+          "Yillik → Start → Oylik"
+        ],
+        "answer": "C",
+        "short": "Yillik 900 000 → Start 930 000 → Oylik 960 000 so‘m",
+        "explain": "= Oylik: 80 000 × 12 = 960 000\n= Yillik: 900 000\n= Start: 75 000 × 12 + 30 000 = 930 000\nStartning oylik narxi eng past, lekin bir martalik xizmat haqi umumiy xarajatni oshiradi.\nYillik tarif eng arzon, ammo pul oldindan to‘lanadi va qaytarilmaydi. Talaba 12 oy foydalanishi aniq bo‘lgani uchun bu xavf kichik.",
+        "summary": "Egalik qilishning umumiy qiymati (Total Cost of Ownership, TCO) — Mahsulot yoki xizmatdan foydalanish davomidagi barcha xarajatlar yig‘indisi.\nTakliflarni oylik narx bilan emas, barcha to‘lovlar yig‘indisi bilan solishtiring."
+      }
+    ],
+    "jamgarma": [
+      {
+        "id": "jamgarma-100",
+        "value": 100,
+        "title": "Avval o‘zingga to‘la!",
+        "body": "Aziz har oy 5 million so‘m maosh oladi. U pul yig‘ishni boshlamoqchi, lekin odatda oy oxirida hisobida hech narsa qolmaydi.\nMoliyaviy maslahatchi unga «Pay Yourself First» qoidasini tavsiya qildi.",
+        "ask": "Aziz bu qoidani qanday qo‘llashi kerak?",
+        "options": [
+          "Har kuni xarajatlarni qayd etib, oy oxirida qolgan pulni jamg‘arish",
+          "Maoshning bir qismini naqdlashtirib, ishlatilmagan qismini oy oxirida jamg‘armaga joylashtirish",
+          "Maosh kelishi bilan belgilangan summani jamg‘armaga ajratib, qolgan mablag‘ni rejalashtirish"
+        ],
+        "answer": "C",
+        "short": "Jamg‘arma daromad kelishi bilan, xarajatlardan oldin ajratiladi.",
+        "explain": "Barcha usullar xarajatlarni nazorat qilishga yordam berishi mumkin. Ammo faqat maosh kelishi bilan ajratish usulida jamg‘arma xarajatlardan oldin turadi.\nQolgan ikki usulda jamg‘arish oy oxiriga qoldiriladi, oy oxirida esa odatda hech narsa qolmaydi.",
+        "summary": "Avval o‘zingga to‘la (Pay Yourself First) — Daromad kelganda boshqa xarajatlardan oldin ma’lum summani jamg‘armaga ajratish tamoyili.\nBu usulni bank ilovasidagi avtomatik pul o‘tkazmasi orqali ham qo‘llash mumkin."
+      },
+      {
+        "id": "jamgarma-200",
+        "value": 200,
+        "title": "Yostiq ostidagi millionlar",
+        "body": "Dilnoza ikki yil avval kelajakdagi to‘yi uchun 20 million so‘m yig‘di va pulni uyida naqd saqladi. Hozir ham aynan 20 million so‘mi bor.\nShu ikki yil davomida to‘y uchun kerakli xizmatlar narxlari oshdi.",
+        "ask": "Quyidagi xulosalardan qaysi biri to‘g‘ri?",
+        "options": [
+          "Pulning nominal qiymati o‘zgarmagan, ammo uning xarid qobiliyati pasaygan",
+          "Pulning nominal qiymati o‘zgarmagan, shuning uchun xarid qobiliyati ham saqlanib qolgan",
+          "Xarid qobiliyati pasaygani sababli banknotlarning nominal qiymati ham kamaygan"
+        ],
+        "answer": "A",
+        "short": "20 million o‘zgarmagan, lekin unga endi kamroq narsa sotib olish mumkin.",
+        "explain": "Dilnozaning qo‘lida hali ham 20 million so‘m bor. Ammo narxlar oshgani uchun avvalgi xizmatlarni sotib olishga ko‘proq pul kerak.\nJamg‘armaning nominal miqdori bilan real qiymati bir xil emas. Inflyatsiya banknotdagi yozuvni emas, narxlarni o‘zgartiradi.",
+        "summary": "Xarid qobiliyati (Purchasing Power) — Pulga sotib olish mumkin bo‘lgan mahsulot va xizmatlar miqdori.\nInflyatsiya riski (Inflation Risk) — Narxlar oshishi natijasida pulning real xarid qobiliyati kamayishi xavfi."
+      },
+      {
+        "id": "jamgarma-300",
+        "value": 300,
+        "title": "Do‘stlar jamg‘armasi",
+        "body": "Samarqandda 10 nafar talaba har oy 500 ming so‘mdan pul yig‘ishga kelishdi. Har oy yig‘ilgan 5 million so‘m navbat bilan bitta ishtirokchiga beriladi. Bu usul ayrim hududlarda «gap» deb ataladi.\nJasur sakkizinchi navbatda pul olishi kerak. Birinchi to‘rt oy hamma to‘ladi. Beshinchi oyda ikki ishtirokchi badal to‘lashni to‘xtatdi.",
+        "ask": "Jasur uchun asosiy xavf qaysi?",
+        "options": [
+          "Pulni kechroq olish faqat inflyatsiya xavfini tug‘diradi; boshqalar to‘lovni to‘xtatishi uning ulushiga ta’sir qilmaydi",
+          "Pulni kechroq oladigan odam boshqalarning kelgusidagi badallariga bog‘liq va to‘liq summani olmasligi mumkin",
+          "Dastlabki to‘rt oyda badallar to‘langan bo‘lsa, keyingi to‘lovlar ham moliyaviy jihatdan kafolatlangan"
+        ],
+        "answer": "B",
+        "short": "Kech navbatdagilar boshqalarning to‘lov intizomiga bog‘liq.",
+        "explain": "Jasur o‘z navbatida pul olishi uchun qolgan ishtirokchilar kelishilgan badallarni to‘lashda davom etishi kerak.\nDastlabki to‘lov intizomi kelajakdagi barcha to‘lovlarni kafolatlamaydi.",
+        "summary": "Qarshi tomon riski (Counterparty Risk) — Kelishuvdagi boshqa tomonning o‘z moliyaviy majburiyatini bajarmasligi xavfi.\nNorasmiy jamg‘armada ishonch bilan birga majburiyatlarning bajarilishi va huquqiy himoya ham muhim."
+      },
+      {
+        "id": "jamgarma-400",
+        "value": 400,
+        "title": "300 million so‘mni qayerda saqlash?",
+        "body": "Tadbirkor bir yilga 300 million so‘mlik yangi bank omonati ochmoqchi.\nO‘zbekistonda yangi omonatlar uchun kafolatlangan kompensatsiya bir bankda bir omonatchiga 200 million so‘mgacha. Hisoblangan foizlar ham kafolat summasiga kirishi mumkin.\nUchta bankning har biri bir yilga 20% oddiy foiz taklif qiladi, foiz yil oxirida hisoblanadi. Barcha banklar kafolatlash tizimiga kiradi, boshqa shartlar teng.",
+        "ask": "Qaysi strategiyada asosiy summa va bir yillik foiz kafolat chegaralari doirasida qoladi?",
+        "options": [
+          "Bir bankda 100 million so‘mlik uchta alohida omonat ochish",
+          "Bir bankda 200 million, boshqa bankda 100 million so‘mlik omonat ochish",
+          "Ikki alohida bankda 150 million so‘mdan omonat ochish"
+        ],
+        "answer": "C",
+        "short": "Har bankda: 150 mln + 30 mln foiz = 180 mln — chegaradan past.",
+        "explain": "= Bir bankda uchta omonat: jami 300 mln bitta bankda — chegaradan oshadi\n= 200 + 100 mln: birinchi bankda 200 mln + 40 mln foiz = 240 mln — chegaradan oshadi\n= 150 + 150 mln: har bankda 150 + 30 = 180 mln — chegara ichida\nKafolat chegarasi omonat soniga emas, bir bankdagi bir omonatchining jami qoldig‘iga qo‘llanadi.",
+        "summary": "Omonatlarni kafolatlash (Deposit Insurance) — Kafolat hodisasi yuz berganda omonatchiga qonundagi limit va shartlar asosida kompensatsiya berish tizimi.\nBir bankdagi bir nechta omonat kafolat limitini avtomatik ko‘paytirmaydi."
+      },
+      {
+        "id": "jamgarma-500",
+        "value": 500,
+        "title": "Jamg‘armadagi yashirin cheklov",
+        "body": "Behruz 10 million so‘m jamg‘argan. Uning uchta moliyaviy maqsadi bor:\n- 4 mln — 15 kundan keyin to‘lanadigan kontrakt\n- 2 mln — istalgan vaqtda foydalaniladigan favqulodda zaxira\n- 4 mln — kamida olti oy ishlatilmaydigan jamg‘arma\n* Barqaror omonat: Yillik 22% | Pulni yechish uchun 30 kun oldin xabar berish shart\n* Erkin omonat: Yillik 18% | Pulni istalgan vaqtda yechish mumkin\nIkkala omonatda foiz kunlik qoldiqqa hisoblanadi. Boshqa xarajat yoki cheklov yo‘q.",
+        "ask": "Behruz barcha muddatlarga amal qilib, favqulodda zaxirani saqlab, imkon qadar ko‘proq foiz olmoqchi. Qaysi strategiya eng maqbul?",
+        "options": [
+          "6 mln Erkin omonatga, 4 mln Barqaror omonatga",
+          "8 mln Erkin omonatga, 2 mln Barqaror omonatga",
+          "4 mln Erkin omonatga, 6 mln Barqaror omonatga"
+        ],
+        "answer": "A",
+        "short": "Erkin: 4 mln kontrakt + 2 mln zaxira. Barqaror: 4 mln uzoq muddatga.",
+        "explain": "= 6 Erkin / 4 Barqaror: kontrakt to‘lanadi, 2 mln zaxira erkin qoladi, 4 mln yuqori foizda — eng maqbul\n= 8 Erkin / 2 Barqaror: shartlar bajariladi, lekin yuqori foizli omonatda kamroq pul turadi\n= 4 Erkin / 6 Barqaror: kontraktdan keyin erkin zaxira qolmaydi\nTuzoq: 22% jozibador, lekin 30 kunlik ogohlantirish favqulodda zaxira uchun jiddiy to‘siq.",
+        "summary": "Jamg‘armani maqsadlar bo‘yicha taqsimlash (Savings Buckets) — Pulni foydalanish muddati va maqsadiga qarab ajratish.\nLikvidlik (Liquidity) — Puldan zarur vaqtda katta yo‘qotishsiz foydalanish imkoniyati.\nEng yuqori foiz har doim ham eng yaxshi jamg‘arma tanlovi emas."
+      }
+    ],
+    "xaridlar": [
+      {
+        "id": "xaridlar-100",
+        "value": 100,
+        "title": "50% chegirma haqiqatan arzonmi?",
+        "body": "Talaba sport sumkasi olmoqchi.\n* Birinchi do‘kon: Eski narx 400 000 so‘m | Chegirma 50%\n* Ikkinchi do‘kon: 190 000 so‘m | Chegirma yo‘q\nMahsulotlar bir xil, yetkazib berish bepul.",
+        "ask": "Qaysi xulosa to‘g‘ri?",
+        "options": [
+          "Birinchi do‘kon ikkinchisidan 10 ming so‘m arzon",
+          "Ikkala taklifning yakuniy narxi teng",
+          "Ikkinchi do‘kon birinchisidan 10 ming so‘m arzon"
+        ],
+        "answer": "C",
+        "short": "400 000 × 50% = 200 000 so‘m > 190 000 so‘m",
+        "explain": "Birinchi do‘konda yakuniy narx 200 ming, ikkinchisida 190 ming so‘m. Demak, ikkinchi taklif 10 ming so‘m arzon.\nChegirma foizi emas, yakuniy narx muhim.",
+        "summary": "Taqqoslash narxi (Reference Price) — Xaridor takliflarni baholashda asos qilib oladigan narx.\nChegirma foizining kattaligi eng arzon taklifni anglatmaydi."
+      },
+      {
+        "id": "xaridlar-200",
+        "value": 200,
+        "title": "Qaysi guruch tejamkorroq?",
+        "body": "Supermarketda bir xil sifatdagi guruch sotilmoqda:\n* Kichik qadoq: 900 gramm | 27 000 so‘m\n* Standart qadoq: 1 kg | 29 000 so‘m\n* Oilaviy qadoq: 2 kg | 57 000 so‘m\nTalabaga kamida 2 kg kerak. Saqlash bilan muammo yo‘q.",
+        "ask": "Bir kilogramm hisobida qaysi qadoq arzonroq?",
+        "options": [
+          "Oilaviy qadoq",
+          "Standart qadoq",
+          "Kichik qadoq"
+        ],
+        "answer": "A",
+        "short": "Oilaviy: 57 000 / 2 = 28 500 so‘m/kg — eng arzon.",
+        "explain": "= Kichik: 27 000 / 0,9 = 30 000 so‘m/kg\n= Standart: 29 000 so‘m/kg\n= Oilaviy: 57 000 / 2 = 28 500 so‘m/kg\nKichik qadoqning narxi eng past ko‘rinadi, lekin kilogramm hisobida eng qimmat.",
+        "summary": "Birlik narxi (Unit Price) — Mahsulotning kilogramm, litr yoki dona hisobidagi narxi.\nTurli o‘lchamdagi qadoqlarni birlik narxi bilan solishtiring."
+      },
+      {
+        "id": "xaridlar-300",
+        "value": 300,
+        "title": "Marketpleysdagi yo‘qolgan buyurtma",
+        "body": "Madina marketpleys orqali 420 ming so‘mlik quloqchin sotib oldi. Buyurtma holati: «Yetkazildi». Ammo Madina mahsulotni olmagan.\nKuryer uni boshqa xonadonga topshirganini aytdi va shunday dedi: «Telegramda kelishaylik. Men pulni naqd qaytaraman, faqat ilovada buyurtmani qabul qilingan deb belgilang».",
+        "ask": "Madina qanday yo‘l tutishi kerak?",
+        "options": [
+          "Kuryerning telefon raqamini saqlab, buyurtmani qabul qilingan deb tasdiqlash",
+          "Platformada nizo ochib, yetkazish dalillarini so‘rash va rasmiy qaytarim jarayonidan foydalanish",
+          "Telegramdagi kelishuvni skrinshot qilib, ilovada buyurtmani tasdiqlash"
+        ],
+        "answer": "B",
+        "short": "Platforma ichida nizo ochish — murojaat aniq buyurtmaga bog‘lanadi.",
+        "explain": "Telegramdagi yozishma dalil bo‘lishi mumkin, lekin olinmagan buyurtmani «qabul qilindi» deb tasdiqlash rasmiy nizoni murakkablashtiradi.\nBuyurtma tasdiqlangach, platforma himoyasidan foydalanish qiyinlashadi.",
+        "summary": "Iste’molchi nizosi (Consumer Dispute) — Xarid yoki xizmat bajarilishi bo‘yicha kelishmovchilik.\nInternet xaridlarida elektron chek, buyurtma raqami va rasmiy murojaatlarni saqlang."
+      },
+      {
+        "id": "xaridlar-400",
+        "value": 400,
+        "title": "«0% nasiya» taklifi",
+        "body": "Talaba 4 million so‘mlik noutbuk sotib olmoqchi. Uchta taklif bor:\n* Naqd xarid: 4 000 000 so‘m\n* «0% nasiya»: 12 oy davomida | 350 000 so‘mdan\n* Aksiyali nasiya: Dastlab 500 000 so‘m | keyin 10 oy 360 000 so‘mdan\nBarcha to‘lovlarni amalga oshirish imkoniyati bor. Qo‘shimcha xarajat yo‘q.",
+        "ask": "Qaysi taklifning umumiy xarajati eng past?",
+        "options": [
+          "«0% nasiya»",
+          "Aksiyali nasiya",
+          "Naqd xarid"
+        ],
+        "answer": "C",
+        "short": "Naqd 4,0 mln < Aksiyali 4,1 mln < «0%» 4,2 mln",
+        "explain": "= Naqd: 4 000 000\n= «0% nasiya»: 350 000 × 12 = 4 200 000\n= Aksiyali: 500 000 + 360 000 × 10 = 4 100 000\n«0%» reklama yozuvi nasiyaning umumiy narxi naqd narxga tengligini kafolatlamaydi.",
+        "summary": "Moliyalashtirishning umumiy qiymati (Total Financing Cost) — Xaridni moliyalashtirish uchun to‘lanadigan jami xarajatlar.\nNasiyada oylik to‘lovni emas, jami to‘lovni hisoblang."
+      },
+      {
+        "id": "xaridlar-500",
+        "value": 500,
+        "title": "Qaytarilmaydigan avans",
+        "body": "Javohir to‘y fotografi bilan 3 million so‘mga kelishdi va 600 ming so‘m qaytarilmaydigan avans to‘ladi.\nKeyin yana ikkita fotograf xuddi shu sifat va shartlardagi xizmatni taklif qildi:\n* Eski fotograf: Qolgan to‘lov — 2,4 mln\n* Yangi fotograf: Xizmat narxi — 2,2 mln\n* Boshqa fotograf: Xizmat narxi — 2,3 mln\nAvvalgi 600 ming so‘m hech qanday holatda qaytarilmaydi. Javohir bugundan keyingi xarajatni kamaytirmoqchi.",
+        "ask": "Qaysi qaror to‘g‘ri?",
+        "options": [
+          "Yangi fotografni tanlash, chunki kelajakdagi xarajat 2,2 million so‘m bo‘ladi",
+          "Eski fotografni tanlash, chunki avansni yo‘qotmaslik xarajatni kamaytiradi",
+          "Boshqa fotografni tanlash, chunki u dastlabki kelishuvdan 700 ming so‘m arzon"
+        ],
+        "answer": "A",
+        "short": "Bugundan keyin: yangi 2,2 < boshqa 2,3 < eski 2,4 mln.",
+        "explain": "600 ming so‘m allaqachon to‘langan va qaytarilmaydi, shuning uchun u qarorga ta’sir qilmasligi kerak.\nTuzoq: qaytarilmaydigan avansni «qutqarish» uchun qimmatroq qarorni davom ettirish.",
+        "summary": "Qaytarib bo‘lmaydigan xarajat (Sunk Cost) — Allaqachon sarflangan va qaytarib olinmaydigan mablag‘.\nQaror qabul qilishda avvalgi yo‘qotishni emas, keyingi xarajat va foydani solishtiring."
+      }
+    ],
+    "kredit": [
+      {
+        "id": "kredit-100",
+        "value": 100,
+        "title": "Reklamadagi 24% va haqiqiy xarajat",
+        "body": "Talaba telefon uchun bankdan kredit olmoqchi. Bank quyidagi ma’lumotlarni berdi:\n- Nominal yillik foiz — 24%\n- Kreditning to‘liq qiymati — 29%",
+        "ask": "Qaysi xulosa to‘g‘ri?",
+        "options": [
+          "29% faqat inflyatsiyaning kredit narxiga qo‘shilgan qismini bildiradi",
+          "29% belgilangan metodikaga ko‘ra foizdan tashqari tegishli xarajatlarni ham hisobga oladi",
+          "24% barcha xarajatlarni bildiradi, 29% esa bankning kutilayotgan foydasi"
+        ],
+        "answer": "B",
+        "short": "To‘liq qiymat (29%) foizdan tashqari boshqa xarajatlarni ham o‘z ichiga oladi.",
+        "explain": "Nominal foiz — kreditdan foydalanish uchun hisoblanadigan foiz stavkasi.\nKreditning to‘liq qiymati esa tegishli qo‘shimcha xarajatlarni ham belgilangan metodika asosida hisobga oladi.",
+        "summary": "Kreditning to‘liq qiymati (Total Cost of Credit) — Kredit xarajatlarini belgilangan usulda ifodalovchi ko‘rsatkich.\nKreditni faqat reklamadagi nominal foiz asosida baholash yetarli emas."
+      },
+      {
+        "id": "kredit-200",
+        "value": 200,
+        "title": "Foizsiz davrning oxirgi kuni",
+        "body": "Malika kredit kartasidan 2 million so‘mlik xarid qildi. Shartnoma shunday:\n- 30 kun ichida qarz to‘liq yopilsa, foiz olinmaydi\n- Qarz to‘liq yopilmasa, 30 kun uchun dastlabki 2 millionga 3% foiz hisoblanadi\n- Qisman to‘lov bu foizni kamaytirmaydi\n30-kuni Malika 1 900 000 so‘m to‘ladi. Boshqa xarajat yo‘q.",
+        "ask": "Qolgan 100 ming asosiy qarzdan tashqari Malika qancha foiz to‘lashi kerak?",
+        "options": [
+          "60 000 so‘m",
+          "3 000 so‘m",
+          "57 000 so‘m"
+        ],
+        "answer": "A",
+        "short": "2 000 000 × 3% = 60 000 so‘m",
+        "explain": "To‘liq yopish sharti bajarilmadi, shuning uchun foiz dastlabki 2 millionga hisoblanadi.\n3 000 so‘m — faqat qolgan 100 mingga, 57 000 so‘m — to‘langan 1,9 mln ga hisoblangan xato javoblar.\nJami qolgan majburiyat: 100 000 + 60 000 = 160 000 so‘m.",
+        "summary": "Imtiyozli davr (Grace Period) — Belgilangan shartlar bajarilganda foiz olinmaydigan davr.\nImtiyozli davr shartlari va foiz hisoblash tartibini oldindan tekshiring."
+      },
+      {
+        "id": "kredit-300",
+        "value": 300,
+        "title": "Muddatni qisqartirishmi?",
+        "body": "Sardorning 12 million so‘m asosiy qarzi qolgan. Foizlar qolgan qarzga hisoblanadi. U 3 millionni muddatidan oldin to‘lamoqchi.\n* 1-yo‘l: Oylik to‘lovni kamaytirish | Yakuniy muddat saqlanadi\n* 2-yo‘l: Oylik to‘lov avvalgidek | Kredit muddati qisqaradi\nIkkala yo‘lda ham 3 million darhol asosiy qarzdan ayiriladi. Stavka o‘zgarmaydi, jarima yo‘q. Sardorning daromadi barqaror.",
+        "ask": "Sardor kelajakdagi jami foizni kamaytirmoqchi. Qaysi variant yaxshiroq?",
+        "options": [
+          "Oylik to‘lovni kamaytirish, chunki muddat o‘zgarmaydi",
+          "Ikkala usulning foiz xarajati har doim teng",
+          "Muddatni qisqartirish, chunki qarz tezroq kamayadi va foiz kamroq davr hisoblanadi"
+        ],
+        "answer": "C",
+        "short": "Muddat qisqarsa, qarz tezroq yopiladi va foiz kamroq oy hisoblanadi.",
+        "explain": "Ikkala usulda ham asosiy qarz darhol 3 millionga kamayadi.\nOylik to‘lov avvalgidek saqlansa, qolgan qarz tezroq yopiladi. Bu kelajakdagi foizni kamaytiradi.",
+        "summary": "Muddatidan oldin so‘ndirish (Early Repayment) — Kreditni belgilangan muddatdan avval qisman yoki to‘liq qaytarish.\nMuddatni qisqartirish odatda jami foizni kamaytiradi; oylik to‘lovni kamaytirish esa oylik yukni yengillashtiradi."
+      },
+      {
+        "id": "kredit-400",
+        "value": 400,
+        "title": "Bir xil foiz, har xil kredit",
+        "body": "Ikki bank 10 million so‘m kreditni 12 oyga, yillik 24% (oyiga 2%) nominal stavkada taklif qildi:\n* 1-bank: Asosiy qarz har oy teng qismlarda | Foiz qolgan qarzga hisoblanadi\n* 2-bank: Asosiy qarz har oy teng qismlarda | Foiz dastlabki 10 mln ga hisoblanadi\nBoshqa xarajat yo‘q.",
+        "ask": "Qaysi xulosa to‘g‘ri?",
+        "options": [
+          "2-bankda jami foiz 1,3 mln, 1-bankda 2,4 mln so‘m",
+          "1-bankda jami foiz 1,3 mln, 2-bankda 2,4 mln so‘m",
+          "Ikkala bankda jami foiz 2,4 mln so‘m"
+        ],
+        "answer": "B",
+        "short": "1-bank: 1,3 mln, 2-bank: 2,4 mln so‘m foiz.",
+        "explain": "= 1-bank: oylik qoldiqlar yig‘indisi 65 mln × 2% = 1,3 mln\n= 2-bank: 10 mln × 2% × 12 = 2,4 mln\nBir xil nominal stavka foiz qanday hisoblanishiga qarab ikki xil xarajat beradi.",
+        "summary": "Kamayuvchi qoldiq usuli (Reducing Balance Method) — Foiz qolgan qarzga hisoblanadigan usul.\nBoshlang‘ich summaga foiz (Flat Rate Method) — Foiz dastlabki kredit summasiga hisoblanadigan usul.\nKreditlarni solishtirishda foiz hisoblash usulini so‘rang."
+      },
+      {
+        "id": "kredit-500",
+        "value": 500,
+        "title": "Refinanslash: qaysi biri arzon?",
+        "body": "Dilshodning kreditidan 12 million so‘m asosiy qarz qolgan. Eski jadval bo‘yicha keyingi 12 oydagi jami to‘lov 13 200 000 so‘m.\n* Kredit-1: 12 oy × 1 050 000 so‘m | Rasmiylashtirish — 400 000 so‘m\n* Kredit-2: 12 oy × 1 080 000 so‘m | Rasmiylashtirish bepul\nIkkala yangi kredit eski qarzni to‘liq yopadi, eski jadval bekor bo‘ladi. Boshqa xarajat yoki jarima yo‘q.",
+        "ask": "Dilshod bugundan keyingi jami xarajatni kamaytirmoqchi. Qaysi xulosa to‘g‘ri?",
+        "options": [
+          "Kredit-2 eng arzon, Kredit-1 ikkinchi, eski kredit eng qimmat",
+          "Kredit-1 eng arzon, Kredit-2 ikkinchi, eski kredit eng qimmat",
+          "Eski kredit eng arzon, Kredit-2 ikkinchi, Kredit-1 eng qimmat"
+        ],
+        "answer": "A",
+        "short": "Kredit-2: 12,96 mln < Kredit-1: 13,0 mln < Eski: 13,2 mln",
+        "explain": "= Eski: 13 200 000\n= Kredit-1: 1 050 000 × 12 + 400 000 = 13 000 000\n= Kredit-2: 1 080 000 × 12 = 12 960 000\nTuzoq: Kredit-1 ning oylik to‘lovi kichikroq, lekin rasmiylashtirish haqi umumiy xarajatni oshiradi.",
+        "summary": "Qayta moliyalashtirish (Refinancing) — Mavjud kreditni yangi kredit orqali yopish.\nRefinanslashda foiz, oylik to‘lov, xizmat haqi va jami xarajatni solishtiring."
+      }
+    ],
+    "qarz": [
+      {
+        "id": "qarz-100",
+        "value": 100,
+        "title": "Do‘stga berilgan qarz",
+        "body": "Bobur do‘stiga 2 million so‘m qarz bermoqchi. Do‘sti ikki oy ichida qaytarishga va’da berdi.\nBobur kelajakda tushunmovchilik bo‘lmasligi uchun dalillarni saqlamoqchi.",
+        "ask": "Qaysi yondashuv eng to‘liq?",
+        "options": [
+          "Telegramda summani kelishib, bank orqali pul o‘tkazish",
+          "Pulni guvohlar oldida naqd berib, muddatni og‘zaki kelishish",
+          "Summa, tomonlar va muddat ko‘rsatilgan yozma kelishuv tuzib, pul berilganini tasdiqlovchi dalilni saqlash"
+        ],
+        "answer": "C",
+        "short": "Yozma kelishuv + pul berilganini tasdiqlovchi dalil.",
+        "explain": "Telegram yozishmasi, guvohlar va bank o‘tkazmasi ham dalil bo‘lishi mumkin.\nLekin faqat yozma kelishuvda summa, muddat va tomonlarning majburiyatlari aniq belgilanadi.",
+        "summary": "Qarz majburiyati (Debt Obligation) — Qarz oluvchining kelishilgan shartlarda mablag‘ni qaytarish majburiyati.\nQarzni hujjatlashtirishda summa, muddat, tomonlar va pul topshirilgani tasdiqlanishi muhim."
+      },
+      {
+        "id": "qarz-200",
+        "value": 200,
+        "title": "«Faqat imzo qo‘yib ber!»",
+        "body": "Akmalning tanishi bankdan qarz olmoqchi va Akmaldan kafil bo‘lishni so‘radi.\nShartnomada yozilgan: «Qarz oluvchi majburiyatni bajarmasa, bank qarzni kafildan ham talab qilish huquqiga ega».\nAkmal kredit pulini shaxsan olmaydi.",
+        "ask": "Qaysi xulosa to‘g‘ri?",
+        "options": [
+          "Akmal pulni olmagani sababli kredit bo‘yicha moliyaviy javobgarlikka tortilmaydi",
+          "Akmal pulni olmasa ham, imzolagan shartnomasi bo‘yicha to‘lov majburiyatiga duch kelishi mumkin",
+          "Akmal faqat tanishi qarzning yarmidan ko‘pini to‘lagandan keyin javobgar bo‘lishi mumkin"
+        ],
+        "answer": "B",
+        "short": "Kafil pulni olmasa ham, shartnoma bo‘yicha qarzni to‘lashi mumkin.",
+        "explain": "Kafil kredit mablag‘idan foydalanmagan bo‘lishi mumkin, ammo kafillik shartnomasi bo‘yicha moliyaviy majburiyatni o‘z zimmasiga oladi.\nMajburiyatning aniq doirasi qonunchilik va shartnomaga bog‘liq.",
+        "summary": "Kafillik (Suretyship) — Boshqa shaxsning qarz majburiyati bajarilishini ta’minlash bo‘yicha huquqiy majburiyat.\nKafil bo‘lish oddiy rasmiyatchilik emas."
+      },
+      {
+        "id": "qarz-300",
+        "value": 300,
+        "title": "Qaysi qarzdan boshlash kerak?",
+        "body": "Sardorda uchta qarz bor:\n* Do‘stidan: 2 mln so‘m | Foizsiz, muddat 6 oydan keyin\n* Kredit kartasi: 3 mln so‘m | Yillik 36%\n* Iste’mol qarzi: 5 mln so‘m | Yillik 22%\nBarcha minimal to‘lovlar vaqtida bajarilyapti. Sardorda qo‘shimcha 1 million so‘m paydo bo‘ldi. Muddatidan oldin qaytarish jarimasiz, foiz qolgan qarzga hisoblanadi.",
+        "ask": "Sardor kelajakdagi foiz xarajatini kamaytirmoqchi. Pulni qaysi qarzga yo‘naltirgani ma’qul?",
+        "options": [
+          "36% li kredit kartasi qarziga",
+          "Foizsiz qarzga, chunki uning summasi kichik",
+          "22% li iste’mol qarziga, chunki uning qoldig‘i kattaroq"
+        ],
+        "answer": "A",
+        "short": "Eng yuqori foizli qarz (36%) birinchi navbatda kamaytiriladi.",
+        "explain": "Minimal to‘lovlar bajarilgan sharoitda qo‘shimcha pulni eng yuqori foizli qarzga yo‘naltirish kelajakdagi foizni eng ko‘p kamaytiradi.\nFoizsiz qarzni oldin to‘lash hech qanday foizni tejamaydi.",
+        "summary": "Qarz lavinasi (Debt Avalanche) — Avval eng yuqori foizli qarzlarni qisqartirish usuli.\nQarz qor uyumi (Debt Snowball) — Avval eng kichik qarz qoldiqlarini yopishga asoslangan muqobil usul.\nBirinchisi foizni tejaydi, ikkinchisi motivatsiyani oshirishi mumkin."
+      },
+      {
+        "id": "qarz-400",
+        "value": 400,
+        "title": "Qarzni qarz bilan yopish",
+        "body": "Javlon 4 million so‘m qarzini 10 kundan keyin qaytarishi kerak. Hozir unda 2 million so‘m bor.\n* Qarz beruvchi: Hozir 2 mln olishga rozi | Qolgan 2 mln ga 30 kun muddat | Buning uchun +100 ming so‘m\n* Mikroqarz: 2 mln so‘m 30 kunga | 30 kundan keyin 2,3 mln qaytariladi\nJavlon 30 kundan keyin 2,1 million so‘m daromad olishi aniq. Boshqa xarajat yo‘q.",
+        "ask": "Qaysi variant to‘lovni bajarish imkonini beradi va eng kam qo‘shimcha xarajat talab qiladi?",
+        "options": [
+          "Mikroqarz orqali asl qarzni yopish",
+          "Mikroqarz olib, qarz beruvchi bilan ham muddatni uzaytirish",
+          "Mavjud 2 millionni hozir qaytarib, qolgan qismiga 30 kunlik uzaytirish bo‘yicha kelishish"
+        ],
+        "answer": "C",
+        "short": "30 kundan keyin 2 100 000 so‘m kerak — bu daromadga teng.",
+        "explain": "= Uzaytirish: 2 000 000 + 100 000 = 2 100 000 — daromadga yetadi\n= Mikroqarz: 2 300 000 — daromaddan 200 000 ko‘p, qaytarib bo‘lmaydi\nMikroqarz nafaqat qimmatroq, balki Javlon uni o‘z vaqtida qaytara olmaydi ham.",
+        "summary": "Qarzni qayta tuzish (Debt Restructuring) — Qarz muddati yoki to‘lov shartlarini tomonlar kelishuvi asosida o‘zgartirish.\nEski qarzni yangi qarz bilan yopishdan oldin uni qaytara olishingizni hisoblang."
+      },
+      {
+        "id": "qarz-500",
+        "value": 500,
+        "title": "Uchta qarz, bitta qaror",
+        "body": "Diyorning bugun 3 million so‘m erkin mablag‘i bor. Uning uchta majburiyati:\n* Ijara qarzi: 1 mln so‘m | Bugun to‘lanmasa, 500 ming jarima\n* Do‘stidan qarz: 1 mln so‘m | Yozma ravishda 10 kun jarimasiz kutishga rozi\n* Mikroqarz: 2 mln so‘m | Bugun kamida 1 mln to‘lanishi kerak | Bugun to‘liq yopilmasa, qolganiga +200 ming\nDiyor 10 kundan keyin yana 2 million so‘m oladi. Boshqa xarajat yo‘q.",
+        "ask": "Maqsad — barcha qarzlarni eng kam qo‘shimcha xarajat bilan qaytarish. Qaysi reja eng maqbul?",
+        "options": [
+          "Bugun ijara, do‘stining qarzi va mikroqarzning 1 millionini to‘lash, qolganini 10 kundan keyin yopish",
+          "Bugun ijara va mikroqarzni to‘liq yopish, do‘stining qarzini 10 kundan keyin qaytarish",
+          "Bugun ijara va mikroqarzning 1 millionini to‘lash, 1 millionni zaxirada saqlab, qolganini 10 kundan keyin yopish"
+        ],
+        "answer": "B",
+        "short": "Bugun: ijara 1 mln + mikroqarz 2 mln. 10 kundan keyin: do‘stga 1 mln. Qo‘shimcha xarajat — 0.",
+        "explain": "Ijara va mikroqarz bugun to‘liq yopiladi, do‘sti esa 10 kun jarimasiz kutadi.\nQolgan ikki rejada mikroqarz bugun to‘liq yopilmaydi va 200 ming so‘m qo‘shimcha haq yuzaga keladi.",
+        "summary": "Qarz ustuvorligi (Debt Prioritization) — Qarzlarni muddat, jarima, foiz va mavjud mablag‘ga qarab tartiblash.\nEng katta qarzni emas, eng qimmat oqibatga olib keladigan majburiyatni birinchi yoping."
+      }
+    ],
+    "investitsiya": [
+      {
+        "id": "investitsiya-100",
+        "value": 100,
+        "title": "Kafolatlangan 10% foyda?",
+        "body": "Telegramda investitsiya guruhi ochildi. Tashkilotchi shunday reklama qilyapti: «Har oy 10% sof foyda. Risk yo‘q. Pulni istalgan paytda qaytarib olasiz».\nDastlabki ishtirokchilarga haqiqatan ham pul to‘langan.",
+        "ask": "Qaysi xulosa eng asosli?",
+        "options": [
+          "Birinchi ishtirokchilarga pul to‘langani loyiha haqiqiy daromad keltirayotganini isbotlaydi",
+          "Dastlabki to‘lovlar amalga oshirilgani sababli risk faqat oxirgi ishtirokchilarga tegishli",
+          "Yuqori kafolatlangan daromad va risk yo‘qligi haqidagi va’da jiddiy ogohlantiruvchi belgi"
+        ],
+        "answer": "C",
+        "short": "«Kafolatlangan, risksiz, yuqori foyda» — firibgarlikning klassik belgisi.",
+        "explain": "Dastlabki to‘lovlar loyihaning qonuniy yoki barqaror ekanini isbotlamaydi.\nYangi ishtirokchilarning puli oldingilarga to‘lanayotgan bo‘lishi mumkin.",
+        "summary": "Moliyaviy piramida (Ponzi Scheme) — Oldingi ishtirokchilarga to‘lovlar yangi jalb qilingan pullar hisobidan qilinadigan firibgarlik.\nYuqori, kafolatlangan va risksiz daromad va’dasi jiddiy tekshiruvni talab qiladi."
+      },
+      {
+        "id": "investitsiya-200",
+        "value": 200,
+        "title": "Aksiya yoki obligatsiya?",
+        "body": "Aziza kompaniyaning ikkita moliyaviy instrumentini o‘rganmoqda:\n* Aksiya: Kompaniyadagi ulushni bildiradi | Dividend to‘lanishi mumkin\n* Obligatsiya: Qarz majburiyatini bildiradi | Kupon to‘lovlari nazarda tutilgan",
+        "ask": "Qaysi xulosa to‘g‘ri?",
+        "options": [
+          "Aksiya egasi mulkiy ulushga, obligatsiya egasi esa qarz talabiga ega bo‘ladi",
+          "Aksiya egasi kompaniyaning kreditori, obligatsiya egasi esa mulkdori bo‘ladi",
+          "Har ikkala instrument asosiy mablag‘ va dividendni bir xil kafolatlaydi"
+        ],
+        "answer": "A",
+        "short": "Aksiya — ulush (egalik), obligatsiya — qarz (kreditorlik).",
+        "explain": "Aksiya kompaniyadagi ulushli ishtirokni, obligatsiya esa emitentning qarz majburiyatini bildiradi.\nUlarning risklari, daromad manbalari va huquqlari farqlanadi.",
+        "summary": "Aksiya (Stock) — Kompaniya kapitalidagi ulushni ifodalovchi qimmatli qog‘oz.\nObligatsiya (Bond) — Qarz majburiyatini ifodalovchi qimmatli qog‘oz."
+      },
+      {
+        "id": "investitsiya-300",
+        "value": 300,
+        "title": "Fond birjasida beshta aksiya",
+        "body": "Kamol O‘zbekiston fond bozorida investitsiya qilmoqchi va ikkita portfelni solishtirmoqda:\n* Birinchi portfel: Beshta turli bank aksiyasi\n* Ikkinchi portfel: Bank, oziq-ovqat, energetika, telekommunikatsiya va logistika — beshta kompaniya\nBu shartli misolda kompaniyalarning individual risklari o‘xshash, turli tarmoqlarning daromadlari esa bir-biriga to‘liq bog‘liq emas.",
+        "ask": "Qaysi xulosa asosliroq?",
+        "options": [
+          "Birinchi portfel yaxshiroq, chunki kompaniyalar bir xil tarmoqdan tanlangan",
+          "Ikkinchi portfel tarmoq riskini yaxshiroq taqsimlashi mumkin",
+          "Ikkala portfel bir xil diversifikatsiyalangan, chunki har birida beshtadan aksiya bor"
+        ],
+        "answer": "B",
+        "short": "Turli tarmoqlar — bitta sohadagi salbiy hodisa butun portfelni urmaydi.",
+        "explain": "Bank sektoriga ta’sir qiladigan salbiy hodisa birinchi portfeldagi beshta aksiyaning hammasiga ta’sir qilishi mumkin.\nIkkinchi portfel riskni yo‘qotmaydi, lekin bir tarmoqqa bog‘lanib qolishni kamaytiradi.",
+        "summary": "Diversifikatsiya (Diversification) — Investitsiyalarni turli aktivlar va tarmoqlarga taqsimlab, riskni kamaytirishga intilish.\nAksiyalar soni ko‘p bo‘lishi diversifikatsiya yetarli ekanini anglatmaydi."
+      },
+      {
+        "id": "investitsiya-400",
+        "value": 400,
+        "title": "Dollarda foyda, so‘mda zarar?",
+        "body": "O‘zbekistonlik investor xorijiy aksiya sotib oldi. Bir yil davomida aksiyaning dollardagi narxi 5% oshdi.\nShu davrda AQSh dollarining so‘mga nisbatan kursi 10% pasaydi.\nInvestor yil oxirida aksiyani sotib, pulni so‘mga aylantirdi. Soliq va komissiya yo‘q.",
+        "ask": "Uning so‘mdagi natijasi taxminan qancha?",
+        "options": [
+          "+5%",
+          "−15%",
+          "−5,5%"
+        ],
+        "answer": "C",
+        "short": "1,05 × 0,90 = 0,945 → −5,5%",
+        "explain": "= Aktiv narxi: × 1,05\n= Dollar kursi: × 0,90\n= Birgalikda: 1,05 × 0,90 = 0,945 → −5,5%\nFoizlarni shunchaki 5 − 10 deb ayirish ham aniq natija bermaydi; ular ko‘paytiriladi.",
+        "summary": "Valyuta riski (Currency Risk) — Kurs o‘zgarishi natijasida investitsiyaning mahalliy valyutadagi qiymati o‘zgarishi xavfi.\nXorijiy investitsiyada aktiv narxi va valyuta kursini birga hisoblang."
+      },
+      {
+        "id": "investitsiya-500",
+        "value": 500,
+        "title": "Investitsiyani qanday tekshirasan?",
+        "body": "Talaba Sarvar 5 million so‘m investitsiya qilmoqchi va uchta platformani ko‘rib chiqdi:\n* Platforma-1: O‘zini xorijiy broker deb tanishtiradi | Saytdagi litsenziya raqami regulator reyestrida boshqa kompaniyaga tegishli\n* Platforma-2: Regulator reyestrida faol litsenziyasi tasdiqlangan | Pul shartnomadagi rasmiy hisobga o‘tkaziladi | Daromad kafolatlanmaydi\n* Platforma-3: Kompaniya sifatida ro‘yxatdan o‘tgan | Pulni direktorning shaxsiy kartasiga yuborishni so‘raydi | Daromad kafolatlanmaydi\nSarvarning maqsadi — firibgarlik xavfini kamaytirish.",
+        "ask": "Berilgan ma’lumotlar bo‘yicha qaysi platforma eng asosli tanlov?",
+        "options": [
+          "Platforma-2",
+          "Platforma-1",
+          "Platforma-3"
+        ],
+        "answer": "A",
+        "short": "Litsenziya mustaqil tekshirilgan, pul rasmiy hisobga boradi.",
+        "explain": "Platforma-1 dagi litsenziya raqami boshqa tashkilotga tegishli — bu jiddiy nomuvofiqlik.\nPlatforma-3 ro‘yxatdan o‘tgan bo‘lsa ham, shaxsiy kartaga pul so‘rayapti.\nPlatforma-2 tanlansa ham, bu daromadni yoki risk yo‘qligini kafolatlamaydi.",
+        "summary": "Kompleks tekshiruv (Due Diligence) — Investitsiyadan oldin kompaniya, litsenziya, shartnoma va risklarni tekshirish.\nKompaniya ro‘yxatdan o‘tgani uning investitsiya xizmatiga ruxsati borligini anglatmaydi."
+      }
+    ],
+    "bank": [
+      {
+        "id": "bank-100",
+        "value": 100,
+        "title": "Bankomatdagi to‘rt raqam",
+        "body": "Nodir bankomatdan naqd pul yechmoqchi. Kartasiga to‘rt xonali PIN-kod o‘rnatilgan.\nNavbatdagi odam unga juda yaqin turibdi. Bankomatning ustki qismida kuzatuv kamerasi ham bor.",
+        "ask": "Qaysi harakat PIN-kodni himoyalashga yaxshiroq yordam beradi?",
+        "options": [
+          "PIN-kodni juda tez terish, shunda kuzatayotgan odam eslab qolishga ulgurmaydi",
+          "Faqat orqadagi odamdan uzoqroq turishni so‘rash, klaviaturani esa ochiq qoldirish",
+          "PIN kiritayotganda klaviaturani boshqa qo‘l bilan to‘sish va boshqalardan masofa saqlash"
+        ],
+        "answer": "C",
+        "short": "Klaviaturani qo‘l bilan to‘sish + masofa saqlash.",
+        "explain": "Tez kiritish ko‘rib qolish xavfini yo‘qotmaydi.\nOrqadagi odam uzoqlashsa ham, kamera kabi boshqa kuzatish vositalari bo‘lishi mumkin.",
+        "summary": "PIN (Personal Identification Number) — Karta yoki hisobdan foydalanishda shaxsni tasdiqlovchi maxfiy raqamli kod.\nPIN-kod hech kimga oshkor qilinmasligi kerak."
+      },
+      {
+        "id": "bank-200",
+        "value": 200,
+        "title": "Bankdan OTP-kod keldi!",
+        "body": "Talaba uyida o‘tirganida HUMO kartasiga bog‘liq SMS orqali bir martalik tasdiqlash kodini oldi. SMSda «Kodni hech kimga aytmang» deb yozilgan.\nBiroz o‘tib noma’lum raqamdan qo‘ng‘iroq qilishdi: «Men bank xavfsizlik xodimiman. Kartangizdan shubhali to‘lov amalga oshmoqda. Uni bekor qilish uchun SMS-kodni ayting».\nTalaba hech qanday operatsiya boshlamagan.",
+        "ask": "Qaysi qaror eng xavfsiz?",
+        "options": [
+          "Qo‘ng‘iroqni tugatib, kodni aytmasdan, bankning rasmiy ilovasi yoki rasmiy aloqa kanali orqali tekshirish",
+          "Kodni aytmasdan, faqat SMS skrinshotini bank xodimiga yuborish",
+          "Kodni aytishdan oldin qo‘ng‘iroq qiluvchidan karta egasining ismini aytib berishini so‘rash"
+        ],
+        "answer": "A",
+        "short": "Qo‘ng‘iroqni tugatish va bankka o‘zingiz rasmiy kanal orqali murojaat qilish.",
+        "explain": "Kodni aytish ham, skrinshotini yuborish ham uni oshkor qiladi.\nQo‘ng‘iroq qiluvchining ismingizni bilishi uning haqiqiy bank xodimi ekanini isbotlamaydi.",
+        "summary": "Bir martalik parol (One-Time Password, OTP) — Kirish yoki operatsiyani tasdiqlash uchun ishlatiladigan vaqtinchalik kod.\nOTP-kodni hech kimga bermang, hatto o‘zini bank xodimi deb tanishtirsa ham."
+      },
+      {
+        "id": "bank-300",
+        "value": 300,
+        "title": "Tanish do‘kondan notanish to‘lov",
+        "body": "Diyor bank ilovasida 280 ming so‘mlik operatsiyani ko‘rdi. Operatsiya nomida oldin xarid qilgan internet-do‘koni yozilgan.\nDiyor bu to‘lovni amalga oshirmaganini biladi. U oldin do‘konga kartasini bog‘lagan, ammo faol obunasi borligini eslamaydi.",
+        "ask": "Diyor qanday yo‘l tutishi kerak?",
+        "options": [
+          "To‘lovni avtomatik obuna deb qabul qilish, chunki do‘kon nomi tanish",
+          "Operatsiya tafsilotlarini tekshirib, zarurat bo‘lsa kartani vaqtincha bloklash va bankka rasmiy murojaat qilish",
+          "Kartani do‘kon akkauntidan o‘chirib, bankka murojaat qilmasdan keyingi to‘lovlarni kuzatish"
+        ],
+        "answer": "B",
+        "short": "Tekshirish → kartani bloklash → bankka rasmiy murojaat.",
+        "explain": "Do‘kon nomining tanishligi operatsiya ruxsat bilan bajarilganini isbotlamaydi.\nKartani do‘kondan o‘chirish foydali, lekin ruxsatsiz to‘lov ehtimoli bo‘lsa, bankka ham xabar berish kerak.",
+        "summary": "Ruxsatsiz tranzaksiya (Unauthorized Transaction) — Karta egasining roziligisiz amalga oshirilgan operatsiya.\nBank ilovasidagi operatsiyalar tarixini muntazam tekshiring."
+      },
+      {
+        "id": "bank-400",
+        "value": 400,
+        "title": "Murakkab foizning kuchi",
+        "body": "Talaba 10 million so‘m omonat qo‘ymoqchi. Ikki bankning shartli taklifi:\n* 1-bank: Yillik 20% oddiy foiz | Foiz har doim dastlabki 10 mln ga hisoblanadi\n* 2-bank: Yillik 20% | Foiz har yil oxirida omonatga qo‘shiladi | Keyingi yil yangi qoldiqqa hisoblanadi\nPul ikki yil saqlanadi. Soliq va komissiya yo‘q.",
+        "ask": "Ikki yil oxiridagi qoldiqlar qaysi variantda to‘g‘ri?",
+        "options": [
+          "1-bank: 14,4 mln, 2-bank: 14 mln",
+          "1-bank: 14 mln, 2-bank: 14 mln",
+          "1-bank: 14 mln, 2-bank: 14,4 mln"
+        ],
+        "answer": "C",
+        "short": "Oddiy: 14 mln. Murakkab: 12 → 14,4 mln.",
+        "explain": "= 1-bank: 10 + 2 + 2 = 14 mln\n= 2-bank, 1-yil: 10 × 1,20 = 12 mln\n= 2-bank, 2-yil: 12 × 1,20 = 14,4 mln\nFarq — 400 ming so‘m: ikkinchi yilda foizning o‘zi ham foiz keltirdi.",
+        "summary": "Murakkab foiz (Compound Interest) — Oldingi davr foizi asosiy summaga qo‘shilib, keyingi davrda o‘zi ham daromad keltiradigan mexanizm.\nMuddat qancha uzun bo‘lsa, kapitallashtirishning ta’siri shuncha katta."
+      },
+      {
+        "id": "bank-500",
+        "value": 500,
+        "title": "OLX’dagi soxta xaridor",
+        "body": "Talaba OLX orqali ishlatilgan telefonini 2 million so‘mga sotmoqchi. Bir xaridor yozdi: «Telefonni olaman. Pulni hozir yuboraman. Mana, pulni qabul qilish uchun havola».\nHavola OLX dizayniga o‘xshash saytni ochdi, lekin sayt manzili OLX rasmiy manzilidan farq qiladi. Sayt so‘raydi:\n- HUMO karta raqami\n- Karta amal qilish muddati\n- SMS orqali keladigan tasdiqlash kodi\nXaridor: «Pul tushishi uchun SMS-kodni ham kiritish kerak».",
+        "ask": "Talaba qanday qaror qabul qilishi kerak?",
+        "options": [
+          "Havolani yopib, SMS-kodni bermasdan, to‘lovni mustaqil tekshiriladigan rasmiy usulda qabul qilish",
+          "Faqat karta raqami va amal qilish muddatini kiritib, SMS-kodni keyinroq yuborish",
+          "Havola HTTPS bilan ochilgan bo‘lsa, SMS-kod bilan tasdiqlash"
+        ],
+        "answer": "A",
+        "short": "Pul qabul qilish uchun hech qachon SMS-kod kerak emas.",
+        "explain": "Pul qabul qilish bahonasida tasdiqlash kodi so‘ralishi — firibgarlik belgisi.\nSoxta sayt haqiqiy marketpleys dizaynini ko‘chirishi mumkin. HTTPS saytning haqiqiyligini kafolatlamaydi.\nMuhim detal: havola manzili rasmiy saytga mos emas.",
+        "summary": "Fishing (Phishing) — Soxta sayt yoki xabar orqali maxfiy ma’lumotlarni qo‘lga kiritishga qaratilgan firibgarlik.\nHUMO va UZCARD kartalarida SMS-kod asosiy himoya. Karta ma’lumotlari va kod faqat o‘zingiz boshlagan, tekshirilgan to‘lovda ishlatiladi."
+      }
+    ],
+    "provayderlar": [
+      {
+        "id": "provayderlar-100",
+        "value": 100,
+        "title": "Foizsiz o‘tkazma limiti",
+        "body": "Aziza dugonasiga 1 million so‘m yubormoqchi va ikki to‘lov ilovasini solishtirdi. Tariflar o‘zgarib turgani uchun raqamlar shartli.\n* Birinchi ilova: Oyiga 1 mln so‘mgacha komissiyasiz | Aziza bu oy 700 mingini ishlatgan | Limitdan oshgan qismga 1%\n* Ikkinchi ilova: Har bir o‘tkazmaga 0,5%\nAziza hozir 1 million so‘mni bitta o‘tkazmada yuboradi. Boshqa xarajat yo‘q.",
+        "ask": "Qaysi ilova arzonroq?",
+        "options": [
+          "Birinchi ilova — 3 000 so‘m komissiya",
+          "Ikkinchi ilova — 5 000 so‘m komissiya",
+          "Ikkala ilova — 5 000 so‘mdan komissiya"
+        ],
+        "answer": "B",
+        "short": "Birinchi: 700 000 × 1% = 7 000. Ikkinchi: 1 000 000 × 0,5% = 5 000.",
+        "explain": "= Birinchi ilovada bepul limitdan 300 ming qolgan\n= Limitdan oshgan qism: 1 000 000 − 300 000 = 700 000\n= 700 000 × 1% = 7 000 so‘m\n= Ikkinchi ilova: 1 000 000 × 0,5% = 5 000 so‘m\nTuzoq: 3 000 so‘m — bepul qolgan 300 mingga 1% ni hisoblash xatosi.",
+        "summary": "Komissiyasiz limit (Fee-Free Transfer Limit) — Belgilangan muddatda xizmat haqisiz o‘tkazish mumkin bo‘lgan maksimal summa.\nKomissiyani hisoblashda allaqachon ishlatilgan limitni ham hisobga oling."
+      },
+      {
+        "id": "provayderlar-200",
+        "value": 200,
+        "title": "QR-kod kimning hisobiga tegishli?",
+        "body": "Talaba kafeda ovqatlanib, 85 ming so‘m to‘lamoqchi. Ofitsiant stol ustidagi QR-kodni ko‘rsatdi.\nTo‘lov ilovasida 85 ming so‘m chiqdi, lekin qabul qiluvchi nomi kafening chekidagi savdo nomiga mos kelmadi.\nOfitsiant: «Bu yangi hisobimiz».",
+        "ask": "Talaba qaysi harakatni tanlashi kerak?",
+        "options": [
+          "Summa to‘g‘ri bo‘lsa, QR-kod orqali to‘lovni amalga oshirish",
+          "QR-kodni qayta skaner qilib, nom o‘zgarmasa, to‘lovni tasdiqlash",
+          "Tasdiqlashdan oldin qabul qiluvchini kafe ma’muriyati va rasmiy chek ma’lumotlari orqali tekshirish"
+        ],
+        "answer": "C",
+        "short": "To‘lovdan oldin qabul qiluvchini rasmiy manba orqali tekshirish.",
+        "explain": "QR-kodning stol ustida turgani uning haqiqiy ekanini isbotlamaydi. Firibgar asl QR ustiga boshqa kod yopishtirishi mumkin.\nQayta skaner qilish bir xil soxta kodni ko‘rsatadi, xolos.",
+        "summary": "To‘lov rekvizitlari (Payment Details) — Pul yuboriladigan hisob va qabul qiluvchi haqidagi ma’lumotlar.\nQR orqali to‘lovda summa bilan birga qabul qiluvchini ham tekshiring."
+      },
+      {
+        "id": "provayderlar-300",
+        "value": 300,
+        "title": "Karta raqami yoki hisob raqami?",
+        "body": "Toshkentdagi universitet talabaga grant mablag‘ini o‘tkazmoqchi. Buxgalteriya so‘radi:\n- 20 xonali bank hisob raqami\n- Bank MFO kodi\n- Hisob egasi ma’lumotlari\nTalabada HUMO kartasi va shu kartaga bog‘langan bank hisobi bor.",
+        "ask": "Talaba qaysi ma’lumotlarni yuborishi kerak?",
+        "options": [
+          "HUMO kartasining 16 xonali raqami va amal qilish muddati",
+          "Bankdan olingan 20 xonali hisob raqami, MFO va hisob egasi rekvizitlari",
+          "Kartaning 16 xonali raqami, SMS-kod va bank nomi"
+        ],
+        "answer": "B",
+        "short": "20 xonali hisob raqami + MFO + hisob egasi.",
+        "explain": "Kartaning 16 xonali raqami bilan bankdagi 20 xonali hisob raqami bir xil narsa emas.\nSMS-kod pul qabul qilish rekviziti emas va hech kimga berilmaydi.",
+        "summary": "Bank hisob raqami (Bank Account Number) — Bankdagi hisobni aniqlovchi rekvizit.\nMFO (Bank Code) — Bank yoki uning bo‘linmasini aniqlaydigan kod.\nQaysi rekvizit kerakligi to‘lov turiga bog‘liq."
+      },
+      {
+        "id": "provayderlar-400",
+        "value": 400,
+        "title": "Rossiyadan yuborilgan rubl",
+        "body": "Rossiyada ishlayotgan aka O‘zbekistondagi ukasiga 50 000 rubl yubormoqchi:\n* Xizmat-1: Komissiya — 0 rubl | Kurs: 1 RUB = 145 so‘m\n* Xizmat-2: Komissiya — 500 rubl | Qolgan 49 500 rubl almashtiriladi | Kurs: 1 RUB = 148 so‘m\nBoshqa xarajat yo‘q.",
+        "ask": "Qaysi variantda ukasi ko‘proq so‘m oladi?",
+        "options": [
+          "Xizmat-1 orqali 7 250 000 so‘m",
+          "Ikkala xizmat orqali aynan 7 250 000 so‘m",
+          "Xizmat-2 orqali 7 326 000 so‘m"
+        ],
+        "answer": "C",
+        "short": "Xizmat-2: 49 500 × 148 = 7 326 000 so‘m (+76 000)",
+        "explain": "= Xizmat-1: 50 000 × 145 = 7 250 000\n= Xizmat-2: 49 500 × 148 = 7 326 000\nXizmat-2 da komissiya bor, lekin kursi yaxshiroq. Natijada 76 ming so‘m ko‘proq keladi.",
+        "summary": "Valyuta kursi farqi (Exchange Rate Spread) — Provayder kursi bilan taqqoslash kursi orasidagi farq.\nO‘tkazmada komissiyani emas, oluvchiga tushadigan yakuniy summani solishtiring."
+      },
+      {
+        "id": "provayderlar-500",
+        "value": 500,
+        "title": "Komissiya 0 $, lekin pul kam keldi",
+        "body": "Janubiy Koreyada ishlayotgan aka O‘zbekistondagi ukasining dollar hisobiga aynan 1 000 $ yetkazmoqchi:\n* Xizmat-1: Yuboruvchi komissiyasi — 0 $ | Vositachi bank 20 $ ushlaydi | Qabul qiluvchi bank 10 $ oladi | Ushlanmalar yuborilgan summadan\n* Xizmat-2: Yuboruvchi oldindan 25 $ to‘laydi | Oluvchiga to‘liq 1 000 $ kafolatlangan\nBoshqa xarajat va konvertatsiya yo‘q.",
+        "ask": "Qaysi xizmat orqali aynan 1 000 $ yetkazish arzonroq?",
+        "options": [
+          "Xizmat-1, chunki yuboruvchi komissiyasi 0 $",
+          "Xizmat-2: jami 1 025 $ xarajat bilan oluvchi to‘liq 1 000 $ oladi",
+          "Ikkala xizmatning xarajati teng, faqat komissiyalar turli bosqichda olinadi"
+        ],
+        "answer": "B",
+        "short": "Xizmat-1: 1 030 $ kerak. Xizmat-2: 1 025 $. Farq 5 $.",
+        "explain": "= Xizmat-1 orqali 1 000 $ yuborilsa: 1 000 − 20 − 10 = 970 $ keladi\n= To‘liq 1 000 $ yetkazish uchun 1 030 $ yuborish kerak\n= Xizmat-2: 1 000 + 25 = 1 025 $\nTuzoq: «0 $ komissiya» xalqaro o‘tkazmaning barcha bosqichlari bepul degani emas.",
+        "summary": "Vositachi bank (Correspondent Bank) — Xalqaro o‘tkazmada ishtirok etuvchi oraliq bank.\nSWIFT (SWIFT) — Banklar o‘rtasida xalqaro moliyaviy xabarlar almashish tarmog‘i.\nYuboruvchi xarajati bilan oluvchiga yetadigan summani alohida baholang."
+      }
+    ]
+  }
+}
