@@ -135,6 +135,7 @@ button { cursor: pointer; }
   font-size: 1rem;
   line-height: 1.2;
   white-space: nowrap;
+  text-decoration: none;
   transition: background-color .15s, border-color .15s, color .15s, transform .1s;
   user-select: none;
 }
@@ -256,7 +257,29 @@ button { cursor: pointer; }
 
 
 .setup__card { padding: 2.5rem; display: grid; gap: 1.5rem; }
-.setup__count { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.setup__card .h2 { text-align: center; }
+.setup__count { display: flex; justify-content: center; }
+
+/* Sozlash ekrani yuqorisidagi "Admin Panel" tugmasi */
+.app--setup { position: relative; }
+.topbar {
+  position: absolute; z-index: 2;
+  top: max(1.25rem, env(safe-area-inset-top, 0px));
+  right: max(2.5rem, env(safe-area-inset-right, 0px));
+}
+.admin-link {
+  display: inline-flex; align-items: center; gap: .5rem;
+  min-height: 2.75rem;
+  padding: .55rem 1.15rem;
+  border-radius: var(--r-md);
+  background: var(--orange); color: #fff;
+  font-weight: 700; font-size: 1rem; text-decoration: none;
+  box-shadow: 0 6px 18px rgba(241, 115, 0, .28);
+  transition: background-color .15s, transform .1s;
+}
+.admin-link:hover { background: #D96700; }
+.admin-link:active { transform: scale(.98); }
+.admin-link:focus-visible { outline: none; box-shadow: var(--ring); }
 .setup__fields { display: grid; gap: .8rem; }
 .setup__fields .btn { margin-top: .6rem; }
 .setup__fields .hint { text-align: center; }
@@ -593,13 +616,13 @@ button { cursor: pointer; }
   overflow: hidden;
   font-size: 1rem; line-height: 1.5; color: var(--ink-2);
 }
-.note__body::after {
+/* xiralik faqat matn haqiqatan kesilganda chiziladi */
+.note.is-clipped:not(.is-open) .note__body::after {
   content: ""; position: absolute; inset: auto 0 0 0; height: 2.4em;
   background: linear-gradient(rgba(255, 255, 255, 0), var(--surface));
   pointer-events: none;
 }
 .note.is-open .note__body { max-height: none; }
-.note.is-open .note__body::after { display: none; }
 
 .calc {
   display: grid; gap: .3rem;
@@ -669,6 +692,159 @@ li:first-child > .rank .rank__pos { background: var(--orange); color: #fff; }
 .rank__balance.is-neg { color: var(--bad); }
 .results__actions { display: flex; gap: .6rem; justify-content: flex-end; flex-wrap: wrap; }
 
+/* =========================== ADMIN PANEL =========================== */
+.app--admin {
+  overflow-y: auto;
+  background:
+    radial-gradient(60rem 40rem at 105% -10%, rgba(129, 164, 205, .3), transparent 60%),
+    var(--bg);
+}
+.app--admin .bar { position: sticky; top: 0; z-index: 5; }
+.admin {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding-block: 2rem 4rem;
+  padding-left: max(2.5rem, env(safe-area-inset-left, 0px));
+  padding-right: max(2.5rem, env(safe-area-inset-right, 0px));
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem;
+}
+.admin__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem 1.5rem; flex-wrap: wrap; }
+.admin__heading { display: grid; gap: .35rem; min-width: 0; }
+.admin__title {
+  font-family: var(--font-display); font-size: clamp(1.9rem, 1.4vw + 1.2rem, 2.6rem);
+  font-weight: 800; letter-spacing: -.03em; line-height: 1.1; color: var(--navy);
+  overflow-wrap: anywhere;
+}
+.admin__sub { color: var(--ink-2); }
+.admin__tools { display: flex; gap: .6rem; flex-wrap: wrap; }
+.crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; font-size: .95rem; font-weight: 600; color: var(--ink-3); }
+.crumbs a { color: var(--steel); text-decoration: none; }
+.crumbs a:hover { color: var(--navy); text-decoration: underline; }
+
+.btn--sm { min-height: 2.4rem; padding: .4rem .85rem; font-size: .92rem; border-radius: var(--r-sm); }
+.btn--sm.btn--icon { width: 2.4rem; padding: 0; }
+.btn--ghost.is-danger { color: var(--bad); }
+.btn--ghost.is-danger:hover:not(:disabled) { border-color: var(--bad); color: var(--bad); background: var(--bad-bg); }
+
+.notice { padding: .85rem 1.1rem; border-radius: var(--r-md); font-weight: 600; }
+.notice--ok { background: var(--ok-bg); color: var(--ok); }
+.notice--bad { background: var(--bad-bg); color: var(--bad); }
+.notice--info { background: var(--accent-bg); color: var(--ink); font-weight: 500; }
+
+/* ----- mavzular ----- */
+.tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1rem; }
+.tcard {
+  display: grid; gap: 1.1rem;
+  padding: 1.35rem 1.4rem;
+  color: var(--ink); text-decoration: none;
+  transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+.tcard:hover { border-color: var(--orange); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.tcard:focus-visible { outline: none; box-shadow: var(--ring); }
+.tcard__top { display: flex; align-items: center; gap: .9rem; min-width: 0; }
+.tcard__icon {
+  width: 3rem; height: 3rem; flex: none;
+  display: grid; place-items: center;
+  border-radius: var(--r-md);
+  background: var(--navy); color: #fff;
+}
+.tcard__icon .ic { width: 1.5rem; height: 1.5rem; }
+.tcard__name { display: grid; min-width: 0; line-height: 1.25; }
+.tcard__name b { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: -.01em; overflow-wrap: anywhere; }
+.tcard__name small { font-size: .9rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.tcard__name small b { font-size: inherit; color: var(--orange); font-family: inherit; }
+
+.levels { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .45rem; }
+.lvl { display: grid; gap: .3rem; font-variant-numeric: tabular-nums; }
+.lvl__v { font-size: .78rem; font-weight: 700; color: var(--navy); }
+.lvl__n { font-size: .75rem; color: var(--ink-3); }
+.lvl .meter { height: .4rem; }
+.lvl.is-full .meter__fill { background: var(--ok); }
+
+/* ----- savollar ro'yxati ----- */
+.filters { display: flex; flex-wrap: wrap; gap: .75rem 1rem; align-items: center; justify-content: space-between; }
+.filters .seg { flex-wrap: wrap; }
+.filters .seg__btn { display: inline-flex; align-items: center; gap: .4rem; min-width: 0; font-size: 1rem; }
+.filters .seg__btn small { font-size: .78rem; font-weight: 600; opacity: .75; }
+
+.qrows { display: grid; gap: .6rem; }
+.qrow {
+  display: flex; align-items: center; gap: 1rem;
+  padding: .85rem 1rem .85rem 1.15rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+}
+.qrow__val { flex: none; min-width: 4.2rem; font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: var(--orange); font-variant-numeric: tabular-nums; }
+.qrow__text { flex: 1; min-width: 0; display: grid; line-height: 1.35; }
+.qrow__text b, .qrow__text small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.qrow__text b { font-weight: 650; }
+.qrow__text small { font-size: .9rem; color: var(--ink-3); }
+.qrow__actions { flex: none; display: flex; gap: .4rem; }
+.empty { padding: 3rem 1.5rem; text-align: center; display: grid; gap: 1rem; justify-items: center; color: var(--ink-2); }
+
+/* ----- savol muharriri ----- */
+.editor { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+.fset { padding: 1.6rem 1.75rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.15rem; }
+.fset__head { display: flex; align-items: center; gap: .5rem; font-size: .85rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); }
+.fset__head .ic { color: var(--orange); }
+.fset__row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.ff { display: grid; gap: .4rem; min-width: 0; }
+.ff__label { font-size: .92rem; font-weight: 600; color: var(--ink-2); }
+.ff__label i { font-style: normal; font-weight: 500; color: var(--ink-3); }
+.ff__hint { font-size: .82rem; color: var(--ink-3); }
+.ff__hint code { padding: .05rem .35rem; border-radius: 6px; background: var(--alice); color: var(--navy); font-weight: 700; font-family: inherit; }
+.input {
+  width: 100%; min-width: 0;
+  min-height: 3.1rem;
+  padding: .7rem 1rem;
+  border: 1.5px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  font-size: 1.05rem; line-height: 1.5;
+  transition: border-color .15s, box-shadow .15s;
+}
+textarea.input { min-height: 6.5rem; resize: vertical; font-family: inherit; }
+.input::placeholder { color: var(--ink-3); }
+.input:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 4px rgba(5, 74, 145, .12); }
+.input.is-error { border-color: var(--bad); }
+
+.vlist { display: grid; gap: .6rem; }
+.vrow { display: flex; align-items: center; gap: .7rem; }
+.vrow__key {
+  width: 2.75rem; height: 2.75rem; flex: none;
+  display: grid; place-items: center;
+  border-radius: var(--r-md);
+  background: var(--alice); color: var(--navy);
+  font-weight: 800; font-size: 1.15rem;
+}
+.vrow .input { flex: 1; }
+.vrow__ok {
+  flex: none;
+  display: inline-flex; align-items: center; gap: .35rem;
+  min-height: 2.75rem; padding: .4rem .85rem;
+  border: 1.5px solid var(--line); border-radius: var(--r-md);
+  background: var(--surface); color: var(--ink-3);
+  font-weight: 600; font-size: .92rem; white-space: nowrap;
+}
+.vrow__ok:hover { border-color: var(--ok); color: var(--ok); }
+.vrow__ok:focus-visible { outline: none; box-shadow: var(--ring); }
+.vrow.is-answer .vrow__key { background: var(--ok); color: #fff; }
+.vrow.is-answer .input { border-color: var(--ok); background: var(--ok-bg); }
+.vrow.is-answer .vrow__ok { background: var(--ok); border-color: var(--ok); color: #fff; }
+
+.editor__foot {
+  position: sticky; bottom: 1rem; z-index: 3;
+  display: flex; align-items: center; justify-content: flex-end; gap: .6rem; flex-wrap: wrap;
+  padding: .9rem 1rem;
+  background: rgba(255, 255, 255, .92);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+}
+.editor__foot .notice { margin-right: auto; padding: .5rem .8rem; }
+
 /* =========================== MOSLASHUV =========================== */
 @media (max-width: 1280px) {
   :root { --side-w: 16rem; }
@@ -678,7 +854,8 @@ li:first-child > .rank .rank__pos { background: var(--orange); color: #fff; }
 }
 
 @media (max-width: 960px) {
-  .setup { grid-template-columns: minmax(0, 1fr); gap: 2rem; padding-block: 2rem; }
+  .setup { grid-template-columns: minmax(0, 1fr); gap: 2rem; padding-block: 5rem 2rem; }
+  .admin { padding-left: max(1rem, env(safe-area-inset-left, 0px)); padding-right: max(1rem, env(safe-area-inset-right, 0px)); }
   .app--game { grid-template-rows: auto auto; height: auto; min-height: 100%; }
   .layout { grid-template-columns: minmax(0, 1fr); }
   .stage { overflow: visible; padding-right: max(1rem, env(safe-area-inset-right, 0px)); padding-left: max(1rem, env(safe-area-inset-left, 0px)); }
@@ -696,6 +873,15 @@ li:first-child > .rank .rank__pos { background: var(--orange); color: #fff; }
 @media (max-width: 560px) {
   .setup { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
   .setup__card { padding: 1.5rem; }
+  .topbar { right: max(16px, env(safe-area-inset-right, 0px)); }
+  .fset { padding: 1.25rem; }
+  .qrow { flex-wrap: wrap; }
+  .qrow__text { flex-basis: calc(100% - 5.5rem); }
+  .qrow__actions { width: 100%; justify-content: flex-end; }
+  .vrow { flex-wrap: wrap; }
+  .vrow .input { flex-basis: calc(100% - 3.5rem); }
+  .vrow__ok { margin-left: 3.45rem; }
+  .levels { gap: .3rem; }
   .q-main { padding: 1.25rem; }
   .q-cards { grid-template-columns: minmax(0, 1fr); }
   .brand__text small, .bar__actions .btn span { display: none; }
@@ -720,7 +906,10 @@ li:first-child > .rank .rank__pos { background: var(--orange); color: #fff; }
     teamCounts: [3, 4, 5],
     defaultTeamCount: 3,
     values: [100, 200, 300, 400, 500], // har mavzudagi savol qiymatlari (tartib bilan)
-    letters: ['A', 'B', 'C'],
+    letters: ['A', 'B', 'C', 'D', 'E'],
+    minOptions: 2,
+    maxOptions: 5,
+    poolTarget: 25,                  // admin panelda har daraja uchun maqsadli savollar soni
     timer: Object.freeze({
       short: 60,      // 100–300 $ savollar
       long: 90,       // 400–500 $ savollar
@@ -728,88 +917,76 @@ li:first-child > .rank .rank__pos { background: var(--orange); color: #fff; }
       warnAt: 10      // oxirgi necha soniyada ogohlantirish rangi
     }),
     historyLimit: 30,                // "Bekor qilish" uchun saqlanadigan qadamlar
-    storageKey: 'moliyaviy-oyin:v1'
+    storageKey: 'moliyaviy-oyin:v1',
+    bankKey: 'moliyaviy-oyin:bank',  // admin paneldagi savollar bazasi
+    seenKey: 'moliyaviy-oyin:seen'   // shu qurilmada ko'rsatilgan savollar
   });
 })(window.MS = window.MS || {});
 
 /* js/core/registry.js */
-/* Mavzular reyestri: manifestdagi o'rinlar + data/topics/*.js fayllari.
-   Mavzu fayli MS.registry.registerTopic({...}) ni chaqiradi. */
+/* Mavzular reyestri: manifestdagi o'rinlar + data/topics/*.js dagi boshlang'ich savollar.
+   Mavzu fayli MS.registry.registerTopic({...}) ni chaqiradi. Bu savollar faqat
+   boshlang'ich to'plam: admin panelda o'zgartirilgach, baza MS.bank da saqlanadi. */
 (function (MS) {
   'use strict';
 
   const C = MS.config;
   const slots = [];
-  const topics = new Map();
+  const seed = new Map();
 
   function defineSlots(list) {
     list.forEach((s) => slots.push(Object.freeze(Object.assign({}, s))));
   }
 
-  function validate(t) {
+  /* Savolni tekshiradi; xatolar ro'yxatini qaytaradi (bo'sh — hammasi joyida). */
+  function validateQuestion(q) {
     const errors = [];
-    if (!t || !t.id) return ['mavzu id si yo‘q'];
-    if (!Array.isArray(t.questions) || t.questions.length !== C.values.length) {
-      errors.push(`${C.values.length} ta savol bo‘lishi kerak`);
-      return errors;
-    }
-    t.questions.forEach((q, i) => {
-      const n = `${i + 1}-savol`;
-      if (q.value !== C.values[i]) errors.push(`${n}: qiymat ${C.values[i]} bo‘lishi kerak`);
-      if (!Array.isArray(q.options) || q.options.length !== C.letters.length) errors.push(`${n}: 3 ta variant kerak`);
-      if (!C.letters.includes(q.answer)) errors.push(`${n}: to‘g‘ri javob A, B yoki C bo‘lishi kerak`);
-      if (!q.title || !q.ask) errors.push(`${n}: sarlavha yoki savol matni yo‘q`);
-    });
+    const n = Array.isArray(q.options) ? q.options.length : 0;
+    if (!C.values.includes(q.value)) errors.push(`qiymat ${C.values.join(', ')} dan biri bo‘lishi kerak`);
+    if (n < C.minOptions || n > C.maxOptions) errors.push(`${C.minOptions}–${C.maxOptions} ta variant kerak`);
+    else if (q.options.some((o) => !String(o).trim())) errors.push('bo‘sh variant bor');
+    if (C.letters.indexOf(q.answer) < 0 || C.letters.indexOf(q.answer) >= n) errors.push('to‘g‘ri javob belgilanmagan');
+    if (!q.title || !q.ask) errors.push('sarlavha yoki savol matni yo‘q');
     return errors;
   }
 
   function registerTopic(t) {
-    const errors = validate(t);
-    if (errors.length) {
-      console.error(`[Mavzu "${t && t.id}"] o‘tkazib yuborildi:\n- ` + errors.join('\n- '));
+    if (!t || !t.id || !Array.isArray(t.questions)) {
+      console.error(`[Mavzu "${t && t.id}"] noto‘g‘ri tuzilma, o‘tkazib yuborildi`);
       return;
     }
     if (!slots.some((s) => s.id === t.id)) {
       console.warn(`[Mavzu "${t.id}"] manifestda (data/topics.js) o‘rni yo‘q.`);
       return;
     }
-    topics.set(t.id, Object.freeze(t));
+    const questions = [];
+    t.questions.forEach((q, i) => {
+      const errors = validateQuestion(q);
+      if (errors.length) { console.error(`[Mavzu "${t.id}", ${i + 1}-savol] o‘tkazib yuborildi: ${errors.join('; ')}`); return; }
+      questions.push(Object.freeze(Object.assign({ id: q.id || `${t.id}-${q.value}${i >= C.values.length ? '-' + i : ''}` }, q)));
+    });
+    seed.set(t.id, questions);
   }
+
+  const seedQuestions = (topicId) => seed.get(topicId) || [];
 
   function list() {
     return slots
       .slice()
       .sort((a, b) => a.order - b.order)
-      .map((s) => {
-        const t = topics.get(s.id);
-        return {
-          id: s.id,
-          order: s.order,
-          icon: s.icon,
-          title: (t && t.title) || s.title || `${s.order}-mavzu`,
-          ready: Boolean(t),
-          questions: t ? t.questions : null
-        };
-      });
+      .map((s) => ({
+        id: s.id,
+        order: s.order,
+        icon: s.icon,
+        title: s.title || `${s.order}-mavzu`,
+        ready: MS.bank ? MS.bank.questions(s.id).length > 0 : seedQuestions(s.id).length > 0
+      }));
   }
 
+  /* Taxtadagi katak identifikatori: "mavzu:qiymat" */
   const qid = (topicId, value) => `${topicId}:${value}`;
 
-  function find(id) {
-    const [topicId, value] = String(id).split(':');
-    const t = topics.get(topicId);
-    if (!t) return null;
-    const q = t.questions.find((x) => x.value === Number(value));
-    return q ? { topic: t, q } : null;
-  }
-
-  function allQids() {
-    const out = [];
-    topics.forEach((t) => t.questions.forEach((q) => out.push(qid(t.id, q.value))));
-    return out;
-  }
-
-  MS.registry = { defineSlots, registerTopic, list, find, qid, allQids };
+  MS.registry = { defineSlots, registerTopic, seedQuestions, validateQuestion, list, qid };
 })(window.MS);
 
 /* data/topics.js */
@@ -2010,6 +2187,309 @@ MS.registry.registerTopic({
   ]
 });
 
+/* js/core/bank.js */
+/* Savollar bazasi. Admin panelda biror narsa o'zgartirilmaguncha kod ichidagi
+   boshlang'ich savollar ishlatiladi; o'zgartirilgach butun baza shu brauzerda saqlanadi
+   (JSON fayl sifatida yuklab olish va boshqa qurilmaga yuklash mumkin).
+
+   Admin matni formati (vaziyat va izoh maydonlari):
+     oddiy qator          — alohida xatboshi
+     "- matn"             — nuqtali ro'yxat
+     "= hisob"            — hisob-kitob qutisi
+     "* Nomi: a | b | c"  — yonma-yon kartochkalar
+   Xulosa maydoni: "Atama (English) — ta'rif" qatori atama bo'ladi, boshqa qatorlar — maslahat.
+
+   Aralashtirish: har katak (mavzu + qiymat) uchun shu qurilmada ko'rsatilgan savollar
+   eslab qolinadi. Yangi o'yinda faqat hali ko'rsatilmaganlar orasidan tasodifiy tanlanadi;
+   hammasi ko'rsatib bo'lingach, yangi davra boshlanadi (oxirgi savol darhol takrorlanmaydi). */
+(function (MS) {
+  'use strict';
+
+  const C = MS.config;
+  const R = MS.registry;
+
+  /* ---------- matn <-> bloklar ---------- */
+  function parseBlocks(text) {
+    const out = [];
+    String(text || '').split(/\r?\n/).map((l) => l.trim()).filter(Boolean).forEach((line) => {
+      const last = out[out.length - 1];
+      let m;
+      if ((m = line.match(/^[-•]\s+(.+)$/))) {
+        if (last && last.list) last.list.push(m[1]); else out.push({ list: [m[1]] });
+      } else if ((m = line.match(/^=\s*(.+)$/))) {
+        if (last && last.calc) last.calc.push(m[1]); else out.push({ calc: [m[1]] });
+      } else if ((m = line.match(/^\*\s+([^:]+):\s*(.*)$/))) {
+        const card = { title: m[1].trim(), items: m[2].split('|').map((x) => x.trim()).filter(Boolean) };
+        if (last && last.cards) last.cards.push(card); else out.push({ cards: [card] });
+      } else {
+        out.push(line);
+      }
+    });
+    return out;
+  }
+
+  function blocksToText(blocks) {
+    return (blocks || []).map((b) => {
+      if (typeof b === 'string') return b;
+      if (b.list) return b.list.map((x) => '- ' + x).join('\n');
+      if (b.calc) return b.calc.map((x) => '= ' + x).join('\n');
+      if (b.cards) return b.cards.map((c) => `* ${c.title}: ${c.items.join(' | ')}`).join('\n');
+      return '';
+    }).filter(Boolean).join('\n');
+  }
+
+  const TERM = /^(.+?)\s+[—–]\s+(.+)$/;
+
+  function parseSummary(text) {
+    const terms = [];
+    const notes = [];
+    String(text || '').split(/\r?\n/).map((l) => l.trim()).filter(Boolean).forEach((line) => {
+      const m = line.match(TERM);
+      if (!m) { notes.push(line); return; }
+      const named = m[1].match(/^(.*?)\s*\(([^()]+)\)$/);
+      terms.push(named ? { name: named[1], en: named[2], def: m[2] } : { name: m[1], en: '', def: m[2] });
+    });
+    return { terms, notes };
+  }
+
+  function summaryToText(terms, note) {
+    return (terms || []).map((t) => `${t.name}${t.en ? ` (${t.en})` : ''} — ${t.def}`)
+      .concat(note ? [note] : []).join('\n');
+  }
+
+  /* Muharrir (matn) ko'rinishi: { id, value, title, body, ask, options, answer, short, explain, summary } */
+  function toForm(q) {
+    if (typeof q.body === 'string') return Object.assign({}, q, { options: q.options.slice() });
+    return {
+      id: q.id,
+      value: q.value,
+      title: q.title || '',
+      body: blocksToText(q.body),
+      ask: q.ask || '',
+      options: q.options.slice(),
+      answer: q.answer,
+      short: q.short || '',
+      explain: blocksToText(q.explain),
+      summary: summaryToText(q.terms, q.note)
+    };
+  }
+
+  /* O'yin (ko'rsatish) ko'rinishi */
+  function normalize(f) {
+    const sum = parseSummary(f.summary);
+    return Object.freeze({
+      id: f.id,
+      value: f.value,
+      title: f.title,
+      body: parseBlocks(f.body),
+      ask: f.ask,
+      options: f.options.slice(),
+      answer: f.answer,
+      short: f.short,
+      explain: parseBlocks(f.explain),
+      terms: sum.terms,
+      notes: sum.notes
+    });
+  }
+
+  /* ---------- saqlash ---------- */
+  function readCustom() {
+    try {
+      const o = JSON.parse(localStorage.getItem(C.bankKey));
+      if (o && o.v === 1 && o.topics && typeof o.topics === 'object') return o;
+    } catch (e) { /* e'tiborsiz */ }
+    return null;
+  }
+
+  let custom = readCustom();
+  const cache = new Map();
+
+  // Admin boshqa oynada o'zgartirsa, o'yin oynasi ham yangilanadi.
+  window.addEventListener('storage', (e) => {
+    if (e.key === C.bankKey) { custom = readCustom(); cache.clear(); }
+  });
+
+  const slotIds = () => R.list().map((s) => s.id);
+
+  function forms(topicId) {
+    if (custom) return (custom.topics[topicId] || []).map(toForm);
+    return R.seedQuestions(topicId).map(toForm);
+  }
+
+  function questions(topicId) {
+    if (!cache.has(topicId)) cache.set(topicId, forms(topicId).map(normalize));
+    return cache.get(topicId);
+  }
+
+  function byId(id) {
+    for (const s of R.list()) {
+      const q = questions(s.id).find((x) => x.id === id);
+      if (q) return { topic: s, q };
+    }
+    return null;
+  }
+
+  function form(topicId, id) {
+    const f = forms(topicId).find((x) => x.id === id);
+    return f || null;
+  }
+
+  function counts(topicId) {
+    const byValue = {};
+    C.values.forEach((v) => { byValue[v] = 0; });
+    questions(topicId).forEach((q) => { byValue[q.value] = (byValue[q.value] || 0) + 1; });
+    return { total: questions(topicId).length, byValue };
+  }
+
+  function newId() {
+    return 'q' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+  }
+
+  // O'zgarishni yozadi; brauzer saqlay olmasa, oldingi holat tiklanadi va xato qaytariladi.
+  function write(mutate) {
+    const prev = custom;
+    const next = { v: 1, topics: {} };
+    slotIds().forEach((id) => { next.topics[id] = forms(id); });
+    mutate(next.topics);
+    try {
+      localStorage.setItem(C.bankKey, JSON.stringify(next));
+    } catch (e) {
+      custom = prev;
+      return 'Brauzer xotirasiga saqlab bo‘lmadi';
+    }
+    custom = next;
+    cache.clear();
+    return '';
+  }
+
+  function clean(f) {
+    const options = (f.options || []).map((o) => String(o).trim());
+    return {
+      id: f.id || newId(),
+      value: Number(f.value),
+      title: String(f.title || '').trim(),
+      body: String(f.body || '').trim(),
+      ask: String(f.ask || '').trim(),
+      options,
+      answer: f.answer,
+      short: String(f.short || '').trim(),
+      explain: String(f.explain || '').trim(),
+      summary: String(f.summary || '').trim()
+    };
+  }
+
+  function saveQuestion(topicId, f) {
+    const q = clean(f);
+    const errors = R.validateQuestion(q);
+    if (errors.length) return { errors };
+    const err = write((topics) => {
+      const list = topics[topicId] || (topics[topicId] = []);
+      const i = list.findIndex((x) => x.id === q.id);
+      if (i >= 0) list[i] = q; else list.push(q);
+    });
+    return err ? { errors: [err] } : { errors: [], id: q.id };
+  }
+
+  function removeQuestion(topicId, id) {
+    return write((topics) => {
+      topics[topicId] = (topics[topicId] || []).filter((x) => x.id !== id);
+    });
+  }
+
+  function exportData() {
+    const topics = {};
+    R.list().forEach((s) => { topics[s.id] = forms(s.id); });
+    return { app: 'moliyaviy-oyin', v: 1, exported: new Date().toISOString(), topics };
+  }
+
+  // Faylni tekshirib, bazani to'liq almashtiradi. Natija: { added, skipped, error }
+  function importData(obj) {
+    if (!obj || typeof obj.topics !== 'object' || !obj.topics) return { error: 'Fayl formati noto‘g‘ri' };
+    const ids = new Set();
+    let added = 0;
+    let skipped = 0;
+    const err = write((topics) => {
+      slotIds().forEach((tid) => {
+        const src = Array.isArray(obj.topics[tid]) ? obj.topics[tid] : [];
+        topics[tid] = [];
+        src.forEach((raw) => {
+          if (!raw || typeof raw !== 'object') { skipped++; return; }
+          const q = clean(toForm(Object.assign({ options: [] }, raw)));
+          if (ids.has(q.id)) q.id = newId();
+          if (R.validateQuestion(q).length) { skipped++; return; }
+          ids.add(q.id);
+          topics[tid].push(q);
+          added++;
+        });
+      });
+    });
+    return err ? { error: err } : { added, skipped };
+  }
+
+  function resetToDefault() {
+    try { localStorage.removeItem(C.bankKey); } catch (e) { /* e'tiborsiz */ }
+    custom = null;
+    cache.clear();
+  }
+
+  const isCustom = () => Boolean(custom);
+
+  /* ---------- aralashtirish ---------- */
+  function rand(n) {
+    const c = window.crypto;
+    if (c && c.getRandomValues) {
+      const a = new Uint32Array(1);
+      const lim = Math.floor(0x100000000 / n) * n;   // modul siljishisiz tekis taqsimot
+      do c.getRandomValues(a); while (a[0] >= lim);
+      return a[0] % n;
+    }
+    return Math.floor(Math.random() * n);
+  }
+
+  function readSeen() {
+    try { return JSON.parse(localStorage.getItem(C.seenKey)) || {}; } catch (e) { return {}; }
+  }
+
+  const poolOf = (topicId, value) => questions(topicId).filter((q) => q.value === value).map((q) => q.id);
+
+  /* Yangi o'yin uchun har katakka bitta savol tanlaydi: { "mavzu:qiymat": savolId } */
+  function deal() {
+    const seen = readSeen();
+    const out = {};
+    R.list().forEach((t) => {
+      C.values.forEach((v) => {
+        const pool = poolOf(t.id, v);
+        if (!pool.length) return;
+        const key = R.qid(t.id, v);
+        const rec = seen[key] || { ids: [], last: null };
+        let fresh = pool.filter((id) => rec.ids.indexOf(id) < 0);
+        if (!fresh.length) fresh = pool.length > 1 ? pool.filter((id) => id !== rec.last) : pool;
+        out[key] = fresh[rand(fresh.length)];
+      });
+    });
+    return out;
+  }
+
+  /* Savol ekranda ochilganda chaqiriladi: shu qurilmada "ko'rsatilgan" deb belgilanadi. */
+  function markSeen(cellId, id) {
+    const seen = readSeen();
+    const [topicId, v] = String(cellId).split(':');
+    const pool = poolOf(topicId, Number(v));
+    const rec = seen[cellId] || { ids: [], last: null };
+    let ids = (rec.ids || []).filter((x) => pool.indexOf(x) >= 0);
+    if (pool.length && pool.every((x) => ids.indexOf(x) >= 0)) ids = [];   // davra tugadi
+    if (ids.indexOf(id) < 0) ids.push(id);
+    seen[cellId] = { ids, last: id };
+    try { localStorage.setItem(C.seenKey, JSON.stringify(seen)); } catch (e) { /* e'tiborsiz */ }
+  }
+
+  MS.bank = {
+    questions, byId, form, counts, saveQuestion, removeQuestion,
+    exportData, importData, resetToDefault, isCustom, deal, markSeen,
+    parseBlocks, toForm
+  };
+})(window.MS);
+
 /* js/core/store.js */
 /* O'yin holati: yagona manba, barcha o'zgarishlar shu yerdagi amallar orqali.
    Holat har amaldan keyin brauzerda saqlanadi (sahifa yangilansa tiklanadi). */
@@ -2017,14 +2497,15 @@ MS.registry.registerTopic({
   'use strict';
 
   const C = MS.config;
-  const R = MS.registry;
+  const B = MS.bank;
   const listeners = new Set();
 
   const fresh = () => ({
-    v: 1,
+    v: 2,
     phase: 'setup',      // setup | board | question | results
     teams: [],           // [{ name, balance, correct, wrong, skipped }]
     current: 0,          // navbatdagi jamoa indeksi
+    deal: {},            // qid ("mavzu:qiymat") -> shu o'yin uchun tanlangan savol id si
     used: {},            // qid -> { team, outcome }
     active: null,        // { qid, selected, outcome, delta }
     history: [],         // "Bekor qilish" uchun nusxalar
@@ -2043,8 +2524,8 @@ MS.registry.registerTopic({
       const raw = localStorage.getItem(C.storageKey);
       if (!raw) return null;
       const s = JSON.parse(raw);
-      if (!s || s.v !== 1 || !Array.isArray(s.teams) || !s.teams.length) return null;
-      if (s.active && !R.find(s.active.qid)) { s.active = null; s.phase = 'board'; }
+      if (!s || s.v !== 2 || !Array.isArray(s.teams) || !s.teams.length || !s.deal) return null;
+      if (s.active && !question(s.active.qid, s)) { s.active = null; s.phase = 'board'; }
       return Object.assign(fresh(), s);
     } catch (e) { return null; }
   }
@@ -2064,8 +2545,17 @@ MS.registry.registerTopic({
   const get = () => state;
 
   /* ---------- hisob-kitob yordamchilari ---------- */
+  /* Katakka shu o'yinda tushgan savol (admin o'chirib yuborgan bo'lsa — null) */
+  function question(qid, s = state) {
+    const id = s.deal && s.deal[qid];
+    const found = id && B.byId(id);
+    return found ? found.q : null;
+  }
+
+  const cells = (s = state) => Object.keys(s.deal || {}).filter((id) => question(id, s));
+
   function remaining(s = state) {
-    return R.allQids().filter((id) => !s.used[id]).length;
+    return cells(s).filter((id) => !s.used[id]).length;
   }
 
   function snapshot() {
@@ -2084,31 +2574,34 @@ MS.registry.registerTopic({
       const teams = names.map((name) => ({
         name, balance: C.startCapital, correct: 0, wrong: 0, skipped: 0
       }));
-      state = Object.assign(fresh(), { phase: 'board', teams });
+      state = Object.assign(fresh(), { phase: 'board', teams, deal: B.deal() });
       commit({});
     },
 
     openQuestion(qid) {
-      if (state.phase !== 'board' || state.used[qid] || !R.find(qid)) return;
+      if (state.phase !== 'board' || state.used[qid] || !question(qid)) return;
+      B.markSeen(qid, state.deal[qid]);
       commit({ phase: 'question', active: { qid, selected: null, outcome: null, delta: 0 } });
     },
 
     select(letter) {
       const a = state.active;
-      if (!a || a.outcome || !C.letters.includes(letter)) return;
+      const q = a && question(a.qid);
+      if (!q || a.outcome || C.letters.indexOf(letter) < 0 || C.letters.indexOf(letter) >= q.options.length) return;
       commit({ active: Object.assign({}, a, { selected: a.selected === letter ? null : letter }) });
     },
 
     confirm() {
       const a = state.active;
       if (!a || a.outcome || !a.selected) return;
-      const { q } = R.find(a.qid);
+      const q = question(a.qid);
+      if (!q) return;
       resolve(a.selected === q.answer ? 'correct' : 'wrong');
     },
 
     skip() {
       const a = state.active;
-      if (!a || a.outcome) return;
+      if (!a || a.outcome || !question(a.qid)) return;
       resolve('skip');
     },
 
@@ -2152,7 +2645,7 @@ MS.registry.registerTopic({
 
   function resolve(outcome) {
     const a = state.active;
-    const { q } = R.find(a.qid);
+    const q = question(a.qid);
     const delta = outcome === 'correct' ? q.value : outcome === 'wrong' ? -q.value : 0;
     const history = state.history.concat(snapshot()).slice(-C.historyLimit);
 
@@ -2166,7 +2659,7 @@ MS.registry.registerTopic({
     commit({ teams, used, history, active: Object.assign({}, a, { outcome, delta }) });
   }
 
-  MS.store = { get, subscribe, actions, remaining };
+  MS.store = { get, subscribe, actions, remaining, question, cells };
 })(window.MS);
 
 /* js/ui/dom.js */
@@ -2232,7 +2725,15 @@ MS.registry.registerTopic({
     clock: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
     skip: '<path d="M5.5 5.5v13l9-6.5-9-6.5z"/><path d="M18.5 5.5v13"/>',
     grid: '<rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/>',
-    refresh: '<path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3"/><path d="M19.5 4.5v4h-4"/>'
+    refresh: '<path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3"/><path d="M19.5 4.5v4h-4"/>',
+    sliders: '<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    edit: '<path d="M4 20h4L19 9l-4-4L4 16v4z"/><path d="M13.5 6.5l4 4"/>',
+    trash: '<path d="M4.5 7h15"/><path d="M9.5 7V4.5h5V7"/><path d="M6.5 7l1 12.5h9l1-12.5"/>',
+    download: '<path d="M12 4v11M7.5 10.5L12 15l4.5-4.5"/><path d="M5 19.5h14"/>',
+    upload: '<path d="M12 15V4M7.5 8.5L12 4l4.5 4.5"/><path d="M5 19.5h14"/>',
+    arrowLeft: '<path d="M19 12H5M11 6l-6 6 6 6"/>',
+    list: '<path d="M9 6.5h11M9 12h11M9 17.5h11"/><path d="M4.5 6.5h.01M4.5 12h.01M4.5 17.5h.01"/>'
   };
 
   MS.icon = function icon(name, cls) {
@@ -2456,6 +2957,7 @@ MS.registry.registerTopic({
       <button class="seg__btn${n === ui.count ? ' is-on' : ''}" data-action="team-count" data-n="${n}" aria-pressed="${n === ui.count}">${n}</button>`).join('');
 
     return `
+      <div class="topbar"><a class="admin-link" href="#admin">${MS.icon('sliders')}<span>Admin Panel</span></a></div>
       <main class="setup">
         <section class="setup__intro">
           <p class="eyebrow">Intellektual o‘yin</p>
@@ -2471,7 +2973,6 @@ MS.registry.registerTopic({
         <section class="setup__card card">
           <h2 class="h2">Jamoalar</h2>
           <div class="setup__count">
-            <span class="muted">Jamoalar soni</span>
             <div class="seg" role="group" aria-label="Jamoalar soni">${counts}</div>
           </div>
           <form class="setup__fields" data-form="setup" novalidate>
@@ -2534,7 +3035,7 @@ MS.registry.registerTopic({
   const { esc, money } = MS.dom;
 
   function header(s) {
-    const total = MS.registry.allQids().length;
+    const total = MS.store.cells(s).length;
     const left = MS.store.remaining(s);
 
     // Ochiq savoldan faqat javob berib yoki "Javobsiz yakunlash" orqali chiqiladi.
@@ -2603,6 +3104,9 @@ MS.registry.registerTopic({
       return `<div class="cell cell--off" aria-hidden="true">$${value}</div>`;
     }
     const id = MS.registry.qid(topic.id, value);
+    if (!MS.store.question(id, s)) {
+      return `<div class="cell cell--off" aria-hidden="true">$${value}</div>`;
+    }
     const used = s.used[id];
     if (used) {
       const team = s.teams[used.team];
@@ -2727,7 +3231,7 @@ MS.registry.registerTopic({
       <div class="term">
         <div class="term__name">${esc(t.name)}${t.en ? ` <span class="term__en">${esc(t.en)}</span>` : ''}</div>
         <p>${esc(t.def)}</p>
-      </div>`).join('') + (q.note ? `<p class="term__note">${esc(q.note)}</p>` : '');
+      </div>`).join('') + q.notes.map((n) => `<p class="${q.terms.length ? 'term__note' : ''}">${esc(n)}</p>`).join('');
 
     return `
       <div class="panel panel--result">
@@ -2741,10 +3245,10 @@ MS.registry.registerTopic({
         </div>
         <div class="answer">
           <span class="answer__key">To‘g‘ri javob · ${q.answer}</span>
-          <p class="answer__short">${esc(q.short)}</p>
+          ${q.short ? `<p class="answer__short">${esc(q.short)}</p>` : `<p class="answer__short">${esc(q.options[C.letters.indexOf(q.answer)])}</p>`}
         </div>
-        ${clampBox('explain', 'Izoh', 'bulb', explain)}
-        ${clampBox('terms', 'Xulosa', 'book', terms)}
+        ${explain ? clampBox('explain', 'Izoh', 'bulb', explain) : ''}
+        ${terms ? clampBox('terms', 'Xulosa', 'book', terms) : ''}
         <div class="panel__actions">
           <button class="btn btn--ghost" data-action="undo" title="Oxirgi javobni bekor qilish">${MS.icon('undo')}<span>Bekor qilish</span></button>
           <button class="btn btn--primary btn--lg grow" data-action="next" title="Keyingi jamoa: ${esc(nextTeam.name)}">
@@ -2757,16 +3261,15 @@ MS.registry.registerTopic({
   /* ---------- ekran ---------- */
   function render(s) {
     const a = s.active;
-    const found = MS.registry.find(a.qid);
-    const { topic, q } = found;
-    const slot = MS.registry.list().find((t) => t.id === topic.id);
+    const q = MS.store.question(a.qid, s);
+    const topic = MS.registry.list().find((t) => t.id === a.qid.split(':')[0]);
     const team = s.teams[s.current];
 
     return `
       <section class="q-screen${a.outcome ? ' is-revealed' : ''}">
         <article class="q-main">
           <div class="q-meta">
-            <span class="tag">${MS.icon(slot ? slot.icon : 'grid')}<span>${esc(topic.title)}</span></span>
+            <span class="tag">${MS.icon(topic ? topic.icon : 'grid')}<span>${esc(topic ? topic.title : '')}</span></span>
             <span class="q-value">$${q.value}</span>
             <span class="q-team">${esc(team.name)}</span>
           </div>
@@ -2781,15 +3284,31 @@ MS.registry.registerTopic({
       </section>`;
   }
 
+  /* "Batafsil" tugmasi va xiralik faqat matn haqiqatan sig'masa ko'rinadi.
+     O'lcham o'zgarsa (oyna, to'liq ekran, shrift yuklanishi) qayta o'lchanadi. */
+  let observer = null;
+
+  function measure(box) {
+    if (!box.isConnected || box.classList.contains('is-open')) return;
+    const body = box.querySelector('[data-clamp]');
+    const clipped = body.scrollHeight > body.clientHeight + 2;
+    box.classList.toggle('is-clipped', clipped);
+    box.querySelector('.more').hidden = !clipped;
+  }
+
   function mount(root, s) {
     const timerRoot = root.querySelector('[data-timer-root]');
     if (timerRoot) MS.timer.mount(timerRoot);
 
-    root.querySelectorAll('[data-clamp-box]').forEach((box) => {
-      const body = box.querySelector('[data-clamp]');
-      const more = box.querySelector('.more');
-      more.hidden = body.scrollHeight <= body.clientHeight + 2;
-    });
+    if (observer) observer.disconnect();
+    const boxes = Array.from(root.querySelectorAll('[data-clamp-box]'));
+    boxes.forEach(measure);
+    if (!boxes.length) return;
+    if (window.ResizeObserver) {
+      observer = new ResizeObserver(() => boxes.forEach(measure));
+      boxes.forEach((b) => observer.observe(b));
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => boxes.forEach(measure));
   }
 
   function toggleClamp(btn) {
@@ -2869,6 +3388,420 @@ MS.registry.registerTopic({
   };
 })(window.MS);
 
+/* js/screens/admin.js */
+/* Admin panel: mavzular -> savollar ro'yxati -> savol muharriri.
+   Manzil: #admin, #admin/<mavzu>, #admin/<mavzu>/new, #admin/<mavzu>/<savolId> */
+(function (MS) {
+  'use strict';
+
+  const C = MS.config;
+  const B = MS.bank;
+  const { esc } = MS.dom;
+
+  const ui = {
+    on: false,
+    view: 'home',        // home | topic | edit
+    topic: null,
+    qid: null,           // tahrirlanayotgan savol (null — yangi)
+    filter: 'all',
+    draft: null,
+    errors: [],
+    flash: null,         // { kind: 'ok'|'bad', text }
+    confirm: null        // o'chirish / tiklashni tasdiqlash kaliti
+  };
+
+  const blank = (value) => ({
+    id: null, value, title: '', body: '', ask: '',
+    options: ['', '', ''], answer: null, short: '', explain: '', summary: ''
+  });
+
+  const topicOf = (id) => MS.registry.list().find((t) => t.id === id);
+
+  /* ---------- marshrut ---------- */
+  function route() {
+    const h = decodeURIComponent(location.hash.replace(/^#/, ''));
+    const parts = h.split('/');
+    ui.on = parts[0] === 'admin';
+    if (!ui.on) { ui.rendered = null; return; }
+    const topic = parts[1] && topicOf(parts[1]) ? parts[1] : null;
+    if (topic !== ui.topic) ui.filter = 'all';
+    ui.topic = topic;
+    ui.confirm = null;
+    ui.errors = [];
+    if (!topic) { ui.view = 'home'; return; }
+    if (!parts[2]) { ui.view = 'topic'; return; }
+    ui.view = 'edit';
+    if (parts[2] === 'new') {
+      ui.qid = null;
+      ui.draft = blank(ui.filter === 'all' ? C.values[0] : Number(ui.filter));
+    } else {
+      const f = B.form(topic, parts[2]);
+      if (!f) { ui.view = 'topic'; return; }
+      ui.qid = f.id;
+      ui.draft = f;
+    }
+  }
+
+  const go = (hash) => { location.hash = hash; };
+
+  /* ---------- umumiy qismlar ---------- */
+  function header() {
+    return `
+      <header class="bar">
+        <div class="brand">
+          <span class="brand__mark"><span class="avatar" aria-hidden="true"><img src="assets/avatar-body.webp" alt="" width="1108" height="1468"><span class="avatar__head"><img src="assets/avatar-head.webp" alt="" width="1108" height="1468"><img class="avatar__lids" src="assets/avatar-blink.webp" alt="" width="1108" height="1468"></span></span></span>
+          <span class="brand__text"><b>Admin Panel</b><small>Moliyaviy savodxonlik</small></span>
+        </div>
+        <span class="bar__progress" aria-hidden="true"></span>
+        <div class="bar__actions">
+          <a class="btn btn--ghost" href="#">${MS.icon('arrowLeft')}<span>O‘yinga qaytish</span></a>
+        </div>
+      </header>`;
+  }
+
+  function crumbs(items) {
+    return `<nav class="crumbs" aria-label="Yo‘l">${items.map(([label, href]) =>
+      href ? `<a href="${href}">${esc(label)}</a>` : `<span>${esc(label)}</span>`).join('<span aria-hidden="true">/</span>')}</nav>`;
+  }
+
+  function flash() {
+    if (!ui.flash) return '';
+    const f = ui.flash;
+    ui.flash = null;
+    return `<p class="notice notice--${f.kind}" role="status">${esc(f.text)}</p>`;
+  }
+
+  function levels(counts) {
+    return `<div class="levels">${C.values.map((v) => {
+      const n = counts.byValue[v] || 0;
+      const pct = Math.min(100, (n / C.poolTarget) * 100);
+      return `
+        <div class="lvl${n >= C.poolTarget ? ' is-full' : ''}">
+          <span class="lvl__v">$${v}</span>
+          <span class="meter"><span class="meter__fill" style="width:${pct}%"></span></span>
+          <span class="lvl__n">${n}/${C.poolTarget}</span>
+        </div>`;
+    }).join('')}</div>`;
+  }
+
+  /* ---------- 1. Mavzular ---------- */
+  function home() {
+    const topics = MS.registry.list();
+    const total = topics.reduce((sum, t) => sum + B.counts(t.id).total, 0);
+    const cards = topics.map((t) => {
+      const c = B.counts(t.id);
+      return `
+        <a class="tcard card" href="#admin/${t.id}">
+          <div class="tcard__top">
+            <span class="tcard__icon">${MS.icon(t.icon)}</span>
+            <span class="tcard__name"><b>${esc(t.title)}</b><small><b>${c.total}</b> ta savol</small></span>
+          </div>
+          ${levels(c)}
+        </a>`;
+    }).join('');
+
+    const reset = !B.isCustom() ? '' : ui.confirm === 'reset'
+      ? `<button class="btn btn--danger" data-action="adm-reset-confirm">${MS.icon('refresh')}<span>Ha, asl savollarga qaytarilsin</span></button>
+         <button class="btn btn--ghost" data-action="adm-cancel">Bekor qilish</button>`
+      : `<button class="btn btn--ghost is-danger" data-action="adm-reset-ask">${MS.icon('refresh')}<span>Asl holiga qaytarish</span></button>`;
+
+    return `
+      <div class="admin__head">
+        <div class="admin__heading">
+          <p class="eyebrow">Admin Panel</p>
+          <h1 class="admin__title">Mavzular va savollar</h1>
+          <p class="admin__sub">Jami <b>${total}</b> ta savol · har bir darajaga maqsad — <b>${C.poolTarget}</b> ta</p>
+        </div>
+        <div class="admin__tools">
+          <button class="btn btn--ghost" data-action="adm-export">${MS.icon('download')}<span>Yuklab olish</span></button>
+          <button class="btn btn--ghost" data-action="adm-import">${MS.icon('upload')}<span>Fayldan yuklash</span></button>
+          <input type="file" accept=".json,application/json" data-t="import" hidden>
+          ${reset}
+        </div>
+      </div>
+      ${flash()}
+      <p class="notice notice--info">Savollar shu brauzerda saqlanadi. Boshqa kompyuterga o‘tkazish uchun «Yuklab olish» tugmasi bilan faylni oling va u yerda «Fayldan yuklash» orqali oching.</p>
+      <div class="tgrid">${cards}</div>`;
+  }
+
+  /* ---------- 2. Mavzu savollari ---------- */
+  function topicView() {
+    const t = topicOf(ui.topic);
+    const c = B.counts(t.id);
+    const all = B.questions(t.id)
+      .map((q, i) => ({ q, i }))
+      .sort((a, b) => a.q.value - b.q.value || a.i - b.i)
+      .map((x) => x.q);
+    const shown = ui.filter === 'all' ? all : all.filter((q) => q.value === Number(ui.filter));
+
+    const tabs = [['all', 'Hammasi', c.total]].concat(C.values.map((v) => [String(v), `$${v}`, `${c.byValue[v]}/${C.poolTarget}`]))
+      .map(([key, label, n]) => `
+        <button class="seg__btn${ui.filter === key ? ' is-on' : ''}" data-action="adm-filter" data-v="${key}" aria-pressed="${ui.filter === key}">
+          <span>${label}</span><small>${n}</small>
+        </button>`).join('');
+
+    const rows = shown.map((q) => {
+      const del = ui.confirm === q.id
+        ? `<button class="btn btn--danger btn--sm" data-action="adm-del-confirm" data-id="${esc(q.id)}">${MS.icon('trash')}<span>O‘chirish</span></button>
+           <button class="btn btn--ghost btn--sm" data-action="adm-cancel">Yo‘q</button>`
+        : `<a class="btn btn--ghost btn--sm" href="#admin/${t.id}/${encodeURIComponent(q.id)}">${MS.icon('edit')}<span>Tahrirlash</span></a>
+           <button class="btn btn--ghost btn--sm btn--icon is-danger" data-action="adm-del-ask" data-id="${esc(q.id)}" aria-label="O‘chirish" title="O‘chirish">${MS.icon('trash')}</button>`;
+      return `
+        <li class="qrow">
+          <span class="qrow__val">$${q.value}</span>
+          <span class="qrow__text"><b>${esc(q.title)}</b><small>${esc(q.ask)}</small></span>
+          <span class="qrow__actions">${del}</span>
+        </li>`;
+    }).join('');
+
+    const empty = `
+      <div class="empty card">
+        <p>${ui.filter === 'all' ? 'Bu mavzuda hali savol yo‘q.' : `$${ui.filter} darajasida hali savol yo‘q.`}</p>
+        <a class="btn btn--accent" href="#admin/${t.id}/new">${MS.icon('plus')}<span>Savol qo‘shish</span></a>
+      </div>`;
+
+    return `
+      ${crumbs([['Admin Panel', '#admin'], [t.title]])}
+      <div class="admin__head">
+        <div class="admin__heading">
+          <h1 class="admin__title">${esc(t.title)}</h1>
+          <p class="admin__sub"><b>${c.total}</b> ta savol</p>
+        </div>
+        <div class="admin__tools">
+          <a class="btn btn--accent btn--lg" href="#admin/${t.id}/new">${MS.icon('plus')}<span>Savol qo‘shish</span></a>
+        </div>
+      </div>
+      ${flash()}
+      <div class="filters"><div class="seg" role="group" aria-label="Daraja">${tabs}</div></div>
+      ${shown.length ? `<ol class="qrows">${rows}</ol>` : empty}`;
+  }
+
+  /* ---------- 3. Savol muharriri ---------- */
+  function editor() {
+    const t = topicOf(ui.topic);
+    const d = ui.draft;
+    const c = B.counts(t.id);
+    const isNew = !ui.qid;
+
+    const values = C.values.map((v) => `
+      <button type="button" class="seg__btn${d.value === v ? ' is-on' : ''}" data-action="adm-value" data-v="${v}" aria-pressed="${d.value === v}">$${v}</button>`).join('');
+
+    const opts = d.options.map((text, i) => {
+      const L = C.letters[i];
+      const on = d.answer === L;
+      return `
+        <div class="vrow${on ? ' is-answer' : ''}">
+          <span class="vrow__key">${L}</span>
+          <input class="input" type="text" data-opt="${i}" value="${esc(text)}" placeholder="${L} variant matni" aria-label="${L} variant">
+          <button type="button" class="vrow__ok" data-action="adm-answer" data-l="${L}" aria-pressed="${on}">${MS.icon('check')}<span>To‘g‘ri javob</span></button>
+          ${d.options.length > C.minOptions ? `<button type="button" class="btn btn--ghost btn--icon is-danger" data-action="adm-opt-remove" data-i="${i}" aria-label="${L} variantni o‘chirish" title="O‘chirish">${MS.icon('x')}</button>` : ''}
+        </div>`;
+    }).join('');
+
+    const field = (key, label, opts) => {
+      const o = opts || {};
+      const ctl = o.area
+        ? `<textarea class="input" id="f-${key}" data-f="${key}" rows="${o.rows || 4}" placeholder="${esc(o.ph || '')}">${esc(d[key])}</textarea>`
+        : `<input class="input" id="f-${key}" type="text" data-f="${key}" value="${esc(d[key])}" placeholder="${esc(o.ph || '')}">`;
+      return `
+        <div class="ff">
+          <label class="ff__label" for="f-${key}">${label}</label>
+          ${ctl}
+          ${o.hint ? `<p class="ff__hint">${o.hint}</p>` : ''}
+        </div>`;
+    };
+
+    const errors = ui.errors.length
+      ? `<p class="notice notice--bad" role="alert">${ui.errors.map((e) => esc(e.charAt(0).toUpperCase() + e.slice(1))).join(' · ')}</p>` : '';
+
+    return `
+      ${crumbs([['Admin Panel', '#admin'], [t.title, `#admin/${t.id}`], [isNew ? 'Yangi savol' : 'Tahrirlash']])}
+      <div class="admin__head">
+        <div class="admin__heading">
+          <h1 class="admin__title">${isNew ? 'Yangi savol' : 'Savolni tahrirlash'}</h1>
+          <p class="admin__sub">${esc(t.title)}</p>
+        </div>
+      </div>
+      ${flash()}
+      <form class="editor" data-form="question" novalidate>
+        <section class="fset card">
+          <div class="fset__row">
+            <h2 class="fset__head">${MS.icon('coins')}<span>Savol qiymati</span></h2>
+            <span class="hint">Bu darajada: <b>${c.byValue[d.value] || 0}</b> / ${C.poolTarget}</span>
+          </div>
+          <div class="seg" role="group" aria-label="Savol qiymati">${values}</div>
+        </section>
+
+        <section class="fset card">
+          <h2 class="fset__head">${MS.icon('edit')}<span>Savol</span></h2>
+          ${field('title', 'Sarlavha', { ph: 'Masalan: 50/30/20 qoidasi' })}
+          ${field('body', 'Vaziyat <i>(ixtiyoriy)</i>', { area: true, rows: 5, ph: 'Savol sharti, raqamlar, vaziyat tavsifi…',
+            hint: 'Har bir qator — alohida xatboshi. <code>-</code> bilan boshlansa — ro‘yxat, <code>*&nbsp;Nomi: a | b | c</code> — yonma-yon kartochkalar.' })}
+          ${field('ask', 'Savol matni', { area: true, rows: 2, ph: 'Masalan: Jamg‘armaga qancha ajratishi kerak?' })}
+        </section>
+
+        <section class="fset card">
+          <div class="fset__row">
+            <h2 class="fset__head">${MS.icon('list')}<span>Variantlar</span></h2>
+            <span class="hint">To‘g‘ri variantni belgilang</span>
+          </div>
+          <div class="vlist">${opts}</div>
+          ${d.options.length < C.maxOptions ? `<div><button type="button" class="btn btn--ghost" data-action="adm-opt-add">${MS.icon('plus')}<span>Variant qo‘shish</span></button></div>` : ''}
+        </section>
+
+        <section class="fset card">
+          <h2 class="fset__head">${MS.icon('bulb')}<span>Javob va xulosa</span></h2>
+          ${field('short', 'Qisqa javob <i>(ixtiyoriy)</i>', { ph: 'Masalan: 4 000 000 × 20% = 800 000 so‘m',
+            hint: 'Javobdan keyin birinchi ko‘rinadi. Bo‘sh qolsa, to‘g‘ri variant matni chiqadi.' })}
+          ${field('explain', 'Izoh <i>(ixtiyoriy)</i>', { area: true, rows: 5, ph: 'Nega aynan shu javob to‘g‘ri, boshqalari nega xato…',
+            hint: 'Har bir qator — alohida xatboshi. <code>=</code> bilan boshlangan qatorlar hisob-kitob qutisiga tushadi.' })}
+          ${field('summary', 'Xulosa <i>(ixtiyoriy)</i>', { area: true, rows: 4, ph: 'Moliyaviy piramida (Ponzi Scheme) — oldingi ishtirokchilarga…',
+            hint: '<code>Atama (English) — ta’rif</code> ko‘rinishidagi qator atama bo‘lib chiqadi, boshqa qatorlar — maslahat.' })}
+        </section>
+
+        <div class="editor__foot">
+          ${errors}
+          <a class="btn btn--ghost" href="#admin/${t.id}">Bekor qilish</a>
+          ${isNew ? `<button type="button" class="btn btn--ghost" data-action="adm-save-more">${MS.icon('plus')}<span>Saqlash va yana qo‘shish</span></button>` : ''}
+          <button type="submit" class="btn btn--accent">${MS.icon('check')}<span>Saqlash</span></button>
+        </div>
+      </form>`;
+  }
+
+  /* ---------- chizish ---------- */
+  function render() {
+    const body = ui.view === 'edit' ? editor() : ui.view === 'topic' ? topicView() : home();
+    // kirish animatsiyasi faqat boshqa sahifaga o'tilganda
+    const key = location.hash;
+    const enter = key !== ui.rendered ? ' enter' : '';
+    ui.rendered = key;
+    return `${header()}<main class="admin${enter}">${body}</main>`;
+  }
+
+  function collect(root) {
+    const d = ui.draft;
+    if (!d) return;
+    root.querySelectorAll('[data-f]').forEach((el) => { d[el.dataset.f] = el.value; });
+    root.querySelectorAll('[data-opt]').forEach((el) => { d.options[Number(el.dataset.opt)] = el.value; });
+  }
+
+  function save(root, more) {
+    collect(root);
+    const res = B.saveQuestion(ui.topic, ui.draft);
+    if (res.errors.length) {
+      ui.errors = res.errors;
+      return true;
+    }
+    if (more) {
+      const value = ui.draft.value;
+      ui.flash = { kind: 'ok', text: `Saqlandi. $${value} darajasiga navbatdagi savolni yozing.` };
+      ui.draft = blank(value);
+      ui.errors = [];
+      return 'top';
+    }
+    ui.flash = { kind: 'ok', text: 'Savol saqlandi' };
+    ui.filter = String(ui.draft.value);
+    go(`#admin/${ui.topic}`);
+    return false;
+  }
+
+  function download() {
+    const data = JSON.stringify(B.exportData(), null, 2);
+    const blob = new Blob([data], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `moliyaviy-oyin-savollar-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+
+  function importFile(file, rerender) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      let obj = null;
+      try { obj = JSON.parse(reader.result); } catch (e) { /* pastda xabar */ }
+      if (!obj) {
+        ui.flash = { kind: 'bad', text: 'Faylni o‘qib bo‘lmadi: JSON formatida emas' };
+      } else if (!window.confirm('Fayldagi savollar hozirgi bazaning o‘rniga yoziladi. Davom etilsinmi?')) {
+        return;
+      } else {
+        const r = B.importData(obj);
+        ui.flash = r.error
+          ? { kind: 'bad', text: r.error }
+          : { kind: 'ok', text: `${r.added} ta savol yuklandi${r.skipped ? `, ${r.skipped} tasi xato sababli o‘tkazib yuborildi` : ''}` };
+      }
+      rerender();
+    };
+    reader.readAsText(file);
+  }
+
+  /* Admin ekranidagi tugmalar. true — qayta chizish kerak, 'top' — chizib, yuqoriga o'tish. */
+  function handle(el, root) {
+    const d = ui.draft;
+    switch (el.dataset.action) {
+      case 'adm-filter': ui.filter = el.dataset.v; ui.confirm = null; return true;
+      case 'adm-value': collect(root); d.value = Number(el.dataset.v); return true;
+      case 'adm-answer': collect(root); d.answer = el.dataset.l; ui.errors = []; return true;
+      case 'adm-opt-add':
+        collect(root);
+        if (d.options.length < C.maxOptions) d.options.push('');
+        return 'focus-last';
+      case 'adm-opt-remove': {
+        collect(root);
+        const i = Number(el.dataset.i);
+        if (d.options.length <= C.minOptions) return false;
+        const ans = C.letters.indexOf(d.answer);
+        d.options.splice(i, 1);
+        d.answer = ans === i ? null : ans > i ? C.letters[ans - 1] : d.answer;
+        return true;
+      }
+      case 'adm-save-more': return save(root, true);
+      case 'adm-del-ask': ui.confirm = el.dataset.id; return true;
+      case 'adm-del-confirm': {
+        const err = B.removeQuestion(ui.topic, el.dataset.id);
+        ui.confirm = null;
+        ui.flash = err ? { kind: 'bad', text: err } : { kind: 'ok', text: 'Savol o‘chirildi' };
+        return true;
+      }
+      case 'adm-cancel': ui.confirm = null; return true;
+      case 'adm-reset-ask': ui.confirm = 'reset'; return true;
+      case 'adm-reset-confirm':
+        B.resetToDefault();
+        ui.confirm = null;
+        ui.flash = { kind: 'ok', text: 'Asl savollar tiklandi' };
+        return true;
+      case 'adm-export': download(); return false;
+      case 'adm-import': {
+        const input = root.querySelector('[data-t="import"]');
+        if (input) input.click();
+        return false;
+      }
+      default: return false;
+    }
+  }
+
+  function mount(root, rerender) {
+    const form = root.querySelector('[data-form="question"]');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (save(root, false)) rerender();
+      });
+    }
+    const input = root.querySelector('[data-t="import"]');
+    if (input) {
+      input.addEventListener('change', () => {
+        if (input.files && input.files[0]) importFile(input.files[0], rerender);
+      });
+    }
+  }
+
+  MS.screens = MS.screens || {};
+  MS.screens.admin = { active: () => ui.on, route, render, mount, handle };
+})(window.MS);
+
 /* js/app.js */
 /* Ilova: ekranlarni chizish, tugmalar va klaviatura. */
 (function (MS) {
@@ -2883,6 +3816,16 @@ MS.registry.registerTopic({
   /* ---------- chizish ---------- */
   function render() {
     const s = store.get();
+
+    if (S.admin.active()) {
+      app.className = 'app app--admin';
+      const top = lastKey === 'admin' ? app.scrollTop : 0;
+      lastKey = 'admin';
+      app.innerHTML = S.admin.render();
+      S.admin.mount(app, render);
+      app.scrollTop = top;
+      return;
+    }
 
     if (s.phase === 'setup') {
       lastKey = 'setup';
@@ -2916,8 +3859,8 @@ MS.registry.registerTopic({
   /* ---------- amallar ---------- */
   function prepareTimer() {
     const a = store.get().active;
-    const found = a && MS.registry.find(a.qid);
-    MS.timer.prepare(MS.timer.durationFor(found ? found.q.value : 0));
+    const q = a && store.question(a.qid);
+    MS.timer.prepare(MS.timer.durationFor(q ? q.value : 0));
   }
 
   const handlers = {
@@ -2950,18 +3893,29 @@ MS.registry.registerTopic({
   app.addEventListener('click', (e) => {
     const el = e.target.closest('[data-action]');
     if (!el || el.disabled || !app.contains(el)) return;
+    if (S.admin.active()) {
+      const r = S.admin.handle(el, app);
+      if (!r) return;
+      render();
+      if (r === 'top') app.scrollTop = 0;
+      if (r === 'focus-last') {
+        const opts = app.querySelectorAll('[data-opt]');
+        if (opts.length) opts[opts.length - 1].focus();
+      }
+      return;
+    }
     const fn = handlers[el.dataset.action];
     if (fn) fn(el);
   });
 
   /* ---------- klaviatura (moderator uchun) ----------
-     1/2/3 yoki A/B/C — variant, Enter — tasdiqlash / keyingi,
+     1–5 yoki A–E — variant, Enter — tasdiqlash / keyingi,
      Probel — taymer */
-  const KEY_LETTER = { 1: 'A', 2: 'B', 3: 'C', a: 'A', b: 'B', c: 'C' };
+  const KEY_LETTER = { 1: 'A', 2: 'B', 3: 'C', 4: 'D', 5: 'E', a: 'A', b: 'B', c: 'C', d: 'D', e: 'E' };
 
   document.addEventListener('keydown', (e) => {
     const s = store.get();
-    if (s.phase !== 'question' || e.target.closest('input, textarea') || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (S.admin.active() || s.phase !== 'question' || e.target.closest('input, textarea') || e.metaKey || e.ctrlKey || e.altKey) return;
     const a = s.active;
     const k = e.key.toLowerCase();
 
@@ -2976,6 +3930,8 @@ MS.registry.registerTopic({
   });
 
   /* ---------- ishga tushirish ---------- */
+  window.addEventListener('hashchange', () => { S.admin.route(); render(); window.scrollTo(0, 0); app.scrollTop = 0; });
+  S.admin.route();
   store.subscribe(render);
   A.init();
   if (store.get().phase === 'question' && !MS.timer.restore()) prepareTimer();
