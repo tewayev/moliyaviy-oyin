@@ -24,7 +24,6 @@
     return `
       <div class="admin__head">
         <div class="admin__heading">
-          <p class="eyebrow">Admin Panel</p>
           <h1 class="admin__title">Mavzular va savollar</h1>
           <p class="admin__sub">Jami <b>${total}</b> ta savol · har bir darajaga maqsad — <b>${S.POOL_TARGET}</b> ta</p>
         </div>
