@@ -126,6 +126,9 @@
   });
 
   /* ---------- ishga tushirish ---------- */
+  // Eski versiya savollarni brauzerda saqlardi; endi ular faqat serverda turadi.
+  try { localStorage.removeItem('moliyaviy-oyin:bank'); } catch (e) { /* e'tiborsiz */ }
+
   S.admin.bind(render);
   window.addEventListener('hashchange', () => { S.admin.route(); render(); window.scrollTo(0, 0); app.scrollTop = 0; });
   S.admin.route();

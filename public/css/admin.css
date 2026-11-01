@@ -4,6 +4,7 @@
 /* =========================== ADMIN PANEL =========================== */
 .app--admin {
   overflow-y: auto;
+  scrollbar-gutter: stable;
   background:
     radial-gradient(60rem 40rem at 105% -10%, rgba(129, 164, 205, .3), transparent 60%),
     var(--bg);

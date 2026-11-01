@@ -4,6 +4,7 @@
 /* =========================== SOZLASH =========================== */
 .app--setup {
   overflow-y: auto;
+  scrollbar-gutter: stable;   /* aylantirish chizig'i chiqqanda sahifa yonga siljimaydi */
   background:
     radial-gradient(60rem 40rem at 105% -10%, rgba(129, 164, 205, .35), transparent 60%),
     radial-gradient(40rem 30rem at -10% 110%, rgba(219, 228, 238, .9), transparent 60%),
@@ -20,8 +21,11 @@
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   grid-template-rows: auto minmax(0, 1fr);
   gap: 2rem 4rem;
-  align-items: center;
+  /* Ikkala ustun ham tepadan boshlanadi: jamoalar soni o'zgarganda faqat kartochka
+     pastga cho'ziladi, chapdagi matn joyidan qimirlamaydi. */
+  align-items: start;
 }
+.setup__intro, .setup__card { margin-top: clamp(0rem, 8vh - 2rem, 5rem); }
 .setup__intro { display: grid; gap: 1.5rem; }
 .setup__title {
   font-family: var(--font-display);
@@ -209,7 +213,8 @@
   margin: 0;
   font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.1;
   color: var(--navy);
-  overflow-wrap: anywhere;
+  /* uzun jamoa nomi ikki qatorga tushib, taxtani pastga surmasin */
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 
 .board-wrap { flex: 1; min-height: 0; }

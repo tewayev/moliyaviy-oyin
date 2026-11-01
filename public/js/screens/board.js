@@ -43,7 +43,7 @@
 
     return `
       <section class="board-screen">
-        <h2 class="turn">${esc(team ? team.name : '')}</h2>
+        <h2 class="turn" title="${esc(team ? team.name : '')}">${esc(team ? team.name : '')}</h2>
         <div class="board-wrap">
           <div class="board" style="--cols:${topics.length}">${cols}</div>
         </div>
